@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 
@@ -5,7 +7,7 @@ import OvniHero from "../subComponents/OvniHero";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full text-center">
+    <div className="relative h-screen w-full text-center overflow-hidden">
       <div className="h-full max-w-[1240px] w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4">
         <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
           Hi, I'm{" "}
@@ -57,14 +59,27 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-12 right-8 lg:bottom-4 flex flex-col justify-center items-center">
+      <motion.div
+        initial={{
+          x: "-100%",
+        }}
+        transition={{
+          duration: 3.5,
+          type: "spring",
+          bounce: "0.50",
+        }}
+        animate={{
+          x: 0,
+        }}
+        className="absolute bottom-8 sm:bottom-12 lg:bottom-6 left-0 right-0 m-auto flex flex-col justify-center items-center"
+      >
         <div className="h-[130px] w-[130px] lg:h-[120px] lg:w-[120px]">
           <OvniHero />
         </div>
         <button className="py-1 px-2 md:py-2 md:px-4 text-gray-200 bg-gradient-to-r from-indigo-700 to-violet-800 font-bold uppercase rounded-lg">
           Download CV
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 };

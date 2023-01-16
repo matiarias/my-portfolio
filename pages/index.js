@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       setLoadingPage(false);
-    }, 6000);
+    }, 5000);
   }, []);
 
   return (
