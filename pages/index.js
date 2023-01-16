@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 import Loading from "../components/Loading/Loading";
+import StarsParticles from "../components/StarsParticles";
 
 export default function Home() {
   const [loadingPage, setLoadingPage] = useState(true);
@@ -26,9 +27,7 @@ export default function Home() {
         <Loading />
       ) : (
         <main>
-          <h1 className="text-green-700 font-bold text-4xl">
-            Matias Arias - Portfolio
-          </h1>
+          <StarsParticles />
         </main>
       )}
     </>
