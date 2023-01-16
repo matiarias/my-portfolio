@@ -5,3 +5,17 @@
 * {
   scroll-behavior: smooth;
 }
+
+@layer utilities {
+  .nav-items {
+    @apply relative;
+  }
+
+  .nav-items::after {
+    @apply absolute content-[""] h-[3px] w-0 left-0 -bottom-[5px] bg-yellow-400 rounded-lg duration-300;
+  }
+
+  .nav-items:hover::after {
+    @apply w-full;
+  }
+}
