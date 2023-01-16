@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading/Loading";
 import StarsParticles from "../components/StarsParticles";
 import NavBar from "../components/NavBar";
+import Hero from "../components/Hero";
 
 export default function Home() {
   const [loadingPage, setLoadingPage] = useState(true);
@@ -30,6 +31,7 @@ export default function Home() {
         <main>
           <StarsParticles />
           <NavBar />
+          <Hero />
         </main>
       )}
     </>
