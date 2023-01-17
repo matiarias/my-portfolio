@@ -14,7 +14,7 @@ const Hero = () => {
         transition={{ duration: 1.5 }}
         className="h-full max-w-[1240px] w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
       >
-        <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl">
+        <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-6xl">
           Hi, I'm{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
         </h1>
@@ -37,7 +37,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4">
+            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -47,7 +47,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4">
+            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -57,7 +57,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4">
+            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>
