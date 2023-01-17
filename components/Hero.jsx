@@ -14,12 +14,12 @@ const Hero = () => {
         transition={{ duration: 1.5 }}
         className="h-full max-w-[1240px] w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
       >
-        <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+        <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl">
           Hi, I'm{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
         </h1>
 
-        <h2 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+        <h2 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl">
           A <span className="text-yellow-500 font-bold">Front-End</span>{" "}
           Developer
         </h2>

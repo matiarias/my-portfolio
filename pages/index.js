@@ -28,11 +28,11 @@ export default function Home() {
       {loadingPage ? (
         <Loading />
       ) : (
-        <main>
+        <div>
           <StarsParticles />
           <NavBar />
           <Hero />
-        </main>
+        </div>
       )}
     </>
   );

@@ -25,27 +25,27 @@ const NavBar = () => {
 
         <ul className="hidden md:flex justify-between items-center gap-8">
           <Link href="/">
-            <li className="nav-items text-white text-base md:text-xl lg:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Home
             </li>
           </Link>
           <Link href="/">
-            <li className="nav-items text-white text-base md:text-xl lg:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               About
             </li>
           </Link>
           <Link href="/">
-            <li className="nav-items text-white text-base md:text-xl lg:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Skills
             </li>
           </Link>
           <Link href="/">
-            <li className="nav-items text-white text-base md:text-xl lg:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Projects
             </li>
           </Link>
           <Link href="/">
-            <li className="nav-items text-white text-base md:text-xl lg:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-white text-base md:text-xl :text-2xl uppercase tracking-[1px]">
               Contact
             </li>
           </Link>
