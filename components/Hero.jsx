@@ -32,7 +32,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4 cursor-pointer">
+            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -42,7 +42,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4 cursor-pointer">
+            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -52,7 +52,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4 cursor-pointer">
+            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3 md:p-4">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>
@@ -71,13 +71,17 @@ const Hero = () => {
         animate={{
           x: 0,
         }}
-        className="absolute bottom-8 sm:bottom-12 lg:bottom-6 left-0 right-0 m-auto flex flex-col justify-center items-center"
+        className="absolute bottom-6 sm:bottom-8 lg:bottom-4 left-0 right-0 m-auto flex flex-col justify-center items-center"
       >
         <div className="h-[130px] w-[130px] lg:h-[120px] lg:w-[120px]">
           <OvniHero />
         </div>
-        <button className="py-1 px-2 md:py-2 md:px-4 text-gray-200 bg-gradient-to-r from-indigo-700 to-violet-800 font-bold uppercase rounded-lg">
-          Download CV
+
+        <button className="relative overflow-hidden rounded-lg bg-black py-5 px-16 md:py-6 md:px-20 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
+          <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black/80 bg-gradient-to-t from-indigo-600 text-gray-200 font-bold">
+            Download CV
+          </span>
+          <span className="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-gradient-conic before:from-purple-500 before:via-indigo-800 before:to-yellow-400" />
         </button>
       </motion.div>
     </div>
