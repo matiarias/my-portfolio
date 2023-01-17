@@ -8,7 +8,12 @@ import OvniHero from "../subComponents/OvniHero";
 const Hero = () => {
   return (
     <div className="relative h-screen w-full text-center overflow-hidden">
-      <div className="h-full max-w-[1240px] w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4">
+      <motion.div
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 1.5 }}
+        className="h-full max-w-[1240px] w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
+      >
         <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
           Hi, I'm{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
@@ -57,7 +62,7 @@ const Hero = () => {
             </div>
           </a>
         </div>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{
