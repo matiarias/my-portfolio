@@ -1,20 +1,71 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 
 import OvniHero from "../subComponents/OvniHero";
+import { useEffect } from "react";
 
 const Hero = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+
+  const { ref: ovniRef, inView: inViewOvni } = useInView();
+
+  const animationOverlay = useAnimation();
+
+  const animationOvni = useAnimation();
+
+  //   --------------------------- useEffect for the Overlay animation -------------------------
+
+  useEffect(() => {
+    if (inView) {
+      animationOverlay.start({
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 1.4 },
+      });
+    }
+
+    if (!inView) {
+      animationOverlay.start({
+        opacity: 0,
+        filter: "blur(10px)",
+      });
+    }
+  }, [inView]);
+
+  //   ---------------------------- useEffect for the Photo animation -------------------------
+
+  useEffect(() => {
+    if (inViewOvni) {
+      animationOvni.start({
+        x: 0,
+        transition: {
+          duration: 3.5,
+          type: "spring",
+          bounce: "0.50",
+        },
+      });
+    }
+
+    if (!inViewOvni) {
+      animationOvni.start({
+        x: "-100%",
+      });
+    }
+  }, [inViewOvni]);
+
   return (
     <section
       id="home"
       className="relative h-screen w-full text-center overflow-hidden"
     >
       <motion.div
-        initial={{ opacity: 0, filter: "blur(10px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: 1.5 }}
+        ref={ref}
+        animate={animationOverlay}
         className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
       >
         <h1 className="text-gray-200 font-bold text-4xl md:text-5xl lg:text-6xl">
@@ -68,17 +119,8 @@ const Hero = () => {
       </motion.div>
 
       <motion.div
-        initial={{
-          x: "-100%",
-        }}
-        transition={{
-          duration: 3.5,
-          type: "spring",
-          bounce: "0.50",
-        }}
-        animate={{
-          x: 0,
-        }}
+        ref={ovniRef}
+        animate={animationOvni}
         className="absolute bottom-6 sm:bottom-8 lg:bottom-4 left-0 right-0 m-auto flex flex-col justify-center items-center"
       >
         <div className="h-[130px] w-[130px] lg:h-[120px] lg:w-[120px]">
