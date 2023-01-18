@@ -6,6 +6,7 @@ import Loading from "../components/Loading/Loading";
 import StarsParticles from "../components/StarsParticles";
 import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
+import About from "../components/About";
 
 export default function Home() {
   const [loadingPage, setLoadingPage] = useState(true);
@@ -32,6 +33,7 @@ export default function Home() {
           <StarsParticles />
           <NavBar />
           <Hero />
+          <About />
         </div>
       )}
     </>

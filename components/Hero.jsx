@@ -7,14 +7,17 @@ import OvniHero from "../subComponents/OvniHero";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full text-center overflow-hidden">
+    <section
+      id="home"
+      className="relative h-screen w-full text-center overflow-hidden"
+    >
       <motion.div
         initial={{ opacity: 0, filter: "blur(10px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 1.5 }}
-        className="h-full max-w-[1240px] w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
+        className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
       >
-        <h1 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-6xl">
+        <h1 className="text-gray-200 font-bold text-4xl md:text-5xl lg:text-6xl">
           Hi, I'm{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
         </h1>
@@ -89,7 +92,7 @@ const Hero = () => {
           <span className="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-gradient-conic before:from-purple-500 before:via-indigo-800 before:to-yellow-400" />
         </button>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

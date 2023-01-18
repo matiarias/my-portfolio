@@ -24,12 +24,12 @@ const NavBar = () => {
         </div>
 
         <ul className="hidden md:flex justify-between items-center gap-8">
-          <Link href="/">
+          <Link href="#home">
             <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Home
             </li>
           </Link>
-          <Link href="/">
+          <Link href="#about">
             <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               About
             </li>
@@ -54,7 +54,7 @@ const NavBar = () => {
         {/* ---------------------------- Mobile Hamburger Menu ----------------------------- */}
 
         <div onClick={handleNav} className="md:hidden">
-          <AiOutlineMenu size={30} className="text-sky-200" />
+          <AiOutlineMenu size={30} className="text-gray-200" />
         </div>
       </div>
       {/* --------------------------------- Mobile NavBar ----------------------------------- */}
@@ -87,7 +87,7 @@ const NavBar = () => {
           <div className="h-full w-full flex flex-col justify-start items-center border-t-2 border-gray-300 mt-2">
             <div className="w-full flex flex-col justify-center items-center gap-10 mt-20">
               <Link
-                href="/"
+                href="#home"
                 onClick={handleNav}
                 className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
               >
@@ -95,7 +95,7 @@ const NavBar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="#about"
                 onClick={handleNav}
                 className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
               >

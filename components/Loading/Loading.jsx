@@ -16,6 +16,9 @@ const Loading = () => {
         src={spaceImg}
         alt="space galaxy"
         fill
+        sizes="(max-width: 1200px) 100vw,
+                (max-width: 700px) 50vw,
+                33vw"
       />
 
       <div className="absolute top-0 left-0 h-full w-full bg-black/10 flex flex-col justify-center items-center px-8">
