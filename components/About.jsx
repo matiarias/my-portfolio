@@ -1,18 +1,72 @@
 import Image from "next/image";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import MatiasPhoto from "../public/assets/mati-arias-photo.jpg";
 
 const About = () => {
+  const { ref, inView } = useInView();
+
+  const { ref: photoRef, inView: inViewPhoto } = useInView();
+
+  const animationText = useAnimation();
+
+  const animationPhoto = useAnimation();
+
+  //   --------------------------- useEffect for the Text animation -------------------------
+
+  useEffect(() => {
+    if (inView) {
+      animationText.start({
+        x: 0,
+        transition: {
+          type: "spring",
+          duration: 1.5,
+          bounce: 0.2,
+        },
+      });
+    }
+
+    if (!inView) {
+      animationText.start({
+        x: "-100%",
+      });
+    }
+  }, [inView]);
+
+  //   ---------------------------- useEffect for the Photo animation -------------------------
+
+  useEffect(() => {
+    if (inViewPhoto) {
+      animationPhoto.start({
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 1.2 },
+      });
+    }
+
+    if (!inViewPhoto) {
+      animationPhoto.start({
+        opacity: 0,
+        filter: "blur(10px)",
+      });
+    }
+  }, [inViewPhoto]);
+
   return (
     <section id="about" className="w-full md:h-screen py-12 px-6 md:px-8">
       <h2 className="text-gray-200 text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-center tracking-[1px] underline underline-offset-[6px] decoration-yellow-500/80">
         About Me
       </h2>
 
-      <div className="max-w-screen-xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 mx-auto">
-        <motion.div className="col-span-2">
+      <div
+        ref={ref}
+        className="max-w-screen-xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 mx-auto"
+      >
+        <motion.div animate={animationText} className="col-span-2">
           <h3 className="text-sky-400 text-xl md:text-2xl font-bold">
             Who I Am
           </h3>
@@ -42,7 +96,11 @@ const About = () => {
           </p>
         </motion.div>
 
-        <motion.div className="relative w-full h-[500px] md:h-[400px] xl:h-[450px] border-2 border-indigo-900 rounded-[30px] saturate-150">
+        <motion.div
+          ref={photoRef}
+          animate={animationPhoto}
+          className="relative w-full h-[500px] md:h-[400px] xl:h-[450px] border-2 border-indigo-900 rounded-[30px] saturate-150"
+        >
           <Image
             src={MatiasPhoto}
             alt="Matias Arias Photo"
