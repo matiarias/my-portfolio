@@ -6,6 +6,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import MatiasPhoto from "../public/assets/mati-arias-photo.jpg";
+import TitleSections from "../subComponents/TitleSections";
 
 const About = () => {
   const { ref, inView } = useInView();
@@ -58,13 +59,11 @@ const About = () => {
 
   return (
     <section id="about" className="w-full md:h-screen py-12 px-6 md:px-8">
-      <h2 className="text-gray-200 text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-center tracking-[1px] underline underline-offset-[6px] decoration-yellow-500/80">
-        About Me
-      </h2>
+      <TitleSections title="About Me" />
 
       <div
         ref={ref}
-        className="max-w-screen-xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 mx-auto"
+        className="w-full max-w-screen-xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 mx-auto"
       >
         <motion.div animate={animationText} className="col-span-2">
           <h3 className="text-sky-400 text-xl md:text-2xl font-bold">

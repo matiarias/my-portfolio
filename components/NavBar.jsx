@@ -34,17 +34,17 @@ const NavBar = () => {
               About
             </li>
           </Link>
-          <Link href="/">
+          <Link href="#skills">
             <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Skills
             </li>
           </Link>
-          <Link href="/">
+          <Link href="#projects">
             <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Projects
             </li>
           </Link>
-          <Link href="/">
+          <Link href="#contact">
             <li className="nav-items text-white text-base md:text-xl :text-2xl uppercase tracking-[1px]">
               Contact
             </li>
@@ -103,7 +103,7 @@ const NavBar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="#skills"
                 onClick={handleNav}
                 className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
               >
@@ -111,7 +111,7 @@ const NavBar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="#projects"
                 onClick={handleNav}
                 className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
               >
@@ -119,7 +119,7 @@ const NavBar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="#contact"
                 onClick={handleNav}
                 className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
               >
