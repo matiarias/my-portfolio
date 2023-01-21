@@ -1,10 +1,38 @@
 import Image from "next/image";
 
+import { useEffect } from "react";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import { skills } from "@/data/skillsData";
 
 import TitleSections from "../subComponents/TitleSections";
 
 const Skills = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 1 },
+      });
+    }
+
+    if (!inView) {
+      animation.start({
+        opacity: 0,
+        filter: "blur(10px)",
+      });
+    }
+  }, [inView]);
+
   return (
     <section id="skills" className="w-full md:h-screen py-6 px-6 md:px-8">
       <TitleSections title="Skills" />
@@ -14,11 +42,20 @@ const Skills = () => {
           What I Can Do
         </h3>
 
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10">
+        <motion.div
+          ref={ref}
+          animate={animation}
+          className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
+        >
           {skills.map((skill) => (
-            <div
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.4, ease: "easeInOut" },
+              }}
+              whileTap={{ scale: 1.1, transition: { duration: 0.5 } }}
               key={skill.id}
-              className="p-6 shadow-lg shadow-gray-300 rounded-xl hover:scale-105 ease-in duration-300"
+              className="p-6 shadow-lg shadow-gray-300 rounded-xl"
             >
               <div className="grid grid-cols-2 gap-4 justify-center items-center">
                 <div className="relative m-auto">
@@ -37,9 +74,9 @@ const Skills = () => {
                   </h3>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
