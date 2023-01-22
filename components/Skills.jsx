@@ -10,9 +10,7 @@ import { skills } from "@/data/skillsData";
 import TitleSections from "../subComponents/TitleSections";
 
 const Skills = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-  });
+  const { ref, inView } = useInView();
 
   const animation = useAnimation();
 
@@ -45,7 +43,7 @@ const Skills = () => {
         <motion.div
           ref={ref}
           animate={animation}
-          className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
         >
           {skills.map((skill) => (
             <motion.div

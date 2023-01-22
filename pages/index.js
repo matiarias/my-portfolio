@@ -8,6 +8,7 @@ import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Skills from "../components/Skills";
+import Projects from "../components/Projects";
 
 export default function Home() {
   const [loadingPage, setLoadingPage] = useState(true);
@@ -36,6 +37,7 @@ export default function Home() {
           <Hero />
           <About />
           <Skills />
+          <Projects />
         </div>
       )}
     </>
