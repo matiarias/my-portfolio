@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { AiOutlineGithub } from "react-icons/ai";
 import { IoRocketOutline } from "react-icons/io";
+import { TbPlanet } from "react-icons/tb";
 
 import { projects } from "../data/projectsData";
 
@@ -17,17 +18,17 @@ const Projects = () => {
           Some of my best projects
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
           {projects.map((project) => (
             <div
               key={project.id}
               className="relative h-auto w-full rounded-xl shadow-lg shadow-gray-300 overflow-hidden"
             >
-              <div className="relative h-[150px] lg:h-[200px] w-full">
+              <div className="relative h-[200px] w-full">
                 <Image
                   src={project.image}
                   alt={project.title}
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "top" }}
                   fill
                 />
               </div>
@@ -42,7 +43,7 @@ const Projects = () => {
                     {project.description}
                   </p>
 
-                  <div className="flex justify-center items-center flex-wrap gap-2">
+                  <div className="flex justify-center items-center flex-wrap gap-4 md:gap-2">
                     {project.technologies.map((tech) => (
                       <div
                         key={tech.id}
@@ -66,22 +67,32 @@ const Projects = () => {
                       href={project.links.github.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-1 px-4 shadow-md shadow-gray-300 rounded-lg"
                     >
-                      <span className="text-gray-200 font-bold text-sm">
-                        Github
-                      </span>
+                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-violet-900 shadow-md shadow-gray-300 rounded-lg">
+                        <div className="text-xl text-gray-200">
+                          <AiOutlineGithub />
+                        </div>
+
+                        <span className="text-gray-200 font-bold text-sm">
+                          Github
+                        </span>
+                      </div>
                     </a>
 
                     <a
                       href={project.links.deploy.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-1 px-4 shadow-md shadow-gray-300 rounded-lg"
                     >
-                      <span className="text-gray-200 font-bold text-sm">
-                        Deploy
-                      </span>
+                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-black/70 shadow-md shadow-gray-300 rounded-lg">
+                        <div className="text-xl text-gray-200">
+                          <TbPlanet />
+                        </div>
+
+                        <span className="text-gray-200 font-bold text-sm">
+                          Deploy
+                        </span>
+                      </div>
                     </a>
                   </div>
                 </div>
