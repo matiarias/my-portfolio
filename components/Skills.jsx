@@ -10,7 +10,7 @@ import { skills } from "@/data/skillsData";
 import TitleSections from "../subComponents/TitleSections";
 
 const Skills = () => {
-  const { ref, inView } = useInView();
+  const { ref: skillsRef, inView } = useInView();
 
   const animation = useAnimation();
 
@@ -41,7 +41,7 @@ const Skills = () => {
         </h3>
 
         <motion.div
-          ref={ref}
+          ref={skillsRef}
           animate={animation}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
         >

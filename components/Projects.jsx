@@ -1,7 +1,11 @@
 import Image from "next/image";
 
+import { useEffect } from "react";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import { AiOutlineGithub } from "react-icons/ai";
-import { IoRocketOutline } from "react-icons/io";
 import { TbPlanet } from "react-icons/tb";
 
 import { projects } from "../data/projectsData";
@@ -9,6 +13,27 @@ import { projects } from "../data/projectsData";
 import TitleSections from "../subComponents/TitleSections";
 
 const Projects = () => {
+  const { ref: projectsRef, inView } = useInView();
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 1.1 },
+      });
+    }
+
+    if (!inView) {
+      animation.start({
+        opacity: 0,
+        filter: "blur(15px)",
+      });
+    }
+  }, [inView]);
+
   return (
     <section id="projects" className="w-full py-16 px-6 md:px-8">
       <TitleSections title="Projects" />
@@ -18,7 +43,11 @@ const Projects = () => {
           Some of my best projects
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
+        <motion.div
+          ref={projectsRef}
+          animate={animation}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-12"
+        >
           {projects.map((project) => (
             <div
               key={project.id}
@@ -26,10 +55,13 @@ const Projects = () => {
             >
               <div className="relative h-[200px] w-full">
                 <Image
+                  className="object-cover object-center"
                   src={project.image}
                   alt={project.title}
-                  style={{ objectFit: "cover", objectPosition: "top" }}
                   fill
+                  sizes="(max-width: 768px) 100vw,
+                         (max-width: 1200px) 50vw,
+                         33vw"
                 />
               </div>
 
@@ -68,7 +100,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-violet-900 shadow-md shadow-gray-300 rounded-lg">
+                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-gradient-to-r from-indigo-900/70 to-violet-700/90 shadow-md shadow-gray-300 rounded-lg">
                         <div className="text-xl text-gray-200">
                           <AiOutlineGithub />
                         </div>
@@ -84,7 +116,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-black/70 shadow-md shadow-gray-300 rounded-lg">
+                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-black/50 shadow-md shadow-gray-300 rounded-lg">
                         <div className="text-xl text-gray-200">
                           <TbPlanet />
                         </div>
@@ -99,7 +131,7 @@ const Projects = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
