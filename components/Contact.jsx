@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import emailjs from "@emailjs/browser";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +11,31 @@ import "react-toastify/dist/ReactToastify.css";
 import TitleSections from "../subComponents/TitleSections";
 
 const Contact = () => {
+  // ---------------- framer motion animation with react intersection observer -----------------
+
+  const { ref: formRef, inView } = useInView();
+
+  const animationForm = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animationForm.start({
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 1 },
+      });
+    }
+
+    if (!inView) {
+      animationForm.start({
+        opacity: 0,
+        filter: "blur(15px)",
+      });
+    }
+  }, [inView]);
+
+  // ------------------------------- form logic with email js ---------------------------------
+
   const [inputsForm, setInputsForm] = useState({
     name: "",
     email: "",
@@ -60,6 +88,8 @@ const Contact = () => {
       subject: "",
       message: "",
     });
+
+    // ----------------- framer motion animations with react intersection observer -------------
   };
 
   return (
@@ -76,62 +106,65 @@ const Contact = () => {
         </h3>
 
         <div className="w-full max-w-screen-sm mx-auto">
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col justify-center items-center gap-6"
-          >
-            <input
-              type="text"
-              className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
-              placeholder="Name"
-              onChange={handleChange}
-              value={inputsForm.name}
-              name="name"
-              maxLength="60"
-              required
-            />
-
-            <input
-              type="email"
-              className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
-              placeholder="Email"
-              onChange={handleChange}
-              value={inputsForm.email}
-              name="email"
-              maxLength="60"
-              required
-            />
-
-            <input
-              type="text"
-              className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
-              placeholder="Subject"
-              onChange={handleChange}
-              value={inputsForm.subject}
-              name="subject"
-              maxLength="60"
-              required
-            />
-
-            <textarea
-              className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500 resize-none"
-              placeholder="Message"
-              rows="8"
-              onChange={handleChange}
-              value={inputsForm.message}
-              name="message"
-              required
-            ></textarea>
-
-            <button
-              type="submit"
-              className="w-full py-2 bg-yellow-500/50 text-gray-200 font-bold rounded-xl hover:bg-yellow-400/70"
+          <motion.div ref={formRef} animate={animationForm}>
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col justify-center items-center gap-6"
             >
-              Send Message
-            </button>
-          </form>
+              <input
+                type="text"
+                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
+                placeholder="Name"
+                onChange={handleChange}
+                value={inputsForm.name}
+                name="name"
+                maxLength="60"
+                required
+              />
+
+              <input
+                type="email"
+                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
+                placeholder="Email"
+                onChange={handleChange}
+                value={inputsForm.email}
+                name="email"
+                maxLength="60"
+                required
+              />
+
+              <input
+                type="text"
+                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
+                placeholder="Subject"
+                onChange={handleChange}
+                value={inputsForm.subject}
+                name="subject"
+                maxLength="60"
+                required
+              />
+
+              <textarea
+                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500 resize-none"
+                placeholder="Message"
+                rows="8"
+                onChange={handleChange}
+                value={inputsForm.message}
+                name="message"
+                required
+              ></textarea>
+
+              <button
+                type="submit"
+                className="w-full py-2 bg-yellow-500/50 text-gray-200 font-bold rounded-xl hover:bg-yellow-400/70"
+              >
+                Send Message
+              </button>
+            </form>
+          </motion.div>
         </div>
       </div>
+
       <ToastContainer />
     </section>
   );

@@ -22,7 +22,7 @@ const Projects = () => {
       animation.start({
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 1.1 },
+        transition: { duration: 1 },
       });
     }
 
