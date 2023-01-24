@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
@@ -10,12 +10,36 @@ import OvniNavBar from "../subComponents/OvniNavBar";
 const NavBar = () => {
   const [nav, setNav] = useState(false);
 
+  const [blurNav, setBlurNav] = useState(false);
+
+  useEffect(() => {
+    const scrollNav = () => {
+      if (window.scrollY >= 80) {
+        setBlurNav(true);
+      } else {
+        setBlurNav(false);
+      }
+    };
+
+    window.addEventListener("scroll", scrollNav);
+
+    return () => {
+      scrollNav();
+    };
+  }, []);
+
   const handleNav = () => {
     setNav(!nav);
   };
 
   return (
-    <div className="fixed h-20 w-full shadow-md shadow-indigo-800 z-[100]">
+    <div
+      className={
+        blurNav
+          ? "fixed h-20 w-full backdrop-filter backdrop-blur-xl shadow-md shadow-indigo-800 z-[100]"
+          : "fixed h-20 w-full shadow-md shadow-indigo-800 z-[100]"
+      }
+    >
       <div className="flex justify-between items-center w-full h-full px-4 md:px-8 lg:px-12">
         {/* -------------------------------- Desktop NavBar ---------------------------------- */}
 
@@ -25,27 +49,27 @@ const NavBar = () => {
 
         <ul className="hidden md:flex justify-between items-center gap-8">
           <Link href="#home">
-            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Home
             </li>
           </Link>
           <Link href="#about">
-            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               About
             </li>
           </Link>
           <Link href="#skills">
-            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Skills
             </li>
           </Link>
           <Link href="#projects">
-            <li className="nav-items text-white text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Projects
             </li>
           </Link>
           <Link href="#contact">
-            <li className="nav-items text-white text-base md:text-xl :text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-gray-200 text-base md:text-xl :text-2xl uppercase tracking-[1px]">
               Contact
             </li>
           </Link>
@@ -67,7 +91,7 @@ const NavBar = () => {
         <div
           className={
             nav
-              ? "fixed top-0 left-0 h-screen w-[80%] sm:w-[60%] bg-gradient-to-b from-[#1a0435] via-[#371764] to-[#642c8b] ease-in duration-500 px-4"
+              ? "fixed top-0 left-0 h-screen w-[80%] sm:w-[60%] bg-gradient-to-b from-[#140429] via-[#371764] to-[#5b2b7e] ease-in duration-500 px-4"
               : "fixed left-[-100%]"
           }
         >
