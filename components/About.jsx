@@ -101,10 +101,10 @@ const About = () => {
           className="relative w-full h-[500px] md:h-[400px] xl:h-[450px] border-2 border-indigo-900 rounded-[30px] saturate-150"
         >
           <Image
+            className="object-cover rounded-3xl"
             src={MatiasPhoto}
             alt="Matias Arias Photo"
             fill
-            style={{ objectFit: "cover", borderRadius: "30px" }}
             sizes="(max-width: 600px) 100vw,
                 (max-width: 500px) 50vw,
                 33vw"

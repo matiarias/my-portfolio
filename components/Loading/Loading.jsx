@@ -12,7 +12,7 @@ const Loading = () => {
   return (
     <div className="relative h-screen w-screen">
       <Image
-        style={{ objectFit: "cover", objectPosition: "center" }}
+        className="object-cover object-center"
         src={spaceImg}
         alt="space galaxy"
         fill
