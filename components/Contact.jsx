@@ -1,6 +1,67 @@
+import { useState } from "react";
+
+import emailjs from "@emailjs/browser";
+
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import TitleSections from "../subComponents/TitleSections";
 
 const Contact = () => {
+  const [inputsForm, setInputsForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = ({ target }) => {
+    console.log(target.value);
+
+    setInputsForm({
+      ...inputsForm,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_345q1hc",
+        "template_cjpbxs8",
+        e.target,
+        "7KOfu6nUyn9l40icN"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+
+          toast.success("👽 Thank you for your message!", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+    setInputsForm({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+  };
+
   return (
     <section id="contact" className="w-full py-16 px-6 md:px-8">
       {/* <TitleSections title="Contact" /> */}
@@ -16,36 +77,50 @@ const Contact = () => {
 
         <div className="w-full max-w-screen-sm mx-auto">
           <form
-            onSubmit=""
-            action=""
+            onSubmit={handleSubmit}
             className="flex flex-col justify-center items-center gap-6"
           >
             <input
               type="text"
               className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
               placeholder="Name"
-              name=""
+              onChange={handleChange}
+              value={inputsForm.name}
+              name="name"
+              maxLength="60"
+              required
             />
 
             <input
               type="email"
               className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
               placeholder="Email"
-              name=""
+              onChange={handleChange}
+              value={inputsForm.email}
+              name="email"
+              maxLength="60"
+              required
             />
 
             <input
               type="text"
               className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
               placeholder="Subject"
-              name=""
+              onChange={handleChange}
+              value={inputsForm.subject}
+              name="subject"
+              maxLength="60"
+              required
             />
 
             <textarea
               className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500 resize-none"
               placeholder="Message"
               rows="8"
-              name=""
+              onChange={handleChange}
+              value={inputsForm.message}
+              name="message"
+              required
             ></textarea>
 
             <button
@@ -57,6 +132,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };
