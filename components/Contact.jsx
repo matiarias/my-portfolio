@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import TitleSections from "../subComponents/TitleSections";
+// import TitleSections from "../subComponents/TitleSections";
 
 const Contact = () => {
   // ---------------- framer motion animation with react intersection observer -----------------
