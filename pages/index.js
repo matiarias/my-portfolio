@@ -40,7 +40,10 @@ export default function Home() {
           property="og:description"
           content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
         />
-        <meta property="og:image" content="" />
+        <meta
+          property="og:image"
+          content="/public/assets/screenshots/screenshot-home.png"
+        />
 
         {/* Twitter meta tags */}
 
@@ -54,7 +57,10 @@ export default function Home() {
           property="twitter:description"
           content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
         />
-        <meta property="twitter:image" content="" />
+        <meta
+          property="twitter:image"
+          content="/public/assets/screenshots/screenshot-home.png"
+        />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
