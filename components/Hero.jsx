@@ -69,7 +69,7 @@ const Hero = () => {
         className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
       >
         <h1 className="text-gray-200 font-bold text-4xl md:text-5xl lg:text-6xl">
-          Hi, I'm{" "}
+          Hi, I&apos;m{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
         </h1>
 
@@ -80,7 +80,7 @@ const Hero = () => {
 
         <div className="w-full max-w-4xl">
           <p className="text-gray-200 font-bold text-base sm:text-lg md:text-xl lg:text-2xl">
-            I'm a Frontend Developer based in Argentina. I want to create
+            I&apos;m a Frontend Developer based in Argentina. I want to create
             websites that make an impact on people.
           </p>
         </div>

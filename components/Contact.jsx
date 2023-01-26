@@ -102,7 +102,7 @@ const Contact = () => {
 
       <div className="w-full max-w-screen-xl flex flex-col justify-center gap-6 mt-4 mx-auto">
         <h3 className="text-sky-400 text-xl md:text-2xl font-bold mt-8">
-          Let's Connect
+          Let&apos;s Connect
         </h3>
 
         <div className="w-full max-w-screen-sm mx-auto">

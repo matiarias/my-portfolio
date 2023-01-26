@@ -84,8 +84,8 @@ const About = () => {
             I study and prepare myself every day in a self-taught way by taking
             different courses and developing a lot of projects. I love learning
             new technologies all the time and I know that I can contribute a lot
-            of value and great things. I'm looking for my first experience as a
-            frontend developer.
+            of value and great things. I&apos;m looking for my first experience
+            as a frontend developer.
           </p>
 
           <p className="text-gray-200 text-base md:text-lg tracking-wide leading-relaxed indent-2 mt-3">

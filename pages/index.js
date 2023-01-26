@@ -27,7 +27,7 @@ export default function Home() {
         <title>Matias Arias - Portfolio</title>
         <meta name="description" content="My portfolio by Matias Arias" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon-planet.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {loadingPage ? (
