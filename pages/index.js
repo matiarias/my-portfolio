@@ -25,8 +25,37 @@ export default function Home() {
     <>
       <Head>
         <title>Matias Arias - Portfolio</title>
-        <meta name="description" content="My portfolio by Matias Arias" />
+        <meta
+          name="description"
+          content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Facebook meta tags */}
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://matiasarias.vercel.app/" />
+        <meta property="og:title" content="Matias Arias - Portfolio" />
+        <meta
+          property="og:description"
+          content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
+        />
+        <meta property="og:image" content="" />
+
+        {/* Twitter meta tags */}
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://matiasarias.vercel.app/"
+        />
+        <meta property="twitter:title" content="Matias Arias - Portfolio" />
+        <meta
+          property="twitter:description"
+          content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
+        />
+        <meta property="twitter:image" content="" />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
