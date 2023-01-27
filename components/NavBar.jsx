@@ -36,8 +36,8 @@ const NavBar = () => {
     <div
       className={
         blurNav
-          ? "fixed h-20 w-full backdrop-filter backdrop-blur-xl shadow-md shadow-indigo-800 z-[100]"
-          : "fixed h-20 w-full shadow-md shadow-indigo-800 z-[100]"
+          ? "fixed top-0 left-0 h-20 w-full backdrop-filter backdrop-blur-xl shadow-md shadow-indigo-800 z-[100]"
+          : "fixed top-0 left-0 h-20 w-full shadow-md shadow-indigo-800 z-[100]"
       }
     >
       <div className="flex justify-between items-center w-full h-full px-4 md:px-8 lg:px-12">

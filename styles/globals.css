@@ -6,6 +6,11 @@
   scroll-behavior: smooth !important;
 }
 
+body {
+  /* min-height: 100vh; */
+  background-color: #100022;
+}
+
 @layer utilities {
   .nav-items {
     @apply relative;

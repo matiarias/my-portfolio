@@ -8,36 +8,34 @@ import OvniHero from "../subComponents/OvniHero";
 import { useEffect } from "react";
 
 const Hero = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-  });
+  // const { ref, inView } = useInView();
 
   const { ref: ovniRef, inView: inViewOvni } = useInView();
 
-  const animationOverlay = useAnimation();
+  // const animationOverlay = useAnimation();
 
   const animationOvni = useAnimation();
 
   //   --------------------------- useEffect for the Overlay animation -------------------------
 
-  useEffect(() => {
-    if (inView) {
-      animationOverlay.start({
-        opacity: 1,
-        filter: "blur(0px)",
-        transition: { duration: 1 },
-      });
-    }
+  // useEffect(() => {
+  //   if (inView) {
+  //     animationOverlay.start({
+  //       opacity: 1,
+  //       filter: "blur(0px)",
+  //       transition: { duration: 1 },
+  //     });
+  //   }
 
-    if (!inView) {
-      animationOverlay.start({
-        opacity: 0,
-        filter: "blur(10px)",
-      });
-    }
-  }, [inView]);
+  //   if (!inView) {
+  //     animationOverlay.start({
+  //       opacity: 0,
+  //       filter: "blur(10px)",
+  //     });
+  //   }
+  // }, [inView]);
 
-  //   ---------------------------- useEffect for the Photo animation -------------------------
+  //   ---------------------------- useEffect for the ovni animation -------------------------
 
   useEffect(() => {
     if (inViewOvni) {
@@ -56,7 +54,7 @@ const Hero = () => {
         x: "-100%",
       });
     }
-  }, [inViewOvni]);
+  }, [inViewOvni, animationOvni]);
 
   return (
     <section
@@ -64,8 +62,8 @@ const Hero = () => {
       className="relative h-screen w-full text-center overflow-hidden"
     >
       <motion.div
-        ref={ref}
-        animate={animationOverlay}
+        // ref={ref}
+        // animate={animationOverlay}
         className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4"
       >
         <h1 className="text-gray-200 font-bold max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-6xl">
@@ -121,7 +119,7 @@ const Hero = () => {
       <motion.div
         ref={ovniRef}
         animate={animationOvni}
-        className="absolute max-[380px]:bottom-24 bottom-20 sm:bottom-12 md:bottom-40 lg:bottom-4 xl:bottom-6 left-0 right-0 m-auto flex flex-col justify-center items-center"
+        className="absolute max-[380px]:bottom-24 bottom-24 sm:bottom-12 md:bottom-40 lg:bottom-4 xl:bottom-6 left-0 right-0 m-auto flex flex-col justify-center items-center"
       >
         <div className="max-[380px]:h-[90px] max-[380px]:w-[90px] h-[110px] w-[110px] md:h-[130px] md:w-[130px] lg:h-[100px] lg:w-[100px]">
           <OvniHero />

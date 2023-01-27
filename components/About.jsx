@@ -74,7 +74,7 @@ const About = () => {
           </h3>
           <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
             Frontend Developer Focused on JavaScript, React and Next.js. I took
-            an intensive 8-month Full Stack course at RollingCode School in
+            an intensive 8-month Full Stack bootcamp at RollingCode School in
             which we learned the MERN Stack and developed many projects with
             HTML, CSS, Bootstrap, Javascript, React.js and we learned how to
             create a rest api with Node.js, Express.js and MongoDB. In the last

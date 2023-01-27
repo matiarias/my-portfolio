@@ -68,7 +68,7 @@ export default function Home() {
       {loadingPage ? (
         <Loading />
       ) : (
-        <div>
+        <>
           <StarsParticles />
           <NavBar />
           <Hero />
@@ -77,7 +77,7 @@ export default function Home() {
           <Projects />
           <Contact />
           <Footer />
-        </div>
+        </>
       )}
     </>
   );
