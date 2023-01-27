@@ -42,7 +42,7 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="/public/assets/screenshots/screenshot-home.png"
+          content="/assets/screenshots/screenshot-home.png"
         />
 
         {/* Twitter meta tags */}
@@ -59,7 +59,7 @@ export default function Home() {
         />
         <meta
           property="twitter:image"
-          content="/public/assets/screenshots/screenshot-home.png"
+          content="/assets/screenshots/screenshot-home.png"
         />
 
         <link rel="icon" href="/favicon.ico" />
