@@ -25,7 +25,7 @@ const About = () => {
         x: 0,
         transition: {
           type: "spring",
-          duration: 1.5,
+          duration: 0.7,
           bounce: 0.2,
         },
       });
@@ -45,31 +45,34 @@ const About = () => {
       animationPhoto.start({
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 1.2 },
+        transition: { duration: 0.9 },
       });
     }
 
     if (!inViewPhoto) {
       animationPhoto.start({
         opacity: 0,
-        filter: "blur(10px)",
+        filter: "blur(15px)",
       });
     }
   }, [inViewPhoto]);
 
   return (
-    <section id="about" className="w-full md:h-screen py-12 px-6 md:px-8">
+    <section
+      id="about"
+      className="w-full lg:h-screen py-8 lg:py-16 px-6 md:px-8"
+    >
       <TitleSections title="About Me" />
 
       <div
         ref={ref}
-        className="w-full max-w-screen-xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 mx-auto"
+        className="w-full max-w-screen-xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 justify-center items-center"
       >
         <motion.div animate={animationText} className="col-span-2">
           <h3 className="text-sky-400 text-xl md:text-2xl font-bold">
             Who I Am
           </h3>
-          <p className="text-gray-200 text-base md:text-lg tracking-wide leading-relaxed indent-2 mt-2">
+          <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
             Frontend Developer Focused on JavaScript, React and Next.js. I took
             an intensive 8-month Full Stack course at RollingCode School in
             which we learned the MERN Stack and developed many projects with
@@ -80,7 +83,7 @@ const About = () => {
             and Firebase.
           </p>
 
-          <p className="text-gray-200 text-base md:text-lg tracking-wide leading-relaxed indent-2 mt-2">
+          <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
             I study and prepare myself every day in a self-taught way by taking
             different courses and developing a lot of projects. I love learning
             new technologies all the time and I know that I can contribute a lot
@@ -88,7 +91,7 @@ const About = () => {
             as a frontend developer.
           </p>
 
-          <p className="text-gray-200 text-base md:text-lg tracking-wide leading-relaxed indent-2 mt-3">
+          <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-3">
             I consider myself a very calm and kind person, I love everything
             about traveling the world and learning different languages. I speak
             native Spanish, English (C1) and Catalan (A1).
@@ -98,7 +101,7 @@ const About = () => {
         <motion.div
           ref={photoRef}
           animate={animationPhoto}
-          className="relative w-full h-[500px] md:h-[400px] xl:h-[450px] border-2 border-indigo-900 rounded-[30px] saturate-150"
+          className="relative w-full h-[500px] xl:h-[450px] border-2 border-indigo-900 rounded-3xl saturate-150 overflow-hidden"
         >
           <Image
             className="object-cover rounded-3xl"

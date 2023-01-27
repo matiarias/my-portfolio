@@ -25,7 +25,7 @@ const Hero = () => {
       animationOverlay.start({
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 1.4 },
+        transition: { duration: 1 },
       });
     }
 
@@ -44,7 +44,7 @@ const Hero = () => {
       animationOvni.start({
         x: 0,
         transition: {
-          duration: 3.5,
+          duration: 2.8,
           type: "spring",
           bounce: "0.50",
         },
@@ -66,20 +66,20 @@ const Hero = () => {
       <motion.div
         ref={ref}
         animate={animationOverlay}
-        className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center gap-6 md:gap-4 mx-auto p-4"
+        className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4"
       >
-        <h1 className="text-gray-200 font-bold text-4xl md:text-5xl lg:text-6xl">
+        <h1 className="text-gray-200 font-bold max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-6xl">
           Hi, I&apos;m{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
         </h1>
 
-        <h2 className="text-gray-200 font-bold text-3xl md:text-4xl lg:text-5xl">
+        <h2 className="text-gray-200 font-bold max-[380px]:text-2xl text-3xl md:text-4xl lg:text-5xl">
           A <span className="text-yellow-500 font-bold">Front-End</span>{" "}
           Developer
         </h2>
 
         <div className="w-full max-w-4xl">
-          <p className="text-gray-200 font-bold text-base sm:text-lg md:text-xl lg:text-2xl">
+          <p className="text-gray-200 font-bold max-[380px]:text-sm text-lg md:text-xl lg:text-2xl">
             I&apos;m a Frontend Developer based in Argentina. I want to create
             websites that make an impact on people.
           </p>
@@ -91,7 +91,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="max-[380px]:text-lg text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -101,7 +101,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className=" max-[380px]:text-lg text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -111,7 +111,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="text-xl lg:text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="max-[380px]:text-lg text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>
@@ -121,13 +121,13 @@ const Hero = () => {
       <motion.div
         ref={ovniRef}
         animate={animationOvni}
-        className="absolute bottom-6 sm:bottom-8 lg:bottom-4 left-0 right-0 m-auto flex flex-col justify-center items-center"
+        className="absolute max-[380px]:bottom-24 bottom-20 sm:bottom-12 md:bottom-40 lg:bottom-4 xl:bottom-6 left-0 right-0 m-auto flex flex-col justify-center items-center"
       >
-        <div className="h-[130px] w-[130px] lg:h-[120px] lg:w-[120px]">
+        <div className="max-[380px]:h-[90px] max-[380px]:w-[90px] h-[110px] w-[110px] md:h-[130px] md:w-[130px] lg:h-[100px] lg:w-[100px]">
           <OvniHero />
         </div>
 
-        <button className="relative overflow-hidden rounded-lg bg-black py-5 px-16 md:py-6 md:px-20 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
+        <button className="relative overflow-hidden rounded-lg bg-black max-[380px]:py-4 py-5 md:py-6 xl:py-5 px-20 md:px-24 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
           <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black/80 bg-gradient-to-t from-indigo-600 text-gray-200 font-bold">
             Download CV
           </span>

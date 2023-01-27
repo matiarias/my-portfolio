@@ -91,12 +91,12 @@ const NavBar = () => {
         <div
           className={
             nav
-              ? "fixed top-0 left-0 h-screen w-[80%] sm:w-[60%] bg-gradient-to-b from-[#140429] via-[#371764] to-[#5b2b7e] ease-in duration-500 px-4"
+              ? "fixed top-0 left-0 h-screen w-[80%] sm:w-[60%] bg-gradient-to-b from-[#140429] via-[#371764] to-[#5b2b7e] ease-in duration-200 px-4"
               : "fixed left-[-100%]"
           }
         >
           <div className="w-full flex justify-between items-center">
-            <div className="h-[90px] w-[90px] sm:h-[110px] sm:w-[110px]">
+            <div className="max-[380px]:h-[60px] max-[380px]:w-[60px] h-[90px] w-[90px] sm:h-[110px] sm:w-[110px]">
               <OvniNavBar />
             </div>
 
@@ -109,7 +109,7 @@ const NavBar = () => {
           </div>
 
           <div className="h-full w-full flex flex-col justify-start items-center border-t-2 border-gray-300 mt-2">
-            <div className="w-full flex flex-col justify-center items-center gap-10 mt-20">
+            <div className="w-full flex flex-col justify-center items-center max-[380px]:gap-6 max-[380px]:mt-12 gap-10 mt-20">
               <Link
                 href="#home"
                 onClick={handleNav}

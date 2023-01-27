@@ -22,7 +22,7 @@ const Contact = () => {
       animationForm.start({
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 1 },
+        transition: { duration: 0.7 },
       });
     }
 
@@ -113,7 +113,7 @@ const Contact = () => {
             >
               <input
                 type="text"
-                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
+                className="w-full py-3 lg:py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
                 placeholder="Name"
                 onChange={handleChange}
                 value={inputsForm.name}
@@ -124,7 +124,7 @@ const Contact = () => {
 
               <input
                 type="email"
-                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
+                className="w-full py-3 lg:py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
                 placeholder="Email"
                 onChange={handleChange}
                 value={inputsForm.email}
@@ -135,7 +135,7 @@ const Contact = () => {
 
               <input
                 type="text"
-                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
+                className="w-full py-3 lg:py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg  rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500"
                 placeholder="Subject"
                 onChange={handleChange}
                 value={inputsForm.subject}
@@ -145,7 +145,7 @@ const Contact = () => {
               />
 
               <textarea
-                className="w-full py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500 resize-none"
+                className="w-full py-3 lg:py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500 resize-none"
                 placeholder="Message"
                 rows="8"
                 onChange={handleChange}

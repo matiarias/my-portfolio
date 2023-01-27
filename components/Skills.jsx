@@ -19,7 +19,7 @@ const Skills = () => {
       animation.start({
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 1 },
+        transition: { duration: 0.7 },
       });
     }
 
@@ -32,7 +32,7 @@ const Skills = () => {
   }, [inView]);
 
   return (
-    <section id="skills" className="w-full md:h-screen py-6 px-6 md:px-8">
+    <section id="skills" className="w-full lg:h-screen py-6 px-6 md:px-8">
       <TitleSections title="Skills" />
 
       <div className="w-full max-w-screen-xl flex flex-col justify-center gap-6 mt-8 mx-auto">
@@ -51,9 +51,9 @@ const Skills = () => {
                 scale: 1.1,
                 transition: { duration: 0.4, ease: "easeInOut" },
               }}
-              whileTap={{ scale: 1.1, transition: { duration: 0.5 } }}
+              whileTap={{ scale: 1.1, transition: { duration: 1 } }}
               key={skill.id}
-              className="p-6 shadow-lg shadow-gray-300 rounded-xl"
+              className="bg-gradient-to-r from-gray-200/20 shadow-lg shadow-gray-300 rounded-xl p-6"
             >
               <div className="grid grid-cols-2 gap-4 justify-center items-center">
                 <div className="relative m-auto">
@@ -62,7 +62,7 @@ const Skills = () => {
                     alt={skill.title}
                     height={64}
                     width={64}
-                    style={{ objectFit: "cover" }}
+                    className="object-cover"
                   />
                 </div>
 

@@ -22,7 +22,7 @@ const Projects = () => {
       animation.start({
         opacity: 1,
         filter: "blur(0px)",
-        transition: { duration: 1 },
+        transition: { duration: 0.8 },
       });
     }
 
@@ -100,7 +100,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-gradient-to-r from-indigo-900/70 to-violet-700/90 shadow-md shadow-gray-300 rounded-lg">
+                      <div className="flex justify-between items-center gap-4 py-2 lg:py-1 px-4 lg:px-2 bg-gradient-to-r from-indigo-900/70 to-violet-700/90 shadow-md shadow-gray-300 rounded-lg">
                         <div className="text-xl text-gray-200">
                           <AiOutlineGithub />
                         </div>
@@ -116,7 +116,7 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <div className="flex justify-between items-center gap-4 py-1 px-4 lg:px-2 bg-black/50 shadow-md shadow-gray-300 rounded-lg">
+                      <div className="flex justify-between items-center gap-4 py-2 lg:py-1 px-4 lg:px-2 bg-black/50 shadow-md shadow-gray-300 rounded-lg">
                         <div className="text-xl text-gray-200">
                           <TbPlanet />
                         </div>
