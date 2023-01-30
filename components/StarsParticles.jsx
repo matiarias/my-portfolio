@@ -24,6 +24,13 @@ const StarsParticles = () => {
         init={particlesInit}
         loaded={particlesLoaded}
         options={StarsConfig}
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          top: "0",
+          left: "0",
+        }}
       />
     </>
   );

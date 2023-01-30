@@ -42,7 +42,7 @@ const Hero = () => {
       animationOvni.start({
         x: 0,
         transition: {
-          duration: 2.8,
+          duration: 2.5,
           type: "spring",
           bounce: "0.50",
         },
@@ -54,7 +54,7 @@ const Hero = () => {
         x: "-100%",
       });
     }
-  }, [inViewOvni, animationOvni]);
+  }, [inViewOvni]);
 
   return (
     <section
@@ -125,12 +125,14 @@ const Hero = () => {
           <OvniHero />
         </div>
 
-        <button className="relative overflow-hidden rounded-lg bg-black max-[380px]:py-4 py-5 md:py-6 xl:py-5 px-20 md:px-24 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
-          <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black/80 bg-gradient-to-t from-indigo-600 text-gray-200 font-bold">
-            Download CV
-          </span>
-          <span className="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-gradient-conic before:from-purple-500 before:via-indigo-800 before:to-yellow-400" />
-        </button>
+        <a href="" target="_blank" rel="noreferrer noopener">
+          <div className="relative overflow-hidden rounded-lg bg-black max-[380px]:py-4 py-5 md:py-6 xl:py-5 px-20 md:px-24 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
+            <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black/80 bg-gradient-to-t from-indigo-600 text-gray-200 font-bold">
+              Download CV
+            </span>
+            <span className="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-gradient-conic before:from-purple-500 before:via-indigo-800 before:to-yellow-400" />
+          </div>
+        </a>
       </motion.div>
     </section>
   );
