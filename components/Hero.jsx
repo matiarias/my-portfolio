@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -5,7 +7,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 
 import OvniHero from "../subComponents/OvniHero";
-import { useEffect } from "react";
+import MusicBar from "@/subComponents/MusicBar";
 
 const Hero = () => {
   // const { ref, inView } = useInView();
@@ -134,6 +136,8 @@ const Hero = () => {
           </div>
         </a>
       </motion.div>
+
+      <MusicBar />
     </section>
   );
 };
