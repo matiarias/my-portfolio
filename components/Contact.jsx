@@ -43,6 +43,8 @@ const Contact = () => {
     message: "",
   });
 
+  const [loadingSubmit, setloadingSubmit] = useState(false);
+
   const handleChange = ({ target }) => {
     console.log(target.value);
 
@@ -55,6 +57,8 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setloadingSubmit(true);
+
     emailjs
       .sendForm(
         "service_345q1hc",
@@ -65,6 +69,7 @@ const Contact = () => {
       .then(
         (result) => {
           console.log(result.text);
+          setloadingSubmit(false);
 
           toast.success("👽 Thank you for your message!", {
             position: "top-center",
@@ -154,12 +159,22 @@ const Contact = () => {
                 required
               ></textarea>
 
-              <button
-                type="submit"
-                className="w-full py-2 bg-yellow-500/50 text-gray-200 font-bold rounded-xl hover:bg-yellow-400/70"
-              >
-                Send Message
-              </button>
+              {loadingSubmit ? (
+                <button
+                  type="button"
+                  class="w-full py-2 bg-indigo-600/50 text-gray-200 font-bold rounded-xl"
+                  disabled
+                >
+                  Sending Message ...
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full py-2 bg-yellow-500/50 text-gray-200 font-bold rounded-xl hover:bg-yellow-400/70"
+                >
+                  Send Message
+                </button>
+              )}
             </form>
           </motion.div>
         </div>
