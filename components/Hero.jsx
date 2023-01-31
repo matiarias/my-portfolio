@@ -127,7 +127,11 @@ const Hero = () => {
           <OvniHero />
         </div>
 
-        <a href="" target="_blank" rel="noreferrer noopener">
+        <a
+          href="https://drive.google.com/file/d/1xOHUJ9I7jSR5PS4lgbW6LotV8S-n59Py/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <div className="relative overflow-hidden rounded-lg bg-black max-[380px]:py-4 py-5 md:py-6 xl:py-5 px-20 md:px-24 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
             <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black/80 bg-gradient-to-t from-indigo-600 text-gray-200 font-bold">
               Download CV
