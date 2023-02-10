@@ -43,7 +43,7 @@ const MusicBar = () => {
       <audio
         ref={refMusic}
         loop
-        src="/assets/audio/timecop1983_moment_in_time.mp3"
+        src="/assets/audio/dreamkid-fugitive.mp3"
       ></audio>
     </div>
   );
