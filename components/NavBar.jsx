@@ -69,7 +69,7 @@ const NavBar = () => {
             </li>
           </Link>
           <Link href="#contact">
-            <li className="nav-items text-gray-200 text-base md:text-xl :text-2xl uppercase tracking-[1px]">
+            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Contact
             </li>
           </Link>

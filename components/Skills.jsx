@@ -32,7 +32,7 @@ const Skills = () => {
   }, [inView]);
 
   return (
-    <section id="skills" className="w-full lg:h-screen py-6 px-6 md:px-8">
+    <section id="skills" className="w-full py-6 px-6 md:px-8">
       <TitleSections title="Skills" />
 
       <div className="w-full max-w-screen-xl flex flex-col justify-center gap-6 mt-8 mx-auto">
