@@ -1,8 +1,33 @@
+import { useEffect } from "react";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import TitleSections from "@/subComponents/TitleSections";
 
 import { workExperience } from "@/data/experienceData";
 
 const Experience = () => {
+  const { ref: experienceRef, inView } = useInView();
+
+  const animation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 0.8 },
+      });
+    }
+
+    if (!inView) {
+      animation.start({
+        opacity: 0,
+        filter: "blur(15px)",
+      });
+    }
+  }, [inView]);
   return (
     <section id="experience" className="w-full py-8 px-6 md:px-8">
       <TitleSections title="Experience" />
@@ -14,7 +39,9 @@ const Experience = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {workExperience.map((work) => (
-            <div
+            <motion.div
+              ref={experienceRef}
+              animate={animation}
               key={work.id}
               className="w-full h-auto flex flex-col gap-4 rounded-xl shadow-lg shadow-gray-300 px-4 py-4"
             >
@@ -39,7 +66,7 @@ const Experience = () => {
                   </ul>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

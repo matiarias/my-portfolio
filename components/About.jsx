@@ -72,17 +72,18 @@ const About = () => {
               took an intensive 8-month Full Stack bootcamp at RollingCode
               School in which we learned the MERN Stack and developed many
               projects with HTML, CSS, Bootstrap, Javascript, React.js and we
-              learned how to create a rest api with Node.js, Express.js and
+              learned how to create a REST API with Node.js, Express.js and
               MongoDB. In the last months of 2022 I did another training where I
               learned the fundamentals and advanced hooks of Next.js and React,
-              Material UI and Firebase.
+              Material UI and Firebase. In the beginning of 2023 I did another
+              intensive 2-month bootcamp at MindHub LA, focused on React, React
+              Native, Redux, JavaScript and Node.js
             </p>
 
             <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
               I study and prepare myself every day in a self-taught way by
               taking different courses and developing a lot of projects. I love
-              learning new technologies all the time and I know that I can
-              contribute a lot of value and great things.
+              learning new technologies all the time.
             </p>
 
             <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-3">
