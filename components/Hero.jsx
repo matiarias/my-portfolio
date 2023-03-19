@@ -91,7 +91,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="max-[380px]:text-lg text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -101,7 +101,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className=" max-[380px]:text-lg text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className=" max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -111,7 +111,7 @@ const Hero = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className="max-[380px]:text-lg text-2xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>
@@ -121,7 +121,7 @@ const Hero = () => {
       <motion.div
         ref={ovniRef}
         animate={animationOvni}
-        className="absolute max-[380px]:bottom-24 bottom-24 sm:bottom-12 md:bottom-40 lg:bottom-4 xl:bottom-6 left-0 right-0 m-auto flex flex-col justify-center items-center"
+        className="absolute max-[380px]:bottom-24 bottom-24 sm:bottom-12 md:bottom-40 lg:bottom-4 xl:bottom-6 2xl:bottom-16 left-0 right-0 m-auto flex flex-col justify-center items-center"
       >
         <div className="max-[380px]:h-[90px] max-[380px]:w-[90px] h-[110px] w-[110px] md:h-[130px] md:w-[130px] lg:h-[100px] lg:w-[100px]">
           <OvniHero />

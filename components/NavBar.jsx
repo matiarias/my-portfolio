@@ -58,6 +58,11 @@ const NavBar = () => {
               About
             </li>
           </Link>
+          <Link href="#experience">
+            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
+              Experience
+            </li>
+          </Link>
           <Link href="#skills">
             <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
               Skills
@@ -124,6 +129,14 @@ const NavBar = () => {
                 className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
               >
                 About
+              </Link>
+
+              <Link
+                href="#experience"
+                onClick={handleNav}
+                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
+              >
+                Experience
               </Link>
 
               <Link
