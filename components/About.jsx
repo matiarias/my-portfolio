@@ -76,8 +76,9 @@ const About = () => {
               MongoDB. In the last months of 2022 I did another training where I
               learned the fundamentals and advanced hooks of Next.js and React,
               Material UI and Firebase. In the beginning of 2023 I did another
-              intensive 2-month bootcamp at MindHub LA, focused on React, React
-              Native, Redux, JavaScript and Node.js
+              intensive 2-month bootcamp at MindHub LA, focused on React.js,
+              Redux Toolkit, Testing with Jest, JavaScript and Node.js with
+              Express.js and MongoDB.
             </p>
 
             <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
