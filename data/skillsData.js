@@ -13,13 +13,13 @@ export const skills = [
 
   {
     id: 3,
-    title: "Boostrap",
+    title: "Bootstrap",
     image: "/assets/skills/bootstrap.png",
   },
 
   {
     id: 4,
-    title: "Tailwind",
+    title: "Tailwind CSS",
     image: "/assets/skills/tailwind.png",
   },
 
@@ -43,30 +43,42 @@ export const skills = [
 
   {
     id: 8,
+    title: "Redux Toolkit",
+    image: "/assets/skills/redux.png",
+  },
+
+  {
+    id: 9,
     title: "Next.JS",
     image: "/assets/skills/nextjs.png",
   },
 
   {
-    id: 9,
+    id: 10,
     title: "Node.js",
     image: "/assets/skills/node.png",
   },
 
   {
-    id: 10,
+    id: 11,
+    title: "Express.js",
+    image: "/assets/skills/express.js.png",
+  },
+
+  {
+    id: 12,
     title: "MongoDB",
     image: "/assets/skills/mongo.png",
   },
 
   {
-    id: 11,
+    id: 13,
     title: "Firebase",
     image: "/assets/skills/firebase.png",
   },
 
   {
-    id: 12,
+    id: 14,
     title: "Github",
     image: "/assets/skills/github.png",
   },
