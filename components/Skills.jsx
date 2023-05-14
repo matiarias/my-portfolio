@@ -11,6 +11,17 @@ import TitleSections from "../subComponents/TitleSections";
 
 import { v4 as uuidv4 } from "uuid";
 
+// ---- i created a new array with unique ids with uuid library for a better perfomance and not use a simple static id from the original array of objects with the skills data -----
+
+const newSkillsArray = skills.map((skill) => {
+  const { id, ...rest } = skill;
+
+  return {
+    id: uuidv4().slice(0, 8),
+    ...rest,
+  };
+});
+
 const Skills = () => {
   const { ref: skillsRef, inView } = useInView();
 
@@ -32,17 +43,6 @@ const Skills = () => {
       });
     }
   }, [inView]);
-
-  // ---- i created a new array with unique ids with uuid package for a better perfomance and not use a simple static id from the original array of objects with the skills data -----
-
-  const newSkillsArray = skills.map((skill) => {
-    const { id, ...rest } = skill;
-
-    return {
-      id: uuidv4().slice(0, 8),
-      ...rest,
-    };
-  });
 
   return (
     <section id="skills" className="w-full py-6 px-6 md:px-8">

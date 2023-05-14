@@ -28,6 +28,8 @@ const newWorkExperience = workExperience.map((experience) => {
   return updatedExperience;
 });
 
+// console.log(newWorkExperience);
+
 const Experience = () => {
   const { ref: experienceRef, inView } = useInView();
 
