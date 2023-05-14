@@ -9,6 +9,8 @@ import { skills } from "@/data/skillsData";
 
 import TitleSections from "../subComponents/TitleSections";
 
+import { v4 as uuidv4 } from "uuid";
+
 const Skills = () => {
   const { ref: skillsRef, inView } = useInView();
 
@@ -31,6 +33,17 @@ const Skills = () => {
     }
   }, [inView]);
 
+  // ---- i created a new array with unique ids with uuid package for a better perfomance and not use a simple static id from the original array of objects with the skills data -----
+
+  const newSkillsArray = skills.map((skill) => {
+    const { id, ...rest } = skill;
+
+    return {
+      id: uuidv4().slice(0, 8),
+      ...rest,
+    };
+  });
+
   return (
     <section id="skills" className="w-full py-6 px-6 md:px-8">
       <TitleSections title="Skills" />
@@ -45,7 +58,7 @@ const Skills = () => {
           animate={animation}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
         >
-          {skills.map((skill) => (
+          {newSkillsArray.map((skill) => (
             <motion.div
               whileHover={{
                 scale: 1.1,
