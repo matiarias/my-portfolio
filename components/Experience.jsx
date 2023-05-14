@@ -7,6 +7,27 @@ import TitleSections from "@/subComponents/TitleSections";
 
 import { workExperience } from "@/data/experienceData";
 
+import { v4 as uuidv4 } from "uuid";
+
+const newWorkExperience = workExperience.map((experience) => {
+  // Create a new object with a unique ID for the work experience
+  const updatedExperience = {
+    ...experience,
+    id: uuidv4().slice(0, 8),
+  };
+
+  // Update the skills array within the work experience with unique IDs
+  const updatedSkills = experience.skills.map((skill) => ({
+    ...skill,
+    id: uuidv4().slice(0, 8),
+  }));
+
+  // Update the work experience object with the updated skills array
+  updatedExperience.skills = updatedSkills;
+
+  return updatedExperience;
+});
+
 const Experience = () => {
   const { ref: experienceRef, inView } = useInView();
 
@@ -28,6 +49,7 @@ const Experience = () => {
       });
     }
   }, [inView]);
+
   return (
     <section id="experience" className="w-full py-8 px-6 md:px-8">
       <TitleSections title="Experience" />
@@ -38,7 +60,7 @@ const Experience = () => {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-          {workExperience.map((work) => (
+          {newWorkExperience.map((work) => (
             <motion.div
               ref={experienceRef}
               animate={animation}
