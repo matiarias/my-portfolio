@@ -2,7 +2,7 @@ export const workExperience = [
   {
     id: 1,
     company: "Santander Tecnología Argentina",
-    position: "Trainee Software Enginner",
+    position: "Trainee Software Engineer",
     startDate: "March 2023",
     endDate: "September 2023",
     skills: [
@@ -33,7 +33,7 @@ export const workExperience = [
   {
     id: 2,
     company: "Santander Tecnología Argentina",
-    position: "Jr. Software Enginner",
+    position: "Jr. Software Engineer",
     startDate: "September 2023",
     endDate: "Present",
     skills: [
