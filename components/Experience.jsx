@@ -9,7 +9,17 @@ import { workExperience } from "@/data/experienceData";
 
 import { v4 as uuidv4 } from "uuid";
 
-const newWorkExperience = workExperience.map((experience) => {
+const sortedWorkExperience = workExperience.sort((a, b) => {
+  if (a.endDate === "Present") {
+    return -1; // "Present" comes before any date
+  } else if (b.endDate === "Present") {
+    return 1; // Any date comes after "Present"
+  } else {
+    return new Date(b.endDate) - new Date(a.endDate); // Sort other dates in descending order
+  }
+});
+
+const newWorkExperience = sortedWorkExperience.map((experience) => {
   // Create a new object with a unique ID for the work experience
   const updatedExperience = {
     ...experience,
@@ -53,38 +63,32 @@ const Experience = () => {
   }, [inView]);
 
   return (
-    <section id="experience" className="w-full py-8 px-6 md:px-8">
-      <TitleSections title="Experience" />
+    <section id='experience' className='w-full py-8 px-6 md:px-8'>
+      <TitleSections title='Experience' />
 
-      <div className="w-full max-w-screen-xl mx-auto mt-16">
-        <h3 className="text-sky-400 text-xl md:text-2xl font-bold">
-          Work Experience
-        </h3>
+      <div className='w-full max-w-screen-xl mx-auto mt-16'>
+        <h3 className='text-sky-400 text-xl md:text-2xl font-bold'>Work Experience</h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8'>
           {newWorkExperience.map((work) => (
             <motion.div
               ref={experienceRef}
               animate={animation}
               key={work.id}
-              className="w-full h-auto flex flex-col gap-4 rounded-xl shadow-lg shadow-gray-300 px-4 py-4"
+              className='w-full h-auto flex flex-col gap-4 rounded-xl shadow-lg shadow-gray-300 px-4 py-4'
             >
-              <h3 className="text-3xl xl:text-4xl font-bold text-yellow-500">
-                {work.company}
-              </h3>
+              <h3 className='text-3xl xl:text-4xl font-bold text-yellow-500'>{work.company}</h3>
 
-              <h4 className="text-2xl xl:text-3xl font-bold text-sky-400">
-                {work.position}
-              </h4>
+              <h4 className='text-2xl xl:text-3xl font-bold text-sky-400'>{work.position}</h4>
 
-              <h4 className="text-xl xl:text-2xl font-bold text-gray-200">
+              <h4 className='text-xl xl:text-2xl font-bold text-gray-200'>
                 <span>{work.startDate}</span> - <span>{work.endDate}</span>
               </h4>
 
-              <div className="flex flex-col gap-2 px-6">
+              <div className='flex flex-col gap-2 px-6'>
                 {work.skills.map((skill) => (
-                  <ul key={skill.id} className="list-disc list-outside">
-                    <li className="text-xl text-gray-200 underline underline-offset-4 decoration-2 decoration-indigo-500 break-all">
+                  <ul key={skill.id} className='list-disc list-outside'>
+                    <li className='text-xl text-gray-200 underline underline-offset-4 decoration-2 decoration-indigo-500 break-all'>
                       {skill.skillJob}
                     </li>
                   </ul>
