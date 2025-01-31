@@ -47,21 +47,31 @@ export const workExperience = [
         skillJob: "React.js",
       },
 
-
-      { id: 300, skillJob: "TypeScript" },
+      {
+        id: 300,
+        skillJob: "Node.js",
+      },
 
       {
         id: 400,
+        skillJob: "NestJS",
+      },
+
+
+      { id: 500, skillJob: "TypeScript" },
+
+      {
+        id: 600,
         skillJob: "JavaScript",
       },
 
       {
-        id: 500,
+        id: 700,
         skillJob: "Styled Components",
       },
 
       {
-        id: 600,
+        id: 800,
         skillJob: "Testing with Jest and Testing Library",
       },
     ],
