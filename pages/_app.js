@@ -1,10 +1,9 @@
 import "@/styles/globals.css";
+import { Lato } from "@next/font/google";
 
-import { Roboto } from "@next/font/google";
-
-const customFont = Roboto({
+const customFont = Lato({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["300", "400", "700"],
 });
 
 export default function App({ Component, pageProps }) {
