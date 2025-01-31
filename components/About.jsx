@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import MatiasPhoto from '../public/assets/mati-arias-photo.jpg';
+import MatiasPhoto from '../public/assets/mati-amsterdam.jpg';
 import TitleSections from '../subComponents/TitleSections';
 
 const About = () => {
