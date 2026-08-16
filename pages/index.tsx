@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import { useEffect, useState } from "react";
 
 import Loading from "../components/Loading/Loading";
@@ -32,8 +31,6 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* Facebook meta tags */}
-
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://matiasarias.vercel.app/" />
         <meta property="og:title" content="Matias Arias - Portfolio" />
@@ -45,8 +42,6 @@ export default function Home() {
           property="og:image"
           content="/assets/screenshots/screenshot-home.png"
         />
-
-        {/* Twitter meta tags */}
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta

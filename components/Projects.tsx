@@ -14,7 +14,6 @@ import TitleSections from "../subComponents/TitleSections";
 
 const Projects = () => {
   const { ref: projectsRef, inView } = useInView();
-
   const animation = useAnimation();
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const Projects = () => {
         filter: "blur(15px)",
       });
     }
-  }, [inView]);
+  }, [inView, animation]);
 
   return (
     <section id="projects" className="w-full py-16 px-6 md:px-8">

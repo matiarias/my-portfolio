@@ -8,13 +8,10 @@ import { useInView } from "react-intersection-observer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import TitleSections from "../subComponents/TitleSections";
+import type { ContactFormInputs } from "@/types";
 
 const Contact = () => {
-  // ---------------- framer motion animation with react intersection observer -----------------
-
   const { ref: formRef, inView } = useInView();
-
   const animationForm = useAnimation();
 
   useEffect(() => {
@@ -32,11 +29,9 @@ const Contact = () => {
         filter: "blur(15px)",
       });
     }
-  }, [inView]);
+  }, [inView, animationForm]);
 
-  // ------------------------------- form logic with email js ---------------------------------
-
-  const [inputsForm, setInputsForm] = useState({
+  const [inputsForm, setInputsForm] = useState<ContactFormInputs>({
     name: "",
     email: "",
     subject: "",
@@ -45,16 +40,18 @@ const Contact = () => {
 
   const [loadingSubmit, setloadingSubmit] = useState(false);
 
-  const handleChange = ({ target }) => {
-    console.log(target.value);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
 
     setInputsForm({
       ...inputsForm,
-      [target.name]: target.value,
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setloadingSubmit(true);
@@ -63,12 +60,11 @@ const Contact = () => {
       .sendForm(
         "service_345q1hc",
         "template_cjpbxs8",
-        e.target,
+        e.currentTarget,
         "7KOfu6nUyn9l40icN"
       )
       .then(
-        (result) => {
-          console.log(result.text);
+        () => {
           setloadingSubmit(false);
 
           toast.success("👽 Thank you for your message!", {
@@ -83,7 +79,7 @@ const Contact = () => {
           });
         },
         (error) => {
-          console.log(error.text);
+          console.log(error);
         }
       );
 
@@ -93,14 +89,10 @@ const Contact = () => {
       subject: "",
       message: "",
     });
-
-    // ----------------- framer motion animations with react intersection observer -------------
   };
 
   return (
     <section id="contact" className="w-full py-16 px-6 md:px-8">
-      {/* <TitleSections title="Contact" /> */}
-
       <h2 className="text-gray-200 text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-center tracking-[1px] underline underline-offset-[10px] decoration-yellow-500/80">
         Contact
       </h2>
@@ -123,7 +115,7 @@ const Contact = () => {
                 onChange={handleChange}
                 value={inputsForm.name}
                 name="name"
-                maxLength="60"
+                maxLength={60}
                 required
               />
 
@@ -134,7 +126,7 @@ const Contact = () => {
                 onChange={handleChange}
                 value={inputsForm.email}
                 name="email"
-                maxLength="60"
+                maxLength={60}
                 required
               />
 
@@ -145,14 +137,14 @@ const Contact = () => {
                 onChange={handleChange}
                 value={inputsForm.subject}
                 name="subject"
-                maxLength="60"
+                maxLength={60}
                 required
               />
 
               <textarea
                 className="w-full py-3 lg:py-2 px-4 bg-indigo-200/50 text-gray-200 text-base lg:text-lg rounded-xl placeholder:text-gray-200 focus:outline-none focus:shadow-lg focus:shadow-sky-500 resize-none"
                 placeholder="Message"
-                rows="8"
+                rows={8}
                 onChange={handleChange}
                 value={inputsForm.message}
                 name="message"
@@ -162,7 +154,7 @@ const Contact = () => {
               {loadingSubmit ? (
                 <button
                   type="button"
-                  class="w-full py-2 bg-indigo-600/50 text-gray-200 font-bold rounded-xl"
+                  className="w-full py-2 bg-indigo-600/50 text-gray-200 font-bold rounded-xl"
                   disabled
                 >
                   Sending Message ...

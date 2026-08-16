@@ -4,19 +4,17 @@ import SvgAlien from "./SvgComponent";
 
 const MusicBar = () => {
   const [click, setClick] = useState(false);
-
   const [animateAlien, setAnimateAlien] = useState(false);
-
-  const refMusic = useRef(null);
+  const refMusic = useRef<HTMLAudioElement>(null);
 
   const handleClick = () => {
     setClick(!click);
 
     if (!click) {
-      refMusic.current.play();
+      refMusic.current?.play();
       setAnimateAlien(true);
     } else {
-      refMusic.current.pause();
+      refMusic.current?.pause();
       setAnimateAlien(false);
     }
   };

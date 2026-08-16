@@ -1,4 +1,6 @@
-export default function SvgAlien(props) {
+import type { SvgAlienProps } from "@/types";
+
+export default function SvgAlien(props: SvgAlienProps) {
   return (
     <svg
       width={50}

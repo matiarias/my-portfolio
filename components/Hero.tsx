@@ -10,34 +10,8 @@ import OvniHero from "../subComponents/OvniHero";
 import MusicBar from "@/subComponents/MusicBar";
 
 const Hero = () => {
-  // const { ref, inView } = useInView();
-
   const { ref: ovniRef, inView: inViewOvni } = useInView();
-
-  // const animationOverlay = useAnimation();
-
   const animationOvni = useAnimation();
-
-  //   --------------------------- useEffect for the Overlay animation -------------------------
-
-  // useEffect(() => {
-  //   if (inView) {
-  //     animationOverlay.start({
-  //       opacity: 1,
-  //       filter: "blur(0px)",
-  //       transition: { duration: 1 },
-  //     });
-  //   }
-
-  //   if (!inView) {
-  //     animationOverlay.start({
-  //       opacity: 0,
-  //       filter: "blur(10px)",
-  //     });
-  //   }
-  // }, [inView]);
-
-  //   ---------------------------- useEffect for the ovni animation -------------------------
 
   useEffect(() => {
     if (inViewOvni) {
@@ -46,7 +20,7 @@ const Hero = () => {
         transition: {
           duration: 2.5,
           type: "spring",
-          bounce: "0.50",
+          bounce: 0.5,
         },
       });
     }
@@ -56,18 +30,14 @@ const Hero = () => {
         x: "-100%",
       });
     }
-  }, [inViewOvni]);
+  }, [inViewOvni, animationOvni]);
 
   return (
     <section
       id="home"
       className="relative h-screen w-full text-center overflow-hidden"
     >
-      <motion.div
-        // ref={ref}
-        // animate={animationOverlay}
-        className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4"
-      >
+      <motion.div className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4">
         <h1 className="text-gray-200 font-bold max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-6xl">
           Hi, I&apos;m{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>

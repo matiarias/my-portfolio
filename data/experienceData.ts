@@ -1,4 +1,6 @@
-export const workExperience = [
+import type { WorkExperience } from "@/types";
+
+export const workExperience: WorkExperience[] = [
   {
     id: 1,
     company: "Santander Tecnología Argentina",
@@ -56,7 +58,6 @@ export const workExperience = [
         id: 400,
         skillJob: "NestJS",
       },
-
 
       { id: 500, skillJob: "TypeScript" },
 

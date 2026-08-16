@@ -9,7 +9,6 @@ import OvniNavBar from "../subComponents/OvniNavBar";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
-
   const [blurNav, setBlurNav] = useState(false);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const NavBar = () => {
     window.addEventListener("scroll", scrollNav);
 
     return () => {
-      scrollNav();
+      window.removeEventListener("scroll", scrollNav);
     };
   }, []);
 
@@ -41,8 +40,6 @@ const NavBar = () => {
       }
     >
       <div className="flex justify-between items-center w-full h-full px-4 md:px-8 lg:px-12">
-        {/* -------------------------------- Desktop NavBar ---------------------------------- */}
-
         <div className="h-[75px] w-[75px]">
           <OvniNavBar />
         </div>
@@ -80,13 +77,10 @@ const NavBar = () => {
           </Link>
         </ul>
 
-        {/* ---------------------------- Mobile Hamburger Menu ----------------------------- */}
-
         <div onClick={handleNav} className="md:hidden">
           <AiOutlineMenu size={30} className="text-gray-200" />
         </div>
       </div>
-      {/* --------------------------------- Mobile NavBar ----------------------------------- */}
 
       <div
         className={
