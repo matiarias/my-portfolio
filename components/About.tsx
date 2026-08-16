@@ -1,54 +1,17 @@
 import Image from "next/image";
 
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import MatiasPhoto from "@/public/assets/mati-amsterdam.jpg";
+import TitleSections from "@/subComponents/TitleSections";
 
-import MatiasPhoto from "../public/assets/mati-amsterdam.jpg";
-import TitleSections from "../subComponents/TitleSections";
+import { useScrollAnimation, SLIDE_FROM_LEFT } from "@/hooks/useScrollAnimation";
 
+// Fix #1: Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
+// Fix #12: Imports estandarizados con alias @/
 const About = () => {
-  const { ref, inView } = useInView();
-  const { ref: photoRef, inView: inViewPhoto } = useInView();
-  const animationText = useAnimation();
-  const animationPhoto = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animationText.start({
-        x: 0,
-        transition: {
-          type: "spring",
-          duration: 0.7,
-          bounce: 0.2,
-        },
-      });
-    }
-
-    if (!inView) {
-      animationText.start({
-        x: "-100%",
-      });
-    }
-  }, [inView, animationText]);
-
-  useEffect(() => {
-    if (inViewPhoto) {
-      animationPhoto.start({
-        opacity: 1,
-        filter: "blur(0px)",
-        transition: { duration: 0.9 },
-      });
-    }
-
-    if (!inViewPhoto) {
-      animationPhoto.start({
-        opacity: 0,
-        filter: "blur(15px)",
-      });
-    }
-  }, [inViewPhoto, animationPhoto]);
+  const { ref, controls: controlsText } = useScrollAnimation(SLIDE_FROM_LEFT);
+  const { ref: photoRef, controls: controlsPhoto } = useScrollAnimation();
 
   return (
     <section id="about" className="w-full py-8 xl:py-16 px-6 md:px-8">
@@ -56,7 +19,7 @@ const About = () => {
 
       <div className="w-full max-w-screen-xl mx-auto mt-16">
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
-          <motion.div animate={animationText} className="col-span-2">
+          <motion.div animate={controlsText} className="col-span-2">
             <h3 className="text-sky-400 text-xl md:text-2xl font-bold">
               Who I Am
             </h3>
@@ -79,9 +42,10 @@ const About = () => {
             </p>
           </motion.div>
 
+          {/* Fix #14: sizes corregidas — el breakpoint menor debe ir primero */}
           <motion.div
             ref={photoRef}
-            animate={animationPhoto}
+            animate={controlsPhoto}
             className="relative w-full h-[500px] xl:h-[450px] border-2 border-indigo-900 rounded-3xl saturate-150 overflow-hidden"
           >
             <Image
@@ -89,8 +53,8 @@ const About = () => {
               src={MatiasPhoto}
               alt="Matias Arias Photo"
               fill
-              sizes="(max-width: 600px) 100vw,
-                (max-width: 500px) 50vw,
+              sizes="(max-width: 500px) 100vw,
+                (max-width: 768px) 50vw,
                 33vw"
             />
           </motion.div>

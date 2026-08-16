@@ -1,23 +1,24 @@
 import Link from "next/link";
 
-import { useEffect, useState } from "react";
+import { useState, useCallback } from "react";
 
 import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
-import OvniNavBar from "../subComponents/OvniNavBar";
+import OvniNavBar from "@/subComponents/OvniNavBar";
 
+import { useEffect } from "react";
+
+// Fix #12: Imports estandarizados con alias @/
+// Fix #13: Corregida semántica HTML — los <li> ahora son padres de <Link>,
+//           no hijos. La estructura correcta es ul > li > a (Link).
 const NavBar = () => {
   const [nav, setNav] = useState(false);
   const [blurNav, setBlurNav] = useState(false);
 
   useEffect(() => {
     const scrollNav = () => {
-      if (window.scrollY >= 80) {
-        setBlurNav(true);
-      } else {
-        setBlurNav(false);
-      }
+      setBlurNav(window.scrollY >= 80);
     };
 
     window.addEventListener("scroll", scrollNav);
@@ -27,9 +28,18 @@ const NavBar = () => {
     };
   }, []);
 
-  const handleNav = () => {
-    setNav(!nav);
-  };
+  const handleNav = useCallback(() => {
+    setNav((prev) => !prev);
+  }, []);
+
+  const navLinks = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#experience", label: "Experience" },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ];
 
   return (
     <div
@@ -44,42 +54,27 @@ const NavBar = () => {
           <OvniNavBar />
         </div>
 
+        {/* Fix #13: ul > li > Link (semántica HTML correcta) */}
         <ul className="hidden md:flex justify-between items-center gap-8">
-          <Link href="#home">
-            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
-              Home
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]"
+              >
+                {label}
+              </Link>
             </li>
-          </Link>
-          <Link href="#about">
-            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
-              About
-            </li>
-          </Link>
-          <Link href="#experience">
-            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
-              Experience
-            </li>
-          </Link>
-          <Link href="#skills">
-            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
-              Skills
-            </li>
-          </Link>
-          <Link href="#projects">
-            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
-              Projects
-            </li>
-          </Link>
-          <Link href="#contact">
-            <li className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]">
-              Contact
-            </li>
-          </Link>
+          ))}
         </ul>
 
-        <div onClick={handleNav} className="md:hidden">
+        <button
+          onClick={handleNav}
+          className="md:hidden"
+          aria-label="Open navigation menu"
+        >
           <AiOutlineMenu size={30} className="text-gray-200" />
-        </div>
+        </button>
       </div>
 
       <div
@@ -99,64 +94,30 @@ const NavBar = () => {
               <OvniNavBar />
             </div>
 
-            <div
+            <button
               onClick={handleNav}
               className="rounded-full shadow-lg shadow-gray-300 p-1 sm:p-2 cursor-pointer"
+              aria-label="Close navigation menu"
             >
               <AiOutlineClose size={30} className=" text-white" />
-            </div>
+            </button>
           </div>
 
           <div className="h-full w-full flex flex-col justify-start items-center border-t-2 border-gray-300 mt-2">
-            <div className="w-full flex flex-col justify-center items-center max-[380px]:gap-6 max-[380px]:mt-12 gap-10 mt-20">
-              <Link
-                href="#home"
-                onClick={handleNav}
-                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
-              >
-                Home
-              </Link>
-
-              <Link
-                href="#about"
-                onClick={handleNav}
-                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
-              >
-                About
-              </Link>
-
-              <Link
-                href="#experience"
-                onClick={handleNav}
-                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
-              >
-                Experience
-              </Link>
-
-              <Link
-                href="#skills"
-                onClick={handleNav}
-                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
-              >
-                Skills
-              </Link>
-
-              <Link
-                href="#projects"
-                onClick={handleNav}
-                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
-              >
-                Projects
-              </Link>
-
-              <Link
-                href="#contact"
-                onClick={handleNav}
-                className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
-              >
-                Contact
-              </Link>
-            </div>
+            {/* Fix #13: ul > li > Link en el menú mobile también */}
+            <ul className="w-full flex flex-col justify-center items-center max-[380px]:gap-6 max-[380px]:mt-12 gap-10 mt-20">
+              {navLinks.map(({ href, label }) => (
+                <li key={href} className="w-full">
+                  <Link
+                    href={href}
+                    onClick={handleNav}
+                    className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
             <div className="w-full flex justify-around items-center gap-4 mt-16">
               <a

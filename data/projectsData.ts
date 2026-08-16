@@ -1,5 +1,7 @@
 import type { Project } from "@/types";
 
+// Fix #7: IDs de technologies ahora son globalmente únicos entre todos los proyectos.
+//         Formato: <projectId><techIndex> (ej: proyecto 1, tech 1 → id: 11)
 export const projects: Project[] = [
   {
     id: 1,
@@ -9,25 +11,25 @@ export const projects: Project[] = [
     image: "/assets/projects/ciudades-fascinantes.png",
     technologies: [
       {
-        id: 100,
+        id: 11,
         title: "Next.js",
         icon: "/assets/skills/nextjs.png",
       },
 
       {
-        id: 200,
+        id: 12,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 300,
+        id: 13,
         title: "Material UI",
         icon: "/assets/skills/material-ui.png",
       },
 
       {
-        id: 400,
+        id: 14,
         title: "Firebase",
         icon: "/assets/skills/firebase.png",
       },
@@ -51,25 +53,25 @@ export const projects: Project[] = [
     image: "/assets/projects/videoclub-app.png",
     technologies: [
       {
-        id: 100,
+        id: 21,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 22,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 23,
         title: "Tailwind",
         icon: "/assets/skills/tailwind.png",
       },
 
       {
-        id: 400,
+        id: 24,
         title: "Firebase",
         icon: "/assets/skills/firebase.png",
       },
@@ -93,19 +95,19 @@ export const projects: Project[] = [
     image: "/assets/projects/search-images-app.png",
     technologies: [
       {
-        id: 100,
+        id: 31,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 32,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 33,
         title: "Tailwind",
         icon: "/assets/skills/tailwind.png",
       },
@@ -129,19 +131,19 @@ export const projects: Project[] = [
     image: "/assets/projects/weather-app.png",
     technologies: [
       {
-        id: 100,
+        id: 41,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 42,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 43,
         title: "Tailwind",
         icon: "/assets/skills/tailwind.png",
       },
@@ -165,19 +167,19 @@ export const projects: Project[] = [
     image: "/assets/projects/books-app.png",
     technologies: [
       {
-        id: 100,
+        id: 51,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 52,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 53,
         title: "Tailwind",
         icon: "/assets/skills/tailwind.png",
       },
@@ -201,19 +203,19 @@ export const projects: Project[] = [
     image: "/assets/projects/poetry-quotes-app.png",
     technologies: [
       {
-        id: 100,
+        id: 61,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 62,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 63,
         title: "Tailwind",
         icon: "/assets/skills/tailwind.png",
       },
@@ -237,19 +239,19 @@ export const projects: Project[] = [
     image: "/assets/projects/infonews-app.png",
     technologies: [
       {
-        id: 100,
+        id: 71,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 72,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 73,
         title: "Tailwind",
         icon: "/assets/skills/tailwind.png",
       },
@@ -273,25 +275,25 @@ export const projects: Project[] = [
     image: "/assets/projects/todolist-react-app.png",
     technologies: [
       {
-        id: 100,
+        id: 81,
         title: "React.js",
         icon: "/assets/skills/react.png",
       },
 
       {
-        id: 200,
+        id: 82,
         title: "JavaScript",
         icon: "/assets/skills/javascript.png",
       },
 
       {
-        id: 300,
+        id: 83,
         title: "Bootstrap",
         icon: "/assets/skills/bootstrap.png",
       },
 
       {
-        id: 400,
+        id: 84,
         title: "CSS",
         icon: "/assets/skills/css.png",
       },

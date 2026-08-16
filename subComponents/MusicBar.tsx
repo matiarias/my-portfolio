@@ -1,22 +1,19 @@
 import { useRef, useState } from "react";
 
-import SvgAlien from "./SvgComponent";
+import SvgAlien from "@/subComponents/SvgComponent";
 
+// Fix #4: Un solo estado `isPlaying` en lugar de dos estados siempre sincronizados
 const MusicBar = () => {
-  const [click, setClick] = useState(false);
-  const [animateAlien, setAnimateAlien] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const refMusic = useRef<HTMLAudioElement>(null);
 
   const handleClick = () => {
-    setClick(!click);
-
-    if (!click) {
-      refMusic.current?.play();
-      setAnimateAlien(true);
-    } else {
+    if (isPlaying) {
       refMusic.current?.pause();
-      setAnimateAlien(false);
+    } else {
+      refMusic.current?.play();
     }
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -32,11 +29,7 @@ const MusicBar = () => {
         borderRadius: "100%",
       }}
     >
-      {animateAlien ? (
-        <SvgAlien fill={"#00af10"} />
-      ) : (
-        <SvgAlien fill={"rgb(229,231,235)"} />
-      )}
+      <SvgAlien fill={isPlaying ? "#00af10" : "rgb(229,231,235)"} />
 
       <audio
         ref={refMusic}

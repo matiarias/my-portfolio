@@ -1,5 +1,6 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
+
+import Head from "next/head";
 
 import Loading from "../components/Loading/Loading";
 import StarsParticles from "../components/StarsParticles";
@@ -15,10 +16,13 @@ import Experience from "@/components/Experience";
 export default function Home() {
   const [loadingPage, setLoadingPage] = useState(true);
 
+  // Fix #3: Cleanup del timer para evitar setState sobre componente desmontado
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoadingPage(false);
     }, 4000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (

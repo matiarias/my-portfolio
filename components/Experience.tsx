@@ -1,64 +1,30 @@
-import { useEffect } from "react";
-
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 import TitleSections from "@/subComponents/TitleSections";
-
 import { workExperience } from "@/data/experienceData";
 
-import { v4 as uuidv4 } from "uuid";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 import type { WorkExperience } from "@/types";
 
-const sortedWorkExperience = [...workExperience].sort((a, b) => {
-  if (a.endDate === "Present") {
-    return -1;
-  } else if (b.endDate === "Present") {
-    return 1;
-  } else {
+// Fix #2/#5: Eliminado UUID — los datos ya tienen IDs únicos.
+//            El sort se hace directamente sobre los datos sin mutar el original.
+// Fix #5:    El ref ahora está en el contenedor del grid (no en cada card).
+// Fix #1:    Usa el hook centralizado.
+// Fix #12:   Imports estandarizados con alias @/.
+const sortedWorkExperience: WorkExperience[] = [...workExperience].sort(
+  (a, b) => {
+    if (a.endDate === "Present") return -1;
+    if (b.endDate === "Present") return 1;
     return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
-  }
-});
-
-const newWorkExperience: WorkExperience[] = sortedWorkExperience.map(
-  (experience) => {
-    const updatedExperience: WorkExperience = {
-      ...experience,
-      id: parseInt(uuidv4().slice(0, 8), 16),
-    };
-
-    const updatedSkills = experience.skills.map((skill) => ({
-      ...skill,
-      id: parseInt(uuidv4().slice(0, 8), 16),
-    }));
-
-    updatedExperience.skills = updatedSkills;
-
-    return updatedExperience;
   }
 );
 
 const Experience = () => {
-  const { ref: experienceRef, inView } = useInView();
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        filter: "blur(0px)",
-        transition: { duration: 0.8 },
-      });
-    }
-
-    if (!inView) {
-      animation.start({
-        opacity: 0,
-        filter: "blur(15px)",
-      });
-    }
-  }, [inView, animation]);
+  const { ref: experienceRef, controls } = useScrollAnimation({
+    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.8 } },
+    hidden: { opacity: 0, filter: "blur(15px)" },
+  });
 
   return (
     <section id="experience" className="w-full py-8 px-6 md:px-8">
@@ -69,11 +35,14 @@ const Experience = () => {
           Work Experience
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-          {newWorkExperience.map((work) => (
-            <motion.div
-              ref={experienceRef}
-              animate={animation}
+        {/* Fix #5: ref en el contenedor, no en cada card individual */}
+        <motion.div
+          ref={experienceRef}
+          animate={controls}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+        >
+          {sortedWorkExperience.map((work) => (
+            <div
               key={work.id}
               className="w-full h-auto flex flex-col gap-4 rounded-xl shadow-lg shadow-gray-300 px-4 py-4"
             >
@@ -98,9 +67,9 @@ const Experience = () => {
                   </ul>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

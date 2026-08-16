@@ -1,37 +1,22 @@
 import Image from "next/image";
 
-import { useEffect } from "react";
-
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 import { AiOutlineGithub } from "react-icons/ai";
 import { TbPlanet } from "react-icons/tb";
 
-import { projects } from "../data/projectsData";
+import { projects } from "@/data/projectsData";
+import TitleSections from "@/subComponents/TitleSections";
 
-import TitleSections from "../subComponents/TitleSections";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+// Fix #1: Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
+// Fix #12: Imports estandarizados con alias @/
 const Projects = () => {
-  const { ref: projectsRef, inView } = useInView();
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        filter: "blur(0px)",
-        transition: { duration: 0.8 },
-      });
-    }
-
-    if (!inView) {
-      animation.start({
-        opacity: 0,
-        filter: "blur(15px)",
-      });
-    }
-  }, [inView, animation]);
+  const { ref: projectsRef, controls } = useScrollAnimation({
+    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.8 } },
+    hidden: { opacity: 0, filter: "blur(15px)" },
+  });
 
   return (
     <section id="projects" className="w-full py-16 px-6 md:px-8">
@@ -44,7 +29,7 @@ const Projects = () => {
 
         <motion.div
           ref={projectsRef}
-          animate={animation}
+          animate={controls}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-12"
         >
           {projects.map((project) => (

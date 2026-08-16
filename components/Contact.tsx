@@ -1,35 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import emailjs from "@emailjs/browser";
 
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import type { ContactFormInputs } from "@/types";
 
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+// Fix #1:  Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
+// Fix #8:  handleChange usa callback funcional para evitar stale closure
+// Fix #9:  Error handler muestra toast de error y restaura el botón
+// Fix #12: Imports estandarizados con alias @/
+// Fix #15: Credenciales EmailJS leídas desde variables de entorno
 const Contact = () => {
-  const { ref: formRef, inView } = useInView();
-  const animationForm = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animationForm.start({
-        opacity: 1,
-        filter: "blur(0px)",
-        transition: { duration: 0.7 },
-      });
-    }
-
-    if (!inView) {
-      animationForm.start({
-        opacity: 0,
-        filter: "blur(15px)",
-      });
-    }
-  }, [inView, animationForm]);
+  const { ref: formRef, controls: animationForm } = useScrollAnimation();
 
   const [inputsForm, setInputsForm] = useState<ContactFormInputs>({
     name: "",
@@ -38,34 +26,42 @@ const Contact = () => {
     message: "",
   });
 
-  const [loadingSubmit, setloadingSubmit] = useState(false);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
 
+  // Fix #8: Callback funcional para evitar problemas con stale closure en inputs rápidos
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
 
-    setInputsForm({
-      ...inputsForm,
+    setInputsForm((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setloadingSubmit(true);
+    setLoadingSubmit(true);
 
     emailjs
       .sendForm(
-        "service_345q1hc",
-        "template_cjpbxs8",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         e.currentTarget,
-        "7KOfu6nUyn9l40icN"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       )
       .then(
         () => {
-          setloadingSubmit(false);
+          setLoadingSubmit(false);
+
+          setInputsForm({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
 
           toast.success("👽 Thank you for your message!", {
             position: "top-center",
@@ -78,17 +74,18 @@ const Contact = () => {
             theme: "dark",
           });
         },
+        // Fix #9: Mostrar error al usuario y restaurar el botón
         (error) => {
-          console.log(error);
+          console.error("EmailJS error:", error);
+          setLoadingSubmit(false);
+
+          toast.error("❌ Something went wrong. Please try again.", {
+            position: "top-center",
+            autoClose: 4000,
+            theme: "dark",
+          });
         }
       );
-
-    setInputsForm({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
   };
 
   return (

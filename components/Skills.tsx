@@ -1,47 +1,17 @@
 import Image from "next/image";
 
-import { useEffect } from "react";
-
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 import { skills } from "@/data/skillsData";
+import TitleSections from "@/subComponents/TitleSections";
 
-import TitleSections from "../subComponents/TitleSections";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-import { v4 as uuidv4 } from "uuid";
-
-import type { Skill } from "@/types";
-
-const newSkillsArray: Skill[] = skills.map((skill) => {
-  const { id: _id, ...rest } = skill;
-
-  return {
-    id: parseInt(uuidv4().slice(0, 8), 16),
-    ...rest,
-  };
-});
-
+// Fix #1: Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
+// Fix #2: Eliminado UUID innecesario — los datos ya tienen IDs únicos en skillsData.ts
+// Fix #12: Imports estandarizados con alias @/
 const Skills = () => {
-  const { ref: skillsRef, inView } = useInView();
-  const animation = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        opacity: 1,
-        filter: "blur(0px)",
-        transition: { duration: 0.7 },
-      });
-    }
-
-    if (!inView) {
-      animation.start({
-        opacity: 0,
-        filter: "blur(10px)",
-      });
-    }
-  }, [inView, animation]);
+  const { ref: skillsRef, controls } = useScrollAnimation();
 
   return (
     <section id="skills" className="w-full py-6 px-6 md:px-8">
@@ -54,10 +24,10 @@ const Skills = () => {
 
         <motion.div
           ref={skillsRef}
-          animate={animation}
+          animate={controls}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10"
         >
-          {newSkillsArray.map((skill) => (
+          {skills.map((skill) => (
             <motion.div
               whileHover={{
                 scale: 1.1,

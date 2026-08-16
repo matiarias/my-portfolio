@@ -1,43 +1,28 @@
-import { useEffect } from "react";
-
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 
-import OvniHero from "../subComponents/OvniHero";
+import OvniHero from "@/subComponents/OvniHero";
 import MusicBar from "@/subComponents/MusicBar";
 
+import { useScrollAnimation, SLIDE_FROM_LEFT } from "@/hooks/useScrollAnimation";
+
+// Fix #11: El wrapper principal era un motion.div sin ninguna prop de animación.
+//          Ahora es un div regular. La animación del ovni sí usa motion correctamente.
+// Fix #1:  Usa el hook centralizado para la animación del ovni.
+// Fix #12: Imports estandarizados con alias @/.
 const Hero = () => {
-  const { ref: ovniRef, inView: inViewOvni } = useInView();
-  const animationOvni = useAnimation();
-
-  useEffect(() => {
-    if (inViewOvni) {
-      animationOvni.start({
-        x: 0,
-        transition: {
-          duration: 2.5,
-          type: "spring",
-          bounce: 0.5,
-        },
-      });
-    }
-
-    if (!inViewOvni) {
-      animationOvni.start({
-        x: "-100%",
-      });
-    }
-  }, [inViewOvni, animationOvni]);
+  const { ref: ovniRef, controls: animationOvni } = useScrollAnimation(
+    SLIDE_FROM_LEFT
+  );
 
   return (
     <section
       id="home"
       className="relative h-screen w-full text-center overflow-hidden"
     >
-      <motion.div className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4">
+      <div className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4">
         <h1 className="text-gray-200 font-bold max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-6xl">
           Hi, I&apos;m{" "}
           <span className="text-sky-500 font-bold text">Matias Arias</span>
@@ -86,7 +71,7 @@ const Hero = () => {
             </div>
           </a>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         ref={ovniRef}
