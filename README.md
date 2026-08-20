@@ -26,7 +26,7 @@ The site is a one-page experience with these sections:
 | Category | Technology |
 |----------|------------|
 | Runtime | Node.js 24+ |
-| Framework | Next.js 15 (Pages Router) |
+| Framework | Next.js 16 (Pages Router) |
 | UI | React 19 |
 | Language | TypeScript 5 |
 | Styling | Tailwind CSS 3 |
@@ -38,19 +38,8 @@ The site is a one-page experience with these sections:
 | Scroll animations | react-intersection-observer |
 | Typewriter effect | typewriter-effect |
 | Icons | react-icons |
+| Linting | ESLint 9 + eslint-config-next 16 |
 | Deploy | Vercel |
-
----
-
-## Recent updates
-
-This project was recently modernized after being untouched for several years:
-
-- **JavaScript → TypeScript** — all components, pages, and data files migrated with shared interfaces in `types/`
-- **Node.js 18 → 24** — updated runtime requirement (`.nvmrc` + `engines` in `package.json`)
-- **Next.js 13 → 15** and **React 18 → 19**
-- **Dependencies upgraded** — Framer Motion, EmailJS, tsparticles, react-toastify, and others
-- **`AGENTS.md` added** — reference doc for AI agents and contributors (stack, structure, conventions)
 
 ---
 
@@ -79,6 +68,24 @@ npm run start
 npm run lint
 ```
 
+`npm run lint` uses ESLint's flat configuration (`eslint.config.mjs`).
+
+## Environment variables
+
+The contact form requires EmailJS public configuration. Copy `.env.local.example` to `.env.local` and replace the placeholder values:
+
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxxxxxx
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxxxxxx
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxx
+```
+
+Do not commit `.env.local`. These values are exposed to the browser by EmailJS's client-side integration, so configure the corresponding EmailJS domain restrictions.
+
+## Fonts
+
+The global Lato font is loaded with `next/font/google`. Next downloads and self-hosts its font files during a successful build, so the build environment must be able to reach Google Fonts when no cache is available. The deployed site serves the generated font files locally.
+
 ---
 
 ## Project structure
@@ -92,6 +99,8 @@ npm run lint
 ├── config/          # JSON configs (e.g. particles)
 ├── public/          # Static assets
 ├── styles/          # Global CSS (Tailwind)
+├── eslint.config.mjs # ESLint 9 flat configuration
+├── .env.local.example # EmailJS environment-variable template
 └── AGENTS.md        # Agent/contributor reference
 ```
 
@@ -101,15 +110,15 @@ Imports use the `@/` alias (configured in `tsconfig.json`).
 
 ## Screenshots
 
-![Home Section](/public/assets/screenshots/screenshot-home.png)
+![Home Section](./public/assets/screenshots/screenshot-home.png)
 
-![About Section](/public/assets/screenshots/screenshot-about.png)
+![About Section](./public/assets/screenshots/screenshot-about.png)
 
-![Skills Section](/public/assets/screenshots/screenshot-skills.png)
+![Skills Section](./public/assets/screenshots/screenshot-skills.png)
 
-![Projects Section](/public/assets/screenshots/screenshot-projects.png)
+![Projects Section](./public/assets/screenshots/screenshot-projects.png)
 
-![Contact Section](/public/assets/screenshots/screenshot-contact.png)
+![Contact Section](./public/assets/screenshots/screenshot-contact.png)
 
 ---
 

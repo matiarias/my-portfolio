@@ -124,6 +124,7 @@ const NavBar = () => {
                 href="https://www.linkedin.com/in/matiasarias27"
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label="Visit Matias Arias's LinkedIn profile"
               >
                 <div className="rounded-full shadow-lg shadow-gray-300 p-3 cursor-pointer">
                   <BsLinkedin size={20} className=" text-white" />
@@ -134,6 +135,7 @@ const NavBar = () => {
                 href="https://github.com/matiarias"
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label="Visit Matias Arias's GitHub profile"
               >
                 <div className="rounded-full shadow-lg shadow-gray-300 p-3 cursor-pointer">
                   <BsGithub size={20} className=" text-white" />
@@ -142,8 +144,7 @@ const NavBar = () => {
 
               <a
                 href="mailto:matt.arias182@gmail.com"
-                target="_blank"
-                rel="noreferrer noopener"
+                aria-label="Email Matias Arias"
               >
                 <div className="rounded-full shadow-lg shadow-gray-300 p-3 cursor-pointer">
                   <AiOutlineMail size={20} className=" text-white" />

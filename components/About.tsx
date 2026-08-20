@@ -19,7 +19,7 @@ const About = () => {
 
       <div className="w-full max-w-screen-xl mx-auto mt-16">
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
-          <motion.div animate={controlsText} className="col-span-2">
+          <motion.div animate={controlsText} className="md:col-span-2">
             <h3 className="text-sky-400 text-xl md:text-2xl font-bold">
               Who I Am
             </h3>
@@ -42,7 +42,6 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Fix #14: sizes corregidas — el breakpoint menor debe ir primero */}
           <motion.div
             ref={photoRef}
             animate={controlsPhoto}
@@ -53,9 +52,7 @@ const About = () => {
               src={MatiasPhoto}
               alt="Matias Arias Photo"
               fill
-              sizes="(max-width: 500px) 100vw,
-                (max-width: 768px) 50vw,
-                33vw"
+              sizes="(max-width: 767px) 100vw, 33vw"
             />
           </motion.div>
         </div>

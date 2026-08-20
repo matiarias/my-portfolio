@@ -45,6 +45,7 @@ const Hero = () => {
             href="https://www.linkedin.com/in/matiasarias27"
             target="_blank"
             rel="noreferrer noopener"
+            aria-label="Visit Matias Arias's LinkedIn profile"
           >
             <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsLinkedin className=" text-white" />
@@ -55,6 +56,7 @@ const Hero = () => {
             href="https://github.com/matiarias"
             target="_blank"
             rel="noreferrer noopener"
+            aria-label="Visit Matias Arias's GitHub profile"
           >
             <div className=" max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
               <BsGithub className=" text-white" />
@@ -63,8 +65,7 @@ const Hero = () => {
 
           <a
             href="mailto:matt.arias182@gmail.com"
-            target="_blank"
-            rel="noreferrer noopener"
+            aria-label="Email Matias Arias"
           >
             <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
               <AiOutlineMail className=" text-white" />

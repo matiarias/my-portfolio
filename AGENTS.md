@@ -17,7 +17,7 @@ Portfolio personal de **Matias Arias** (Frontend Developer). Sitio de una sola p
 | Categoría | Tecnología | Versión objetivo |
 |-----------|------------|------------------|
 | Runtime | Node.js | 24.x |
-| Framework | Next.js (Pages Router) | 15.x |
+| Framework | Next.js (Pages Router) | 16.x |
 | UI | React | 19.x |
 | Lenguaje | TypeScript | 5.x |
 | Estilos | Tailwind CSS | 3.x |
@@ -29,8 +29,7 @@ Portfolio personal de **Matias Arias** (Frontend Developer). Sitio de una sola p
 | Notificaciones | react-toastify | 11.x |
 | Scroll animations | react-intersection-observer | 9.x |
 | Iconos | react-icons | 5.x |
-| IDs únicos | uuid | 11.x |
-| Linting | ESLint + eslint-config-next | — |
+| Linting | ESLint + eslint-config-next | 9.x / 16.x |
 | Deploy | Vercel | — |
 
 ---
@@ -71,7 +70,7 @@ import TitleSections from "@/subComponents/TitleSections";
 - **Tipos compartidos** viven en `types/index.ts`.
 - **Datos estáticos** en `data/` se tipan con las interfaces correspondientes.
 - **Componentes:** archivos `.tsx` con props tipadas via interface.
-- **Config Next.js:** `next.config.ts`, `tailwind.config.ts`, `postcss.config.mjs`.
+- **Config de tooling:** `next.config.ts`, `tailwind.config.ts`, `postcss.config.mjs` y `eslint.config.mjs` (flat config de ESLint).
 
 ### Interfaces principales
 
@@ -108,10 +107,11 @@ El proyecto requiere **Node.js 24+**. La versión está fijada en:
 ## Patrones del código
 
 1. **Animaciones:** Framer Motion + `react-intersection-observer` para animar al entrar en viewport.
-2. **Datos:** Arrays estáticos en `data/`; algunos componentes generan IDs únicos con `uuid` en runtime.
-3. **Imágenes:** `next/image` para optimización; assets en `public/assets/`.
+2. **Datos:** Arrays estáticos en `data/`, con IDs definidos en los propios datos.
+3. **Imágenes:** `next/image` para optimización; assets en `public/assets/`. La foto de About debe conservar una columna completa en mobile; usar spans de columna desde `md:` en adelante.
 4. **Estilos:** Tailwind utility classes; CSS Modules solo en `Loading.module.css`.
 5. **Navegación:** Links con hash (`#home`, `#about`, etc.) — SPA de una sola página.
+6. **Fuente global:** Lato se carga con `next/font/google`; la compilación necesita acceso a Google Fonts si la fuente no está disponible en caché.
 
 ---
 
@@ -119,6 +119,7 @@ El proyecto requiere **Node.js 24+**. La versión está fijada en:
 
 - No migrar a App Router salvo que se pida explícitamente; el proyecto usa **Pages Router**.
 - Mantener el diseño y animaciones existentes al refactorizar.
-- Las credenciales de EmailJS están hardcodeadas en `Contact.tsx`; no moverlas a commits públicos adicionales.
+- Las credenciales públicas de EmailJS se leen desde `.env.local`; usar `.env.local.example` como plantilla y no versionar valores reales.
+- `npm run lint` usa ESLint 9 con flat config; no usar el comando eliminado `next lint`.
 - Al agregar nuevas secciones, seguir el patrón: componente en `components/`, datos en `data/`, tipos en `types/`.
 - Preferir cambios mínimos y enfocados; no sobre-ingenierizar.

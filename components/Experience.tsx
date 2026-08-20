@@ -58,15 +58,16 @@ const Experience = () => {
                 <span>{work.startDate}</span> - <span>{work.endDate}</span>
               </h4>
 
-              <div className="flex flex-col gap-2 px-6">
+              <ul className="flex flex-col gap-2 px-6 list-disc list-outside">
                 {work.skills.map((skill) => (
-                  <ul key={skill.id} className="list-disc list-outside">
-                    <li className="text-xl text-gray-200 underline underline-offset-4 decoration-2 decoration-indigo-500 break-all">
-                      {skill.skillJob}
-                    </li>
-                  </ul>
+                  <li
+                    key={skill.id}
+                    className="text-xl text-gray-200 underline underline-offset-4 decoration-2 decoration-indigo-500 break-all"
+                  >
+                    {skill.skillJob}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </motion.div>

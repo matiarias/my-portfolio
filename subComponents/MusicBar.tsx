@@ -7,26 +7,34 @@ const MusicBar = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const refMusic = useRef<HTMLAudioElement>(null);
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    const audio = refMusic.current;
+
+    if (!audio) return;
+
     if (isPlaying) {
-      refMusic.current?.pause();
+      audio.pause();
     } else {
-      refMusic.current?.play();
+      try {
+        await audio.play();
+      } catch {
+        setIsPlaying(false);
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
-    <div
+    <button
+      type="button"
       onClick={handleClick}
-      className="shadow-lg shadow-gray-300"
+      className="rounded-full p-2.5 shadow-lg shadow-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+      aria-label={isPlaying ? "Pause background music" : "Play background music"}
+      aria-pressed={isPlaying}
       style={{
         position: "absolute",
         top: "100px",
         right: "30px",
-        padding: "10px",
         cursor: "pointer",
-        borderRadius: "100%",
       }}
     >
       <SvgAlien fill={isPlaying ? "#00af10" : "rgb(229,231,235)"} />
@@ -35,8 +43,10 @@ const MusicBar = () => {
         ref={refMusic}
         loop
         src="/assets/audio/dreamkid-fugitive.mp3"
-      ></audio>
-    </div>
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      />
+    </button>
   );
 };
 
