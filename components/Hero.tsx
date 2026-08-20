@@ -1,22 +1,9 @@
-import { motion } from "framer-motion";
-
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 
-import OvniHero from "@/subComponents/OvniHero";
 import MusicBar from "@/subComponents/MusicBar";
 
-import { useScrollAnimation, SLIDE_FROM_LEFT } from "@/hooks/useScrollAnimation";
-
-// Fix #11: El wrapper principal era un motion.div sin ninguna prop de animación.
-//          Ahora es un div regular. La animación del ovni sí usa motion correctamente.
-// Fix #1:  Usa el hook centralizado para la animación del ovni.
-// Fix #12: Imports estandarizados con alias @/.
 const Hero = () => {
-  const { ref: ovniRef, controls: animationOvni } = useScrollAnimation(
-    SLIDE_FROM_LEFT
-  );
-
   return (
     <section
       id="home"
@@ -73,29 +60,6 @@ const Hero = () => {
           </a>
         </div>
       </div>
-
-      <motion.div
-        ref={ovniRef}
-        animate={animationOvni}
-        className="absolute max-[380px]:bottom-24 bottom-24 sm:bottom-12 md:bottom-40 lg:bottom-4 xl:bottom-6 2xl:bottom-16 left-0 right-0 m-auto flex flex-col justify-center items-center"
-      >
-        <div className="max-[380px]:h-[90px] max-[380px]:w-[90px] h-[110px] w-[110px] md:h-[130px] md:w-[130px] lg:h-[100px] lg:w-[100px]">
-          <OvniHero />
-        </div>
-
-        <a
-          href="https://drive.google.com/file/d/1xOHUJ9I7jSR5PS4lgbW6LotV8S-n59Py/view?usp=sharing"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <div className="relative overflow-hidden rounded-lg bg-black max-[380px]:py-4 py-5 md:py-6 xl:py-5 px-20 md:px-24 ring-violet-500 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
-            <span className="absolute inset-px z-10 grid place-items-center rounded-lg bg-black/80 bg-gradient-to-t from-indigo-600 text-gray-200 font-bold">
-              Download CV
-            </span>
-            <span className="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-gradient-conic before:from-purple-500 before:via-indigo-800 before:to-yellow-400" />
-          </div>
-        </a>
-      </motion.div>
 
       <MusicBar />
     </section>

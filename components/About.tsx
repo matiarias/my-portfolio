@@ -24,21 +24,13 @@ const About = () => {
               Who I Am
             </h3>
             <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
-              I&apos;m a Frontend Developer with +2 years of experience,
-              specializing in JavaScript, TypeScript, React, and Next.js.
-              Currently, I work at Santander Technology Argentina as a Software
-              Engineer in the Investments team, where I develop solutions and
-              projects for Santander, working on both Frontend and Backend for
-              Frontend (BFF) using technologies like Next.js, React, TypeScript,
-              Node.js, and Nest.js.
-            </p>
-
-            <p className="text-gray-200 font-bold text-base md:text-lg tracking-wide leading-relaxed mt-2">
-              I see myself as a dedicated professional who cares about details
-              and delivering high-quality, maintainable software. I enjoy
-              teamwork and the personal and professional growth it brings.
-              I&apos;m passionate about learning new technologies and
-              continuously improving my skills to tackle new challenges.
+              Frontend Engineer with 3+ years at Santander Tecnología Argentina,
+              building production-critical banking and investment features using
+              React and TypeScript. Experienced in high-volume transactional
+              systems, BFF development with Node.js/NestJS, and production
+              incident resolution. I integrate agentic workflows with GitHub
+              Copilot, Windsurf, Devin, Claude Code and Codex into my daily
+              development cycle.
             </p>
           </motion.div>
 
