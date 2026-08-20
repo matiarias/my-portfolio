@@ -17,13 +17,12 @@ const Hero = () => {
 
         <h2 className="text-gray-200 font-bold max-[380px]:text-2xl text-3xl md:text-4xl lg:text-5xl">
           A <span className="text-yellow-500 font-bold">Front-End</span>{" "}
-          Developer
+          Engineer
         </h2>
 
         <div className="w-full max-w-4xl">
           <p className="text-gray-200 font-bold max-[380px]:text-sm text-lg md:text-xl lg:text-2xl">
-            I&apos;m a Frontend Developer based in Argentina. I want to create
-            websites that make an impact on people.
+            Building with React, TypeScript, and agentic development.
           </p>
         </div>
 
