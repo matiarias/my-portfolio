@@ -50,7 +50,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="mailto:matt.arias182@gmail.com"
+            href="mailto:maticarlosarias@gmail.com"
             aria-label="Email Matias Arias"
           >
             <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
