@@ -1,46 +1,35 @@
-import { useEffect, useState } from "react";
-
 import Head from "next/head";
 
-import Loading from "../components/Loading/Loading";
 import StarsParticles from "../components/StarsParticles";
 import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Experience from "@/components/Experience";
 
 export default function Home() {
-  const [loadingPage, setLoadingPage] = useState(true);
-
-  // Fix #3: Cleanup del timer para evitar setState sobre componente desmontado
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoadingPage(false);
-    }, 4000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <Head>
-        <title>Matias Arias - Portfolio</title>
+        <title>Matias Arias | Frontend Engineer - React, TypeScript, Node.js & NestJS</title>
         <meta
           name="description"
-          content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
+          content="Frontend Engineer specializing in React, TypeScript, Node.js and NestJS. I build accessible, production-ready web products with agentic development workflows."
+        />
+        <meta
+          name="keywords"
+          content="Frontend Engineer, React, TypeScript, Node.js, NestJS, Next.js, accessibility, WCAG, BFF development, agentic development, GitHub Copilot, Windsurf, Devin, Claude Code, Codex, banking products, investment products"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://matiasarias.vercel.app/" />
-        <meta property="og:title" content="Matias Arias - Portfolio" />
+        <meta property="og:title" content="Matias Arias | Frontend Engineer - React, TypeScript, Node.js & NestJS" />
         <meta
           property="og:description"
-          content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
+          content="Frontend Engineer specializing in React, TypeScript, Node.js and NestJS. I build accessible, production-ready web products with agentic development workflows."
         />
         <meta
           property="og:image"
@@ -52,10 +41,10 @@ export default function Home() {
           property="twitter:url"
           content="https://matiasarias.vercel.app/"
         />
-        <meta property="twitter:title" content="Matias Arias - Portfolio" />
+        <meta property="twitter:title" content="Matias Arias | Frontend Engineer - React, TypeScript, Node.js & NestJS" />
         <meta
           property="twitter:description"
-          content="I'm a Frontend Developer based in Argentina. I want to create websites that make an impact on people."
+          content="Frontend Engineer specializing in React, TypeScript, Node.js and NestJS. I build accessible, production-ready web products with agentic development workflows."
         />
         <meta
           property="twitter:image"
@@ -65,21 +54,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {loadingPage ? (
-        <Loading />
-      ) : (
-        <>
-          <StarsParticles />
-          <NavBar />
-          <Hero />
-          <About />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Contact />
-          <Footer />
-        </>
-      )}
+      <StarsParticles />
+      <NavBar />
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Contact />
+      <Footer />
     </>
   );
 }

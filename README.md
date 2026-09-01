@@ -1,78 +1,42 @@
-# My Portfolio — Matias Arias
+# Matias Arias — Portfolio
 
-Personal portfolio showcasing my work as a Frontend Developer. Single-page site built with **Next.js**, **React**, **TypeScript**, and **Tailwind CSS**, with animations powered by Framer Motion.
+Personal portfolio for a Frontend Engineer specializing in React, TypeScript, Node.js and NestJS. It is a content-led, single-page experience built around a cosmic editorial visual system.
 
-**Live site:** [https://matiasarias.vercel.app/](https://matiasarias.vercel.app/)
+**Live site:** [matiasarias.vercel.app](https://matiasarias.vercel.app/)
 
----
+## Sections
 
-## What's inside
+- **Home:** professional positioning, social links and an optional music control.
+- **About:** professional profile, engineering highlights and agentic-development tools.
+- **Experience:** verified roles, responsibilities and technology tags.
+- **Projects:** selected work with GitHub and deployment links.
+- **Contact:** direct email link and EmailJS form.
 
-The site is a one-page experience with these sections:
+## Stack
 
-| Section | Description |
-|---------|-------------|
-| **Home** | Hero with social links, Lottie animations, and background music |
-| **About** | Bio and professional photo |
-| **Experience** | Work history |
-| **Skills** | Tech stack grid |
-| **Projects** | Featured projects with links to GitHub and live demos |
-| **Contact** | Form powered by EmailJS |
+- Next.js 16 (Pages Router), React 19 and TypeScript 5
+- Tailwind CSS 3, Framer Motion and `react-intersection-observer`
+- `@tsparticles/react`, `lottie-react`, `react-icons` and `react-toastify`
+- EmailJS for the contact form
+- ESLint 9 with `eslint-config-next` 16
 
----
+## Local development
 
-## Tech stack
-
-| Category | Technology |
-|----------|------------|
-| Runtime | Node.js 24+ |
-| Framework | Next.js 16 (Pages Router) |
-| UI | React 19 |
-| Language | TypeScript 5 |
-| Styling | Tailwind CSS 3 |
-| Animations | Framer Motion |
-| Particles | @tsparticles/react |
-| Lottie | lottie-react |
-| Contact form | EmailJS |
-| Notifications | react-toastify |
-| Scroll animations | react-intersection-observer |
-| Typewriter effect | typewriter-effect |
-| Icons | react-icons |
-| Linting | ESLint 9 + eslint-config-next 16 |
-| Deploy | Vercel |
-
----
-
-## Getting started
-
-### Prerequisites
-
-- [Node.js 24+](https://nodejs.org/) (use `nvm use` if you have `.nvmrc`)
-
-### Install and run
+Node.js 24 or newer is required.
 
 ```bash
-# Install dependencies
 npm install
-
-# Development server (http://localhost:3000)
 npm run dev
-
-# Production build
-npm run build
-
-# Run production server
-npm run start
-
-# Lint
 npm run lint
+npx tsc --noEmit
+npm run build
 ```
 
-`npm run lint` uses ESLint's flat configuration (`eslint.config.mjs`).
+The dev server runs on `http://localhost:3000`. `npm run build` requires access to Google Fonts when Lato is not already cached, because it is loaded through `next/font/google`.
 
 ## Environment variables
 
-The contact form requires EmailJS public configuration. Copy `.env.local.example` to `.env.local` and replace the placeholder values:
+Copy `.env.local.example` to `.env.local` and configure EmailJS:
 
 ```env
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxxxxxx
@@ -80,52 +44,37 @@ NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxxxxxx
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxx
 ```
 
-Do not commit `.env.local`. These values are exposed to the browser by EmailJS's client-side integration, so configure the corresponding EmailJS domain restrictions.
+Never commit `.env.local`. Configure the corresponding allowed origins in EmailJS because these values are public browser configuration.
 
-## Fonts
+## Design and accessibility
 
-The global Lato font is loaded with `next/font/google`. Next downloads and self-hosts its font files during a successful build, so the build environment must be able to reach Google Fonts when no cache is available. The deployed site serves the generated font files locally.
-
----
+- Tailwind is the sole styling system. The global design tokens live in `styles/globals.css`.
+- The palette combines deep violet surfaces, cyan technical accents and yellow emphasis.
+- Section spacing is intentionally compact (`py-10`, `md:py-14`) to avoid stacked whitespace.
+- The mobile navigation uses an Obsidian glass drawer. It locks document scrolling while open, keeps the drawer independently scrollable and supports Escape, overlay and close-button dismissal.
+- Focus-visible states and reduced-motion support are required for interactive UI.
+- There is no loading screen or About profile image. The remaining navbar Lottie is a small brand detail only.
 
 ## Project structure
 
-```
-├── pages/           # Next.js routes (Pages Router)
-├── components/      # Main page sections
-├── subComponents/   # Reusable UI pieces
-├── data/            # Static data (projects, skills, experience)
-├── types/           # TypeScript interfaces
-├── config/          # JSON configs (e.g. particles)
-├── public/          # Static assets
-├── styles/          # Global CSS (Tailwind)
-├── eslint.config.mjs # ESLint 9 flat configuration
-├── .env.local.example # EmailJS environment-variable template
-└── AGENTS.md        # Agent/contributor reference
+```text
+pages/                 Next.js Pages Router entry points
+components/            Page sections
+subComponents/         Reusable UI components
+data/                  Typed static portfolio data
+types/                 Shared TypeScript interfaces
+styles/                Tailwind global styles
+.agents/skills/frontend-design Local UI-design guidance and Apache-2.0 license
 ```
 
-Imports use the `@/` alias (configured in `tsconfig.json`).
+Imports use the `@/` alias configured in `tsconfig.json`.
 
----
+## Design skill
 
-## Screenshots
+`.agents/skills/frontend-design/` contains the frontend-design skill used for the Cosmic Editorial refactor. It is kept with its Apache-2.0 license so future UI work follows the same intentional, accessible and content-led direction.
 
-![Home Section](./public/assets/screenshots/screenshot-home.png)
-
-![About Section](./public/assets/screenshots/screenshot-about.png)
-
-![Skills Section](./public/assets/screenshots/screenshot-skills.png)
-
-![Projects Section](./public/assets/screenshots/screenshot-projects.png)
-
-![Contact Section](./public/assets/screenshots/screenshot-contact.png)
-
----
-
-## Author
-
-**Matias Arias** — Frontend Developer based in Argentina.
+## Contact
 
 - [LinkedIn](https://www.linkedin.com/in/matiasarias27)
 - [GitHub](https://github.com/matiarias)
-- [Email](mailto:matt.arias182@gmail.com)
+- [Email](mailto:maticarlosarias@gmail.com)

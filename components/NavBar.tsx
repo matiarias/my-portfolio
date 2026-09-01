@@ -1,66 +1,110 @@
 import Link from "next/link";
-
-import { useState, useCallback } from "react";
-
-import { AiOutlineClose, AiOutlineMenu, AiOutlineMail } from "react-icons/ai";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 import OvniNavBar from "@/subComponents/OvniNavBar";
 
-import { useEffect } from "react";
-
-// Fix #12: Imports estandarizados con alias @/
-// Fix #13: Corregida semántica HTML — los <li> ahora son padres de <Link>,
-//           no hijos. La estructura correcta es ul > li > a (Link).
 const NavBar = () => {
   const [nav, setNav] = useState(false);
   const [blurNav, setBlurNav] = useState(false);
+  const restoreScrollPosition = useRef(true);
+
+  const closeNav = useCallback(() => {
+    restoreScrollPosition.current = true;
+    setNav(false);
+  }, []);
+  const toggleNav = useCallback(() => setNav((previous) => !previous), []);
+
+  const handleNavigation = useCallback(() => {
+    restoreScrollPosition.current = false;
+    setNav(false);
+  }, []);
 
   useEffect(() => {
-    const scrollNav = () => {
-      setBlurNav(window.scrollY >= 80);
-    };
+    const scrollNav = () => setBlurNav(window.scrollY >= 80);
 
     window.addEventListener("scroll", scrollNav);
 
-    return () => {
-      window.removeEventListener("scroll", scrollNav);
-    };
+    return () => window.removeEventListener("scroll", scrollNav);
   }, []);
 
-  const handleNav = useCallback(() => {
-    setNav((prev) => !prev);
-  }, []);
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeNav();
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [closeNav]);
+
+  useEffect(() => {
+    const desktopViewport = window.matchMedia("(min-width: 768px)");
+    const closeOnDesktop = () => {
+      if (desktopViewport.matches) closeNav();
+    };
+
+    desktopViewport.addEventListener("change", closeOnDesktop);
+
+    return () => desktopViewport.removeEventListener("change", closeOnDesktop);
+  }, [closeNav]);
+
+  useEffect(() => {
+    if (!nav) return;
+
+    const scrollY = window.scrollY;
+    const { overflow: previousHtmlOverflow } = document.documentElement.style;
+    const {
+      overflow: previousBodyOverflow,
+      position: previousBodyPosition,
+      top: previousBodyTop,
+      width: previousBodyWidth,
+    } = document.body.style;
+
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    return () => {
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      document.body.style.position = previousBodyPosition;
+      document.body.style.top = previousBodyTop;
+      document.body.style.width = previousBodyWidth;
+
+      if (restoreScrollPosition.current) window.scrollTo(0, scrollY);
+
+      restoreScrollPosition.current = true;
+    };
+  }, [nav]);
 
   const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#experience", label: "Experience" },
-    { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
   ];
 
   return (
-    <div
-      className={
-        blurNav
-          ? "fixed top-0 left-0 h-20 w-full backdrop-filter backdrop-blur-xl shadow-md shadow-indigo-800 z-[100]"
-          : "fixed top-0 left-0 h-20 w-full shadow-md shadow-indigo-800 z-[100]"
-      }
+    <nav
+      className={`fixed left-0 top-0 z-[100] h-16 w-full border-b transition ${blurNav ? "border-violet-300/20 bg-[#100022]/85 backdrop-blur-xl" : "border-transparent"}`}
+      aria-label="Primary navigation"
     >
-      <div className="flex justify-between items-center w-full h-full px-4 md:px-8 lg:px-12">
-        <div className="h-[75px] w-[75px]">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 md:px-10">
+        <div className="h-14 w-14">
           <OvniNavBar />
         </div>
 
-        {/* Fix #13: ul > li > Link (semántica HTML correcta) */}
-        <ul className="hidden md:flex justify-between items-center gap-8">
+        <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="nav-items text-gray-200 text-base md:text-xl 2xl:text-2xl uppercase tracking-[1px]"
+                className="nav-items text-base uppercase tracking-[1px] text-slate-200 md:text-xl 2xl:text-2xl"
               >
                 {label}
               </Link>
@@ -69,49 +113,52 @@ const NavBar = () => {
         </ul>
 
         <button
-          onClick={handleNav}
-          className="md:hidden"
-          aria-label="Open navigation menu"
+          type="button"
+          onClick={toggleNav}
+          className="rounded-full p-2 text-slate-200 transition hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 md:hidden"
+          aria-label={nav ? "Close navigation menu" : "Open navigation menu"}
+          aria-controls="mobile-navigation"
+          aria-expanded={nav}
         >
-          <AiOutlineMenu size={30} className="text-gray-200" />
+          <AiOutlineMenu size={28} />
         </button>
       </div>
 
-      <div
-        className={
-          nav ? "fixed md:hidden top-0 left-0 h-screen w-full bg-black/70" : ""
-        }
-      >
+      {nav && (
         <div
-          className={
-            nav
-              ? "fixed top-0 left-0 h-screen w-[80%] sm:w-[60%] bg-gradient-to-b from-[#140429] via-[#371764] to-[#5b2b7e] ease-in duration-200 px-4"
-              : "fixed left-[-100%]"
-          }
+          className="fixed inset-0 z-[110] bg-[#05010d]/70 backdrop-blur-sm md:hidden"
+          onClick={closeNav}
         >
-          <div className="w-full flex justify-between items-center">
-            <div className="max-[380px]:h-[60px] max-[380px]:w-[60px] h-[90px] w-[90px] sm:h-[110px] sm:w-[110px]">
-              <OvniNavBar />
+          <div
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+            className="flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-y-auto border-r border-violet-300/20 bg-[#100022]/95 px-5 backdrop-blur-xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex h-20 items-center justify-between border-b border-violet-300/15">
+              <div className="h-14 w-14">
+                <OvniNavBar />
+              </div>
+
+              <button
+                type="button"
+                onClick={closeNav}
+                className="rounded-full border border-violet-300/20 p-2 text-slate-200 transition hover:border-sky-300/60 hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+                aria-label="Close navigation menu"
+              >
+                <AiOutlineClose size={24} />
+              </button>
             </div>
 
-            <button
-              onClick={handleNav}
-              className="rounded-full shadow-lg shadow-gray-300 p-1 sm:p-2 cursor-pointer"
-              aria-label="Close navigation menu"
-            >
-              <AiOutlineClose size={30} className=" text-white" />
-            </button>
-          </div>
-
-          <div className="h-full w-full flex flex-col justify-start items-center border-t-2 border-gray-300 mt-2">
-            {/* Fix #13: ul > li > Link en el menú mobile también */}
-            <ul className="w-full flex flex-col justify-center items-center max-[380px]:gap-6 max-[380px]:mt-12 gap-10 mt-20">
+            <ul className="mt-8 flex flex-col gap-2">
               {navLinks.map(({ href, label }) => (
-                <li key={href} className="w-full">
+                <li key={href}>
                   <Link
                     href={href}
-                    onClick={handleNav}
-                    className="block w-full py-2 text-white uppercase rounded-lg shadow-lg shadow-gray-300 text-center"
+                    onClick={handleNavigation}
+                    className="block rounded-lg px-4 py-3 text-lg uppercase tracking-[0.08em] text-slate-200 transition hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
                   >
                     {label}
                   </Link>
@@ -119,16 +166,15 @@ const NavBar = () => {
               ))}
             </ul>
 
-            <div className="w-full flex justify-around items-center gap-4 mt-16">
+            <div className="mt-auto flex items-center gap-3 border-t border-violet-300/15 py-8">
               <a
                 href="https://www.linkedin.com/in/matiasarias27"
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Visit Matias Arias's LinkedIn profile"
+                className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
-                <div className="rounded-full shadow-lg shadow-gray-300 p-3 cursor-pointer">
-                  <BsLinkedin size={20} className=" text-white" />
-                </div>
+                <BsLinkedin size={20} />
               </a>
 
               <a
@@ -136,25 +182,23 @@ const NavBar = () => {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Visit Matias Arias's GitHub profile"
+                className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
-                <div className="rounded-full shadow-lg shadow-gray-300 p-3 cursor-pointer">
-                  <BsGithub size={20} className=" text-white" />
-                </div>
+                <BsGithub size={20} />
               </a>
 
               <a
-                href="mailto:matt.arias182@gmail.com"
+                href="mailto:maticarlosarias@gmail.com"
                 aria-label="Email Matias Arias"
+                className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
-                <div className="rounded-full shadow-lg shadow-gray-300 p-3 cursor-pointer">
-                  <AiOutlineMail size={20} className=" text-white" />
-                </div>
+                <AiOutlineMail size={20} />
               </a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </nav>
   );
 };
 

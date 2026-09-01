@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import type { ContactFormInputs } from "@/types";
+import TitleSections from "@/subComponents/TitleSections";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -89,21 +90,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-16 px-6 md:px-8">
-      <h2 className="text-gray-200 text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-center tracking-[1px] underline underline-offset-[10px] decoration-yellow-500/80">
-        Contact
-      </h2>
+    <section id="contact" className="section-shell">
+      <TitleSections title="Contact" />
 
-      <div className="w-full max-w-screen-xl flex flex-col justify-center gap-6 mt-4 mx-auto">
-        <div className="w-full max-w-screen-sm mx-auto">
-          <h3 className="text-sky-400 text-xl md:text-2xl font-bold my-8">
-            Let&apos;s Connect
-          </h3>
+      <div className="mt-10 grid gap-10 md:grid-cols-[.8fr_1.2fr]">
+        <div>
+          <a
+            href="mailto:maticarlosarias@gmail.com"
+            className="text-lg text-sky-300 underline decoration-sky-300/40 underline-offset-4 transition hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+          >
+            maticarlosarias@gmail.com
+          </a>
+        </div>
+        <div className="panel p-6 md:p-8">
 
           <motion.div ref={formRef} animate={animationForm}>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col justify-center items-center gap-6"
+              className="flex flex-col gap-5"
             >
               <input
                 type="text"

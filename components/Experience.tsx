@@ -13,11 +13,7 @@ import type { WorkExperience } from "@/types";
 // Fix #1:    Usa el hook centralizado.
 // Fix #12:   Imports estandarizados con alias @/.
 const sortedWorkExperience: WorkExperience[] = [...workExperience].sort(
-  (a, b) => {
-    if (a.endDate === "Present") return -1;
-    if (b.endDate === "Present") return 1;
-    return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
-  }
+  (a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime()
 );
 
 const Experience = () => {
@@ -27,42 +23,45 @@ const Experience = () => {
   });
 
   return (
-    <section id="experience" className="w-full py-8 px-6 md:px-8">
+    <section id="experience" className="section-shell">
       <TitleSections title="Experience" />
 
-      <div className="w-full max-w-screen-xl mx-auto mt-16">
-        <h3 className="text-sky-400 text-xl md:text-2xl font-bold">
-          Work Experience
-        </h3>
+      <div className="mt-10">
 
         {/* Fix #5: ref en el contenedor, no en cada card individual */}
         <motion.div
           ref={experienceRef}
           animate={controls}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2"
         >
           {sortedWorkExperience.map((work) => (
             <div
               key={work.id}
-              className="w-full h-auto flex flex-col gap-4 rounded-xl shadow-lg shadow-gray-300 px-4 py-4"
+              className="flex flex-col gap-5 border border-violet-300/20 bg-[#16052d] p-7 md:p-9"
             >
-              <h3 className="text-3xl xl:text-4xl font-bold text-yellow-500">
+              <h3 className="text-2xl font-bold text-yellow-300">
                 {work.company}
               </h3>
 
-              <h4 className="text-2xl xl:text-3xl font-bold text-sky-400">
+              <h4 className="text-xl font-medium text-sky-300">
                 {work.position}
               </h4>
 
-              <h4 className="text-xl xl:text-2xl font-bold text-gray-200">
+              <p className="text-sm uppercase tracking-widest text-slate-400">
                 <span>{work.startDate}</span> - <span>{work.endDate}</span>
-              </h4>
+              </p>
 
-              <ul className="flex flex-col gap-2 px-6 list-disc list-outside">
+              <ul className="list-disc space-y-2 pl-5 text-slate-300 marker:text-sky-300">
+                {work.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+
+              <ul className="flex flex-wrap gap-2">
                 {work.skills.map((skill) => (
                   <li
                     key={skill.id}
-                    className="text-xl text-gray-200 underline underline-offset-4 decoration-2 decoration-indigo-500 break-all"
+                    className="border border-violet-300/25 px-3 py-1 text-sm text-slate-300"
                   >
                     {skill.skillJob}
                   </li>

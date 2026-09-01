@@ -41,6 +41,7 @@ export interface WorkExperience {
   position: string;
   startDate: string;
   endDate: string;
+  highlights: string[];
   skills: WorkSkill[];
 }
 

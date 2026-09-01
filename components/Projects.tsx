@@ -19,23 +19,20 @@ const Projects = () => {
   });
 
   return (
-    <section id="projects" className="w-full py-16 px-6 md:px-8">
+    <section id="projects" className="section-shell">
       <TitleSections title="Projects" />
 
-      <div className="w-full max-w-screen-xl flex flex-col justify-center gap-6 mt-8 mx-auto">
-        <h3 className="text-sky-400 text-xl md:text-2xl font-bold mt-8">
-          Some of my best projects
-        </h3>
+      <div className="mt-10">
 
         <motion.div
           ref={projectsRef}
           animate={controls}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-12"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
         >
           {projects.map((project) => (
             <div
               key={project.id}
-              className="relative h-auto w-full rounded-xl shadow-lg shadow-gray-300 overflow-hidden"
+              className="panel overflow-hidden transition hover:-translate-y-1 hover:border-sky-300/40"
             >
               <div className="relative h-[200px] w-full">
                 <Image
@@ -49,13 +46,13 @@ const Projects = () => {
                 />
               </div>
 
-              <div className="w-full flex flex-col p-4">
+              <div className="w-full flex flex-col p-6">
                 <div className="flex flex-col justify-center gap-4">
-                  <h4 className="text-yellow-500 text-lg md:text-xl font-bold">
+                  <h4 className="text-xl font-bold text-yellow-300">
                     {project.title}
                   </h4>
 
-                  <p className="text-gray-200 font-bold text-sm md:text-base">
+                  <p className="text-sm leading-relaxed text-slate-300">
                     {project.description}
                   </p>
 

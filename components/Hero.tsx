@@ -1,5 +1,6 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
+import Link from "next/link";
 
 import MusicBar from "@/subComponents/MusicBar";
 
@@ -7,33 +8,28 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-screen w-full text-center overflow-hidden"
+      className="relative min-h-screen w-full overflow-hidden"
     >
-      <div className="h-full max-w-screen-xl w-full flex flex-col justify-center items-center max-[380px]:gap-2 gap-6 md:gap-8 lg:gap-4 mx-auto p-4">
-        <h1 className="text-gray-200 font-bold max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-6xl">
-          Hi, I&apos;m{" "}
-          <span className="text-sky-500 font-bold text">Matias Arias</span>
-        </h1>
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-20 md:px-10">
+        <p className="eyebrow">Frontend Engineer</p>
+        <h1 className="mt-5 max-w-5xl text-5xl font-bold leading-[.95] tracking-tight text-slate-100 md:text-8xl">Specializing in <span className="text-sky-400">React, TypeScript,</span> Node.js and NestJS.</h1>
+        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-2xl">I build accessible, production-ready web products with agentic development workflows.</p>
 
-        <h2 className="text-gray-200 font-bold max-[380px]:text-2xl text-3xl md:text-4xl lg:text-5xl">
-          A <span className="text-yellow-500 font-bold">Front-End</span>{" "}
-          Engineer
-        </h2>
+        <Link
+          href="#contact"
+          className="mt-9 w-fit rounded-full bg-yellow-300 px-6 py-3 font-bold text-[#100022] transition hover:-translate-y-0.5 hover:bg-yellow-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#100022]"
+        >
+          Get in touch
+        </Link>
 
-        <div className="w-full max-w-4xl">
-          <p className="text-gray-200 font-bold max-[380px]:text-sm text-lg md:text-xl lg:text-2xl">
-            Building with React, TypeScript, and agentic development.
-          </p>
-        </div>
-
-        <div className="flex justify-center items-center gap-8 md:gap-16 mt-4">
+        <div className="mt-8 flex items-center gap-5">
           <a
             href="https://www.linkedin.com/in/matiasarias27"
             target="_blank"
             rel="noreferrer noopener"
             aria-label="Visit Matias Arias's LinkedIn profile"
           >
-            <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -44,7 +40,7 @@ const Hero = () => {
             rel="noreferrer noopener"
             aria-label="Visit Matias Arias's GitHub profile"
           >
-            <div className=" max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -53,7 +49,7 @@ const Hero = () => {
             href="mailto:maticarlosarias@gmail.com"
             aria-label="Email Matias Arias"
           >
-            <div className="max-[380px]:text-lg text-2xl 2xl:text-3xl rounded-full shadow-lg shadow-gray-300 p-3">
+            <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>

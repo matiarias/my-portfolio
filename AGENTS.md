@@ -1,125 +1,76 @@
-# AGENTS.md — Portfolio Matias Arias
+# AGENTS.md — Portfolio de Matias Arias
 
-Referencia principal para agentes y desarrolladores que trabajen en este repositorio.
+Guía para agentes y desarrolladores que trabajan en este repositorio.
 
-## Descripción del proyecto
+## Contexto
 
-Portfolio personal de **Matias Arias** (Frontend Developer). Sitio de una sola página con secciones: Home, About, Experience, Skills, Projects y Contact.
+Portfolio personal de una sola página de **Matias Arias**, Frontend Engineer. Usa Next.js Pages Router y mantiene estas secciones: Home, About, Experience, Projects y Contact.
 
-**Deploy:** [https://matiasarias.vercel.app/](https://matiasarias.vercel.app/)
+**Deploy:** [matiasarias.vercel.app](https://matiasarias.vercel.app/)
 
-> **Nota:** El README menciona Vite en algunos proyectos listados, pero **este repositorio usa Next.js** (Pages Router), no Vite.
+## Stack
 
----
+| Categoría | Tecnología |
+| --- | --- |
+| Runtime | Node.js 24+ |
+| Framework | Next.js 16, Pages Router |
+| UI | React 19, TypeScript 5 |
+| Estilos | Tailwind CSS 3 |
+| Animación | Framer Motion, `react-intersection-observer` |
+| Partículas | `@tsparticles/react` |
+| Contacto | EmailJS y react-toastify |
+| Iconos / Lottie | react-icons y lottie-react |
+| Calidad | ESLint 9 + eslint-config-next 16 |
 
-## Stack tecnológico
+No migrar a App Router salvo pedido explícito. No incorporar librerías de UI nuevas sin necesidad.
 
-| Categoría | Tecnología | Versión objetivo |
-|-----------|------------|------------------|
-| Runtime | Node.js | 24.x |
-| Framework | Next.js (Pages Router) | 16.x |
-| UI | React | 19.x |
-| Lenguaje | TypeScript | 5.x |
-| Estilos | Tailwind CSS | 3.x |
-| Animaciones | Framer Motion | 12.x |
-| Partículas | @tsparticles/react | 3.x |
-| Formulario contacto | EmailJS (@emailjs/browser) | 4.x |
-| Animaciones Lottie | lottie-react | 2.x |
-| Efecto máquina de escribir | typewriter-effect | 2.x |
-| Notificaciones | react-toastify | 11.x |
-| Scroll animations | react-intersection-observer | 9.x |
-| Iconos | react-icons | 5.x |
-| Linting | ESLint + eslint-config-next | 9.x / 16.x |
-| Deploy | Vercel | — |
+## Arquitectura y datos
 
----
-
-## Estructura del proyecto
-
-```
-my-portfolio/
-├── pages/              # Rutas Next.js (Pages Router)
-│   ├── _app.tsx        # App wrapper + fuente global
-│   ├── _document.tsx   # HTML document
-│   ├── index.tsx       # Página principal (SPA-like)
-│   └── api/            # API routes
-├── components/         # Secciones principales de la página
-├── subComponents/      # Componentes reutilizables más pequeños
-├── data/               # Datos estáticos (projects, skills, experience)
-├── types/              # Interfaces TypeScript compartidas
-├── config/             # Configuraciones JSON (ej. partículas)
-├── public/             # Assets estáticos (imágenes, audio, Lottie)
-├── styles/             # CSS global (Tailwind directives)
-└── AGENTS.md           # Este archivo
+```text
+pages/                 Rutas y metadatos SEO
+components/            Secciones principales
+subComponents/         Componentes reutilizables
+data/                  Datos estáticos tipados
+types/                 Interfaces compartidas
+styles/globals.css     Tailwind global y componentes visuales comunes
+.agents/skills/        Skills locales compartidas por agentes
 ```
 
-### Alias de imports
+- Usar el alias `@/` para imports internos.
+- Mantener los tipos simples. `WorkExperience` incluye `highlights: string[]`; los datos de experiencia viven en `data/experienceData.ts`.
+- No existe pantalla de carga, sección Skills ni imagen de perfil en About.
+- El CV es la fuente de verdad para contenido profesional y herramientas; no inventar experiencia, métricas ni tecnologías.
 
-Se usa el alias `@/` apuntando a la raíz del proyecto (configurado en `tsconfig.json`):
+## Sistema visual y accesibilidad
 
-```typescript
-import { workExperience } from "@/data/experienceData";
-import TitleSections from "@/subComponents/TitleSections";
-```
+- Tailwind es la única librería de estilos. Reutilizar `section-shell`, `panel`, `section-heading` y los tokens de `styles/globals.css`.
+- Dirección: Cosmic Editorial — fondo `#100022`, superficies violeta, cyan técnico y amarillo de énfasis.
+- Mantener la densidad actual de secciones: `py-10` en mobile y `md:py-14` en desktop. No duplicar márgenes verticales entre secciones sin un motivo de contenido.
+- Los títulos de sección no usan labels decorativos como `Signal / …`.
+- Todo control interactivo debe tener etiqueta accesible, `focus-visible` y soporte para `prefers-reduced-motion`.
+- La navegación móvil usa un drawer Obsidian glass. Cuando está abierto, el documento se bloquea con `body` fijo para evitar scroll de fondo; el drawer usa `100dvh` y es su propia región desplazable. Conservar cierre por overlay, Escape, botón y links internos.
+- La grilla de Experience no debe usar un fondo o borde de contenedor que produzca celdas vacías; cada card posee su propio borde y superficie.
 
----
+## Contenido y metadatos
 
-## Convenciones TypeScript
+- Hero: React, TypeScript, Node.js, NestJS y agentic development como propuesta principal. Santander y banking aparecen como evidencia dentro de Experience, no como posicionamiento principal.
+- About puede incluir: GitHub Copilot, Windsurf, Devin, Claude Code y Codex. No añadir Cursor sin una fuente actualizada que lo respalde.
+- Mantener título, description, Open Graph y Twitter de `pages/index.tsx` alineados con el Hero.
+- El email público único es `maticarlosarias@gmail.com`.
 
-- **Uso sencillo:** interfaces para datos y props; evitar generics complejos o tipos avanzados innecesarios.
-- **Tipos compartidos** viven en `types/index.ts`.
-- **Datos estáticos** en `data/` se tipan con las interfaces correspondientes.
-- **Componentes:** archivos `.tsx` con props tipadas via interface.
-- **Config de tooling:** `next.config.ts`, `tailwind.config.ts`, `postcss.config.mjs` y `eslint.config.mjs` (flat config de ESLint).
-
-### Interfaces principales
-
-Definidas en `types/index.ts`:
-
-- `Project`, `ProjectTechnology`, `ProjectLinks`
-- `Skill`
-- `WorkExperience`, `WorkSkill`
-- `ContactFormInputs`
-- `TitleSectionsProps`
-
----
-
-## Scripts disponibles
+## Comandos y entorno
 
 ```bash
-npm run dev      # Servidor de desarrollo (localhost:3000)
-npm run build    # Build de producción
-npm run start    # Servidor de producción
-npm run lint     # ESLint
+npm run dev
+npm run lint
+npx tsc --noEmit
+npm run build
 ```
 
----
+`npm run lint` usa la configuración flat en `eslint.config.mjs`; no usar `next lint`. La fuente Lato se carga con `next/font/google`, por lo que un build local necesita acceso a Google Fonts si la caché no está disponible.
 
-## Node.js
+Las credenciales de EmailJS se leen de `.env.local`. Usar `.env.local.example` como plantilla y nunca versionar valores reales.
 
-El proyecto requiere **Node.js 24+**. La versión está fijada en:
+## Skill de UI
 
-- `.nvmrc` → `24`
-- `package.json` → `"engines": { "node": ">=24.0.0" }`
-
----
-
-## Patrones del código
-
-1. **Animaciones:** Framer Motion + `react-intersection-observer` para animar al entrar en viewport.
-2. **Datos:** Arrays estáticos en `data/`, con IDs definidos en los propios datos.
-3. **Imágenes:** `next/image` para optimización; assets en `public/assets/`. La foto de About debe conservar una columna completa en mobile; usar spans de columna desde `md:` en adelante.
-4. **Estilos:** Tailwind utility classes; CSS Modules solo en `Loading.module.css`.
-5. **Navegación:** Links con hash (`#home`, `#about`, etc.) — SPA de una sola página.
-6. **Fuente global:** Lato se carga con `next/font/google`; la compilación necesita acceso a Google Fonts si la fuente no está disponible en caché.
-
----
-
-## Consideraciones para agentes
-
-- No migrar a App Router salvo que se pida explícitamente; el proyecto usa **Pages Router**.
-- Mantener el diseño y animaciones existentes al refactorizar.
-- Las credenciales públicas de EmailJS se leen desde `.env.local`; usar `.env.local.example` como plantilla y no versionar valores reales.
-- `npm run lint` usa ESLint 9 con flat config; no usar el comando eliminado `next lint`.
-- Al agregar nuevas secciones, seguir el patrón: componente en `components/`, datos en `data/`, tipos en `types/`.
-- Preferir cambios mínimos y enfocados; no sobre-ingenierizar.
+Antes de iniciar un refactor visual relevante, leer `.agents/skills/frontend-design/SKILL.md` completo y seguir su guía. La copia local proviene de [Anthropic Skills](https://github.com/anthropics/skills) y se distribuye bajo Apache-2.0; su licencia está junto a la skill.
