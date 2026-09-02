@@ -61,56 +61,36 @@ const Projects = () => {
                     {localizedProject.description}
                   </p>
 
-                  <div className="flex justify-center items-center flex-wrap gap-4 md:gap-2">
+                  <ul className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
-                      <div
+                      <li
                         key={tech.id}
-                        className="relative flex justify-between items-center gap-2 py-1 px-4 rounded-2xl shadow-sm shadow-indigo-300"
+                        className="border border-violet-300/25 px-3 py-1 text-sm text-slate-300"
                       >
-                        <Image
-                          src={tech.icon}
-                          alt={tech.title}
-                          height={16}
-                          width={16}
-                        />
-                        <span className="text-gray-200 text-xs uppercase">
-                          {tech.title}
-                        </span>
-                      </div>
+                        {tech.title}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  <div className="flex justify-center items-center flex-wrap gap-8 mt-4">
+                  <div className="mt-2 flex flex-wrap gap-3">
                     <a
                       href={project.links.github.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 border border-violet-300/25 px-4 py-2 text-sm font-bold text-slate-100 transition hover:border-sky-300 hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
                     >
-                      <div className="flex justify-between items-center gap-4 py-2 lg:py-1 px-4 lg:px-2 bg-gradient-to-r from-indigo-900/70 to-violet-700/90 shadow-md shadow-gray-300 rounded-lg">
-                        <div className="text-xl text-gray-200">
-                          <AiOutlineGithub />
-                        </div>
-
-                        <span className="text-gray-200 font-bold text-sm">
-                          {content.projects.githubLabel}
-                        </span>
-                      </div>
+                      <AiOutlineGithub className="text-lg" aria-hidden="true" />
+                      {content.projects.githubLabel}
                     </a>
 
                     <a
                       href={project.links.deploy.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 border border-yellow-300 bg-yellow-300 px-4 py-2 text-sm font-bold text-[#100022] transition hover:-translate-y-0.5 hover:bg-yellow-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#16052d]"
                     >
-                      <div className="flex justify-between items-center gap-4 py-2 lg:py-1 px-4 lg:px-2 bg-black/50 shadow-md shadow-gray-300 rounded-lg">
-                        <div className="text-xl text-gray-200">
-                          <TbPlanet />
-                        </div>
-
-                        <span className="text-gray-200 font-bold text-sm">
-                          {content.projects.deployLabel}
-                        </span>
-                      </div>
+                      <TbPlanet className="text-lg" aria-hidden="true" />
+                      {content.projects.deployLabel}
                     </a>
                   </div>
                 </div>

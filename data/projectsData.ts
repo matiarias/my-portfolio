@@ -10,25 +10,21 @@ export const projects: Project[] = [
       {
         id: 11,
         title: "Next.js",
-        icon: "/assets/skills/nextjs.png",
       },
 
       {
         id: 12,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 13,
         title: "Material UI",
-        icon: "/assets/skills/material-ui.png",
       },
 
       {
         id: 14,
         title: "Firebase",
-        icon: "/assets/skills/firebase.png",
       },
     ],
     links: {
@@ -49,25 +45,21 @@ export const projects: Project[] = [
       {
         id: 21,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 22,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 23,
         title: "Tailwind",
-        icon: "/assets/skills/tailwind.png",
       },
 
       {
         id: 24,
         title: "Firebase",
-        icon: "/assets/skills/firebase.png",
       },
     ],
     links: {
@@ -88,19 +80,16 @@ export const projects: Project[] = [
       {
         id: 31,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 32,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 33,
         title: "Tailwind",
-        icon: "/assets/skills/tailwind.png",
       },
     ],
     links: {
@@ -121,19 +110,16 @@ export const projects: Project[] = [
       {
         id: 41,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 42,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 43,
         title: "Tailwind",
-        icon: "/assets/skills/tailwind.png",
       },
     ],
     links: {
@@ -154,19 +140,16 @@ export const projects: Project[] = [
       {
         id: 51,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 52,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 53,
         title: "Tailwind",
-        icon: "/assets/skills/tailwind.png",
       },
     ],
     links: {
@@ -187,19 +170,16 @@ export const projects: Project[] = [
       {
         id: 61,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 62,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 63,
         title: "Tailwind",
-        icon: "/assets/skills/tailwind.png",
       },
     ],
     links: {
@@ -220,19 +200,16 @@ export const projects: Project[] = [
       {
         id: 71,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 72,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 73,
         title: "Tailwind",
-        icon: "/assets/skills/tailwind.png",
       },
     ],
     links: {
@@ -253,25 +230,21 @@ export const projects: Project[] = [
       {
         id: 81,
         title: "React.js",
-        icon: "/assets/skills/react.png",
       },
 
       {
         id: 82,
         title: "JavaScript",
-        icon: "/assets/skills/javascript.png",
       },
 
       {
         id: 83,
         title: "Bootstrap",
-        icon: "/assets/skills/bootstrap.png",
       },
 
       {
         id: 84,
         title: "CSS",
-        icon: "/assets/skills/css.png",
       },
     ],
     links: {

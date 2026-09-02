@@ -3,7 +3,6 @@ import type { SVGProps } from "react";
 export interface ProjectTechnology {
   id: number;
   title: string;
-  icon: string;
 }
 
 export interface ProjectLink {
