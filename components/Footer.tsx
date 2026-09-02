@@ -6,8 +6,8 @@ const Footer = () => {
   const content = usePortfolioContent();
 
   return (
-    <footer className="border-t border-violet-300/20 px-6 py-8 md:px-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-2 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+    <footer className="border-t border-violet-300/20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-8 text-sm text-slate-400 md:px-10 md:flex-row md:items-center md:justify-between">
         <span className="font-medium text-cosmic-cyan-300">Matias Carlos Arias / {content.footer.role}</span>
         <span>© {year}</span>
       </div>
