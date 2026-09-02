@@ -3,23 +3,28 @@ import { AiOutlineMail } from "react-icons/ai";
 import Link from "next/link";
 
 import MusicBar from "@/subComponents/MusicBar";
+import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 const Hero = () => {
+  const content = usePortfolioContent();
+
   return (
     <section
       id="home"
       className="relative min-h-screen w-full overflow-hidden"
     >
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-20 md:px-10">
-        <p className="eyebrow">Frontend Engineer</p>
-        <h1 className="mt-5 max-w-5xl text-5xl font-bold leading-[.95] tracking-tight text-slate-100 md:text-8xl">Specializing in <span className="text-sky-400">React, TypeScript,</span> Node.js and NestJS.</h1>
-        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-2xl">I build accessible, production-ready web products with agentic development workflows.</p>
+        <p className="eyebrow">{content.hero.eyebrow}</p>
+        <h1 className="mt-5 max-w-5xl text-5xl font-bold leading-[.95] tracking-tight text-slate-100 md:text-8xl">
+          {content.hero.titlePrefix}<span className="text-sky-400">{content.hero.titleEmphasis}</span>{content.hero.titleSuffix}
+        </h1>
+        <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-2xl">{content.hero.description}</p>
 
         <Link
           href="#contact"
           className="mt-9 w-fit rounded-full bg-yellow-300 px-6 py-3 font-bold text-[#100022] transition hover:-translate-y-0.5 hover:bg-yellow-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#100022]"
         >
-          Get in touch
+          {content.hero.contactCta}
         </Link>
 
         <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -27,7 +32,7 @@ const Hero = () => {
             href="https://www.linkedin.com/in/matiasarias27"
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Visit Matias Arias's LinkedIn profile"
+            aria-label={content.social.linkedin}
           >
             <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
               <BsLinkedin className=" text-white" />
@@ -38,7 +43,7 @@ const Hero = () => {
             href="https://github.com/matiarias"
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Visit Matias Arias's GitHub profile"
+            aria-label={content.social.github}
           >
             <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
               <BsGithub className=" text-white" />
@@ -47,7 +52,7 @@ const Hero = () => {
 
           <a
             href="mailto:maticarlosarias@gmail.com"
-            aria-label="Email Matias Arias"
+            aria-label={content.social.email}
           >
             <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
               <AiOutlineMail className=" text-white" />

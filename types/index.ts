@@ -17,8 +17,6 @@ export interface ProjectLinks {
 
 export interface Project {
   id: number;
-  title: string;
-  description: string;
   image: string;
   technologies: ProjectTechnology[];
   links: ProjectLinks;
@@ -38,10 +36,6 @@ export interface WorkSkill {
 export interface WorkExperience {
   id: number;
   company: string;
-  position: string;
-  startDate: string;
-  endDate: string;
-  highlights: string[];
   skills: WorkSkill[];
 }
 
@@ -51,4 +45,68 @@ export interface TitleSectionsProps {
 
 export interface SvgAlienProps extends SVGProps<SVGSVGElement> {
   fill?: string;
+}
+
+export type PortfolioLocale = "en" | "es";
+
+export interface PortfolioContent {
+  metadata: {
+    title: string;
+    description: string;
+    keywords: string;
+  };
+  navigation: {
+    primaryLabel: string;
+    mobileLabel: string;
+    openMenu: string;
+    closeMenu: string;
+    changeLanguage: string;
+    links: Array<{ href: string; label: string }>;
+  };
+  social: {
+    linkedin: string;
+    github: string;
+    email: string;
+  };
+  hero: {
+    eyebrow: string;
+    titlePrefix: string;
+    titleEmphasis: string;
+    titleSuffix: string;
+    description: string;
+    contactCta: string;
+  };
+  about: {
+    title: string;
+    description: string;
+    highlights: Array<{ title: string; description: string }>;
+  };
+  experience: {
+    title: string;
+    items: Record<number, {
+      position: string;
+      startDate: string;
+      endDate: string;
+      highlights: string[];
+    }>;
+  };
+  projects: {
+    title: string;
+    githubLabel: string;
+    deployLabel: string;
+    items: Record<number, { title: string; description: string }>;
+  };
+  contact: {
+    title: string;
+    email: string;
+    linkedin: string;
+  };
+  footer: {
+    role: string;
+  };
+  music: {
+    play: string;
+    pause: string;
+    error: string;
+  };
 }

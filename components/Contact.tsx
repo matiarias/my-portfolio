@@ -1,11 +1,14 @@
 import { BsEnvelope, BsLinkedin } from "react-icons/bs";
 
 import TitleSections from "@/subComponents/TitleSections";
+import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 const Contact = () => {
+  const content = usePortfolioContent();
+
   return (
     <section id="contact" className="section-shell">
-      <TitleSections title="Contact" />
+      <TitleSections title={content.contact.title} />
 
       <div className="panel mt-10 grid overflow-hidden md:grid-cols-2">
         <a
@@ -16,7 +19,7 @@ const Contact = () => {
             <BsEnvelope size={18} />
           </span>
           <span className="min-w-0">
-            <span className="block text-lg font-bold text-slate-100 transition group-hover:text-sky-200">Email</span>
+            <span className="block text-lg font-bold text-slate-100 transition group-hover:text-sky-200">{content.contact.email}</span>
             <span className="mt-1 block break-all text-sm text-slate-400">maticarlosarias@gmail.com</span>
           </span>
         </a>
@@ -31,7 +34,7 @@ const Contact = () => {
             <BsLinkedin size={18} />
           </span>
           <span>
-            <span className="block text-lg font-bold text-slate-100 transition group-hover:text-sky-200">LinkedIn</span>
+            <span className="block text-lg font-bold text-slate-100 transition group-hover:text-sky-200">{content.contact.linkedin}</span>
             <span className="mt-1 block text-sm text-slate-400">linkedin.com/in/matiasarias27</span>
           </span>
         </a>

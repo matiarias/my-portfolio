@@ -4,15 +4,6 @@ export const workExperience: WorkExperience[] = [
   {
     id: 1,
     company: "Santander Tecnología Argentina",
-    position: "Software Engineer",
-    startDate: "SEP 2023",
-    endDate: "JUN 2026",
-    highlights: [
-      "Built frontend and BFF functionality for Dólar MEP purchases through linked external accounts.",
-      "Developed accessible, production-ready interfaces for Market & Tenders in Home Banking.",
-      "Contributed frontend and BFF work to Voluntary Corporate Events for investment holdings.",
-      "Investigated and resolved production incidents using Kibana, Grafana and OpenShift.",
-    ],
     skills: [
       { id: 100, skillJob: "Next.js" },
       { id: 200, skillJob: "React.js" },
@@ -27,14 +18,6 @@ export const workExperience: WorkExperience[] = [
   {
     id: 2,
     company: "Santander Tecnología Argentina",
-    position: "Software Engineer",
-    startDate: "MAR 2023",
-    endDate: "SEP 2023",
-    highlights: [
-      "Refactored UI during the Home Banking Modernization initiative.",
-      "Developed transactional interfaces for USD purchase and sale flows.",
-      "Improved accessibility in investment modules following WCAG guidelines.",
-    ],
     skills: [
       { id: 1100, skillJob: "React.js" },
       { id: 1200, skillJob: "TypeScript" },
@@ -46,13 +29,6 @@ export const workExperience: WorkExperience[] = [
   {
     id: 3,
     company: "Nodos Hub",
-    position: "Frontend Developer Intern",
-    startDate: "AUG 2022",
-    endDate: "OCT 2022",
-    highlights: [
-      "Rebuilt the public landing page using React and JavaScript.",
-      "Implemented authentication form validation and state handling.",
-    ],
     skills: [
       { id: 2100, skillJob: "React.js" },
       { id: 2200, skillJob: "JavaScript" },

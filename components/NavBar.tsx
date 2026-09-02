@@ -3,12 +3,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
+import { usePortfolioContent } from "@/hooks/usePortfolioContent";
+import LanguageSwitcher from "@/subComponents/LanguageSwitcher";
 import OvniNavBar from "@/subComponents/OvniNavBar";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
   const [blurNav, setBlurNav] = useState(false);
   const restoreScrollPosition = useRef(true);
+  const content = usePortfolioContent();
 
   const closeNav = useCallback(() => {
     restoreScrollPosition.current = true;
@@ -81,18 +84,12 @@ const NavBar = () => {
     };
   }, [nav]);
 
-  const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
-  ];
+  const navLinks = content.navigation.links;
 
   return (
     <nav
       className={`fixed left-0 top-0 z-[100] h-16 w-full border-b transition ${blurNav ? "border-violet-300/20 bg-[#100022]/85 backdrop-blur-xl" : "border-transparent"}`}
-      aria-label="Primary navigation"
+      aria-label={content.navigation.primaryLabel}
     >
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 md:px-10">
         <div className="h-14 w-14">
@@ -112,16 +109,26 @@ const NavBar = () => {
           ))}
         </ul>
 
-        <button
-          type="button"
-          onClick={toggleNav}
-          className="rounded-full p-2 text-slate-200 transition hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 md:hidden"
-          aria-label={nav ? "Close navigation menu" : "Open navigation menu"}
-          aria-controls="mobile-navigation"
-          aria-expanded={nav}
-        >
-          <AiOutlineMenu size={28} />
-        </button>
+        <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
+
+          <div className="md:hidden">
+            <LanguageSwitcher />
+          </div>
+
+          <button
+            type="button"
+            onClick={toggleNav}
+            className="rounded-full p-2 text-slate-200 transition hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 md:hidden"
+            aria-label={nav ? content.navigation.closeMenu : content.navigation.openMenu}
+            aria-controls="mobile-navigation"
+            aria-expanded={nav}
+          >
+            <AiOutlineMenu size={28} />
+          </button>
+        </div>
       </div>
 
       {nav && (
@@ -133,7 +140,7 @@ const NavBar = () => {
             id="mobile-navigation"
             role="dialog"
             aria-modal="true"
-            aria-label="Mobile navigation"
+            aria-label={content.navigation.mobileLabel}
             className="flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-y-auto border-r border-violet-300/20 bg-[#100022]/95 px-5 backdrop-blur-xl"
             onClick={(event) => event.stopPropagation()}
           >
@@ -146,7 +153,7 @@ const NavBar = () => {
                 type="button"
                 onClick={closeNav}
                 className="rounded-full border border-violet-300/20 p-2 text-slate-200 transition hover:border-sky-300/60 hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-                aria-label="Close navigation menu"
+                aria-label={content.navigation.closeMenu}
               >
                 <AiOutlineClose size={24} />
               </button>
@@ -181,7 +188,7 @@ const NavBar = () => {
                 href="https://www.linkedin.com/in/matiasarias27"
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label="Visit Matias Arias's LinkedIn profile"
+                aria-label={content.social.linkedin}
                 className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
                 <BsLinkedin size={20} />
@@ -191,7 +198,7 @@ const NavBar = () => {
                 href="https://github.com/matiarias"
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label="Visit Matias Arias's GitHub profile"
+                aria-label={content.social.github}
                 className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
                 <BsGithub size={20} />
@@ -199,7 +206,7 @@ const NavBar = () => {
 
               <a
                 href="mailto:maticarlosarias@gmail.com"
-                aria-label="Email Matias Arias"
+                aria-label={content.social.email}
                 className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
               >
                 <AiOutlineMail size={20} />

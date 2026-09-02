@@ -31,13 +31,16 @@ pages/                 Rutas y metadatos SEO
 components/            Secciones principales
 subComponents/         Componentes reutilizables
 data/                  Datos estáticos tipados
+hooks/                 Hooks compartidos, incluido acceso al contenido localizado
 types/                 Interfaces compartidas
 styles/globals.css     Tailwind global y componentes visuales comunes
 .agents/skills/        Skills locales compartidas por agentes
 ```
 
 - Usar el alias `@/` para imports internos.
-- Mantener los tipos simples. `WorkExperience` incluye `highlights: string[]`; los datos de experiencia viven en `data/experienceData.ts`.
+- Mantener los tipos simples. Los datos estructurales de experiencia viven en `data/experienceData.ts`; sus roles, fechas y highlights localizados están en `data/portfolioContent.ts`.
+- El contenido visible está en `data/portfolioContent.ts`, con locales `en` y `es`; los datos estructurales compartidos (assets, links y tecnologías) se mantienen en `data/`.
+- No usar Zustand para el idioma. `usePortfolioContent` obtiene el idioma actual desde el router de Next.js.
 - No existe pantalla de carga, sección Skills ni imagen de perfil en About.
 - El CV es la fuente de verdad para contenido profesional y herramientas; no inventar experiencia, métricas ni tecnologías.
 
@@ -54,6 +57,8 @@ styles/globals.css     Tailwind global y componentes visuales comunes
 ## Contenido y metadatos
 
 - Hero: React, TypeScript, Node.js, NestJS y agentic development como propuesta principal. Santander y banking aparecen como evidencia dentro de Experience, no como posicionamiento principal.
+- El portfolio usa i18n nativo del Pages Router: inglés en `/` y español en `/es`. Mantener los metadatos, `html[lang]`, canonical y alternates en ambos idiomas.
+- El selector `EN | ES` se ubica en el extremo derecho del navbar y debe preservar la sección hash actual al cambiar idioma.
 - About puede incluir: GitHub Copilot, Windsurf, Devin, Claude Code y Codex. No añadir Cursor sin una fuente actualizada que lo respalde.
 - Mantener título, description, Open Graph y Twitter de `pages/index.tsx` alineados con el Hero.
 - El email público único es `maticarlosarias@gmail.com`.

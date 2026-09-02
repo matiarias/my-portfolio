@@ -9,6 +9,7 @@ import { projects } from "@/data/projectsData";
 import TitleSections from "@/subComponents/TitleSections";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 // Fix #1: Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
 // Fix #12: Imports estandarizados con alias @/
@@ -17,10 +18,11 @@ const Projects = () => {
     visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.8 } },
     hidden: { opacity: 0, filter: "blur(15px)" },
   });
+  const content = usePortfolioContent();
 
   return (
     <section id="projects" className="section-shell">
-      <TitleSections title="Projects" />
+      <TitleSections title={content.projects.title} />
 
       <div className="mt-10">
 
@@ -29,16 +31,19 @@ const Projects = () => {
           animate={controls}
           className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
         >
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="panel overflow-hidden transition hover:-translate-y-1 hover:border-sky-300/40"
-            >
+          {projects.map((project) => {
+            const localizedProject = content.projects.items[project.id];
+
+            return (
+              <div
+                key={project.id}
+                className="panel overflow-hidden transition hover:-translate-y-1 hover:border-sky-300/40"
+              >
               <div className="relative h-[200px] w-full">
                 <Image
                   className="object-cover object-center"
                   src={project.image}
-                  alt={project.title}
+                  alt={localizedProject.title}
                   fill
                   sizes="(max-width: 768px) 100vw,
                          (max-width: 1200px) 50vw,
@@ -49,11 +54,11 @@ const Projects = () => {
               <div className="w-full flex flex-col p-6">
                 <div className="flex flex-col justify-center gap-4">
                   <h4 className="text-xl font-bold text-yellow-300">
-                    {project.title}
+                    {localizedProject.title}
                   </h4>
 
                   <p className="text-sm leading-relaxed text-slate-300">
-                    {project.description}
+                    {localizedProject.description}
                   </p>
 
                   <div className="flex justify-center items-center flex-wrap gap-4 md:gap-2">
@@ -87,7 +92,7 @@ const Projects = () => {
                         </div>
 
                         <span className="text-gray-200 font-bold text-sm">
-                          Github
+                          {content.projects.githubLabel}
                         </span>
                       </div>
                     </a>
@@ -103,15 +108,16 @@ const Projects = () => {
                         </div>
 
                         <span className="text-gray-200 font-bold text-sm">
-                          Deploy
+                          {content.projects.deployLabel}
                         </span>
                       </div>
                     </a>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

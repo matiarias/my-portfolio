@@ -1,6 +1,6 @@
 # Matias Arias — Portfolio
 
-Personal portfolio for a Frontend Engineer specializing in React, TypeScript, Node.js and NestJS. It is a content-led, single-page experience built around a cosmic editorial visual system.
+Personal bilingual portfolio for a Frontend Engineer specializing in React, TypeScript, Node.js and NestJS. It is a content-led, single-page experience built around a cosmic editorial visual system.
 
 **Live site:** [matiasarias.vercel.app](https://matiasarias.vercel.app/)
 
@@ -33,6 +33,13 @@ npm run build
 
 The dev server runs on `http://localhost:3000`. `npm run build` requires access to Google Fonts when Lato is not already cached, because it is loaded through `next/font/google`.
 
+## Languages and SEO
+
+- English is the default language at `/`; Spanish is available at `/es`.
+- The `EN | ES` navbar control changes the route while preserving the current section.
+- Localized copy and metadata live in `data/portfolioContent.ts`; shared project assets, links and technology data remain in `data/`.
+- The application uses the Pages Router's native i18n routing. No global client state library is required for language selection.
+
 ## Design and accessibility
 
 - Tailwind is the sole styling system. The global design tokens live in `styles/globals.css`.
@@ -49,6 +56,7 @@ pages/                 Next.js Pages Router entry points
 components/            Page sections
 subComponents/         Reusable UI components
 data/                  Typed static portfolio data
+hooks/                 Shared hooks, including localized content access
 types/                 Shared TypeScript interfaces
 styles/                Tailwind global styles
 .agents/skills/frontend-design Local UI-design guidance and Apache-2.0 license

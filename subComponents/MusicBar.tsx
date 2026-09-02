@@ -1,12 +1,14 @@
 import { useRef, useState } from "react";
 
 import SvgAlien from "@/subComponents/SvgComponent";
+import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 // Fix #4: Un solo estado `isPlaying` en lugar de dos estados siempre sincronizados
 const MusicBar = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackError, setPlaybackError] = useState("");
   const refMusic = useRef<HTMLAudioElement>(null);
+  const content = usePortfolioContent();
 
   const handleClick = async () => {
     const audio = refMusic.current;
@@ -21,7 +23,7 @@ const MusicBar = () => {
         await audio.play();
       } catch {
         setIsPlaying(false);
-        setPlaybackError("Music could not be played.");
+        setPlaybackError(content.music.error);
       }
     }
   };
@@ -32,7 +34,7 @@ const MusicBar = () => {
         type="button"
         onClick={handleClick}
         className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-sky-300/30 bg-violet-950/60 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-        aria-label={isPlaying ? "Pause background music" : "Play background music"}
+        aria-label={isPlaying ? content.music.pause : content.music.play}
         aria-pressed={isPlaying}
         aria-describedby={playbackError ? "music-status" : undefined}
         title={playbackError || undefined}
@@ -50,7 +52,7 @@ const MusicBar = () => {
           src="/assets/audio/dreamkid-fugitive.mp3"
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          onError={() => setPlaybackError("Music could not be played.")}
+          onError={() => setPlaybackError(content.music.error)}
         />
       </button>
 
