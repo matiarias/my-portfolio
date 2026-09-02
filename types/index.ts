@@ -77,7 +77,7 @@ export interface PortfolioContent {
   };
   about: {
     title: string;
-    description: string;
+    description: string[];
     highlights: Array<{ title: string; description: string }>;
   };
   experience: {

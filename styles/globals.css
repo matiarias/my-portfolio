@@ -2,28 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  scroll-behavior: smooth !important;
+html {
+  scroll-behavior: smooth;
 }
 
-body { background: #100022; color: #eef2ff; }
+body { @apply bg-cosmic-space text-cosmic-text; }
 
 @layer components {
   .section-shell { @apply w-full max-w-6xl mx-auto px-6 py-10 md:px-10 md:py-14; }
-  .eyebrow { @apply text-xs font-bold uppercase tracking-[.22em] text-sky-400; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[.22em] text-cosmic-cyan-400; }
   .section-heading { @apply mb-8 md:mb-10; }
   .section-heading h2 { @apply text-4xl font-bold tracking-tight text-slate-100 md:text-6xl; }
-  .section-heading div { @apply mt-5 h-px w-full bg-gradient-to-r from-yellow-400 via-violet-500/60 to-transparent; }
+  .section-heading div { @apply mt-5 h-px w-full bg-gradient-to-r from-cosmic-signal-400 via-violet-500/60 to-transparent; }
   .editorial-copy { @apply max-w-5xl; }
-  .lede { @apply mt-5 text-2xl font-light leading-relaxed text-slate-200 md:text-4xl; }
+  .lede { @apply text-2xl font-light leading-relaxed text-slate-200 md:text-4xl; }
   .signal-grid { @apply mt-12 grid grid-cols-2 gap-px overflow-hidden border border-violet-400/30 bg-violet-400/30 md:grid-cols-4; }
-  .signal-grid li { @apply bg-[#16052d] p-5; }
-  .signal-grid strong { @apply block text-lg text-yellow-300; }
+  .signal-grid li { @apply bg-cosmic-surface p-5; }
+  .signal-grid strong { @apply block text-lg text-cosmic-signal-300; }
   .signal-grid span { @apply mt-1 block text-sm text-slate-400; }
   .panel { @apply border border-violet-300/20 bg-violet-950/30 backdrop-blur-sm; }
 }
 
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
 
 @layer utilities {
   .nav-items {
@@ -31,7 +34,7 @@ body { background: #100022; color: #eef2ff; }
   }
 
   .nav-items::after {
-    @apply absolute content-[""] h-[3px] w-0 left-0 -bottom-[5px] bg-yellow-400 rounded-lg duration-300;
+    @apply absolute content-[""] h-[3px] w-0 left-0 -bottom-[5px] bg-cosmic-signal-400 rounded-lg duration-300;
   }
 
   .nav-items:hover::after {

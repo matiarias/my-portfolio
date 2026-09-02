@@ -33,7 +33,7 @@ const MusicBar = () => {
       <button
         type="button"
         onClick={handleClick}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-sky-300/30 bg-violet-950/60 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 text-slate-100 transition hover:-translate-y-0.5 hover:border-cosmic-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300"
         aria-label={isPlaying ? content.music.pause : content.music.play}
         aria-pressed={isPlaying}
         aria-describedby={playbackError ? "music-status" : undefined}

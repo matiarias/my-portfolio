@@ -8,17 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
-      },
-      keyframes: {
-        disco: {
-          "0%": { transform: "translateY(-50%) rotate(0deg)" },
-          "100%": { transform: "translateY(-50%) rotate(360deg)" },
+      colors: {
+        cosmic: {
+          space: "#100022",
+          surface: "#16052d",
+          text: "#eef2ff",
+          cyan: {
+            200: "#bae6fd",
+            300: "#7dd3fc",
+            400: "#38bdf8",
+          },
+          signal: {
+            200: "#fef08a",
+            300: "#fde047",
+            400: "#facc15",
+          },
         },
-      },
-      animation: {
-        disco: "disco 1.5s linear infinite",
       },
     },
   },

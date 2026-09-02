@@ -15,7 +15,11 @@ const About = () => {
       <TitleSections title={content.about.title} />
 
       <motion.div ref={ref} animate={controlsText} className="editorial-copy">
-        <p className="lede">{content.about.description}</p>
+        <div className="mt-5 space-y-5">
+          {content.about.description.map((paragraph) => (
+            <p key={paragraph} className="lede">{paragraph}</p>
+          ))}
+        </div>
         <ul className="signal-grid">
           {content.about.highlights.map((highlight) => (
             <li key={highlight.title}>

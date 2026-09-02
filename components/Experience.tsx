@@ -35,13 +35,13 @@ const Experience = () => {
             return (
               <div
                 key={work.id}
-                className="flex flex-col gap-5 border border-violet-300/20 bg-[#16052d] p-7 md:p-9"
+                className="flex flex-col gap-5 border border-violet-300/20 bg-cosmic-surface p-7 md:p-9"
               >
-                <h3 className="text-2xl font-bold text-yellow-300">
+                <h3 className="text-2xl font-bold text-cosmic-signal-300">
                   {work.company}
                 </h3>
 
-                <h4 className="text-xl font-medium text-sky-300">
+                <h4 className="text-xl font-medium text-cosmic-cyan-300">
                   {localizedWork.position}
                 </h4>
 
@@ -49,7 +49,7 @@ const Experience = () => {
                   <span>{localizedWork.startDate}</span> - <span>{localizedWork.endDate}</span>
                 </p>
 
-                <ul className="list-disc space-y-2 pl-5 text-slate-300 marker:text-sky-300">
+                <ul className="list-disc space-y-2 pl-5 text-slate-300 marker:text-cosmic-cyan-300">
                   {localizedWork.highlights.map((highlight) => (
                     <li key={highlight}>{highlight}</li>
                   ))}

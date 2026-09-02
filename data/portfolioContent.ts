@@ -36,7 +36,11 @@ export const portfolioContent: Record<PortfolioLocale, PortfolioContent> = {
     },
     about: {
       title: "About Me",
-      description: "Frontend Engineer with 3+ years at Santander Tecnología Argentina, building production-critical banking and investment features using React and TypeScript. Experienced in high-volume transactional systems, BFF development with Node.js/NestJS, and production incident resolution. I integrate agentic workflows with GitHub Copilot, Windsurf, Devin, Claude Code and Codex into my daily development cycle.",
+      description: [
+        "Frontend Engineer with 3+ years at Santander Tecnología Argentina, building production-critical banking and investment features with React and TypeScript.",
+        "Experienced in high-volume transactional systems, BFF development with Node.js/NestJS, and production incident resolution.",
+        "I integrate agentic workflows with GitHub Copilot, Windsurf, Devin, Claude Code and Codex into my daily development cycle.",
+      ],
       highlights: [
         { title: "3+ years", description: "production engineering" },
         { title: "Agentic workflows", description: "Copilot · Windsurf · Devin · Claude Code · Codex" },
@@ -132,7 +136,11 @@ export const portfolioContent: Record<PortfolioLocale, PortfolioContent> = {
     },
     about: {
       title: "Sobre mí",
-      description: "Frontend Developer con más de 3 años de experiencia en Santander Tecnología Argentina, desarrollando funcionalidades críticas para productos bancarios y de inversión con React y TypeScript. Tengo experiencia en sistemas transaccionales de alto volumen, desarrollo BFF con Node.js y NestJS, y resolución de incidentes en producción. Integro flujos de trabajo asistidos por agentes con GitHub Copilot, Windsurf, Devin, Claude Code y Codex en mi ciclo diario de desarrollo.",
+      description: [
+        "Frontend Developer con más de 3 años de experiencia en Santander Tecnología Argentina, desarrollando funcionalidades críticas para productos bancarios y de inversión con React y TypeScript.",
+        "Tengo experiencia en sistemas transaccionales de alto volumen, desarrollo BFF con Node.js y NestJS, y resolución de incidentes en producción.",
+        "Integro flujos de trabajo asistidos por agentes con GitHub Copilot, Windsurf, Devin, Claude Code y Codex en mi ciclo diario de desarrollo.",
+      ],
       highlights: [
         { title: "Más de 3 años", description: "productos en producción" },
         { title: "Flujos de trabajo con agentes", description: "Copilot · Windsurf · Devin · Claude Code · Codex" },

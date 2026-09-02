@@ -16,13 +16,13 @@ const Hero = () => {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-20 md:px-10">
         <p className="eyebrow">{content.hero.eyebrow}</p>
         <h1 className="mt-5 max-w-5xl text-5xl font-bold leading-[.95] tracking-tight text-slate-100 md:text-8xl">
-          {content.hero.titlePrefix}<span className="text-sky-400">{content.hero.titleEmphasis}</span>{content.hero.titleSuffix}
+          {content.hero.titlePrefix}<span className="text-cosmic-cyan-400">{content.hero.titleEmphasis}</span>{content.hero.titleSuffix}
         </h1>
         <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-2xl">{content.hero.description}</p>
 
         <Link
           href="#contact"
-          className="mt-9 w-fit rounded-full bg-yellow-300 px-6 py-3 font-bold text-[#100022] transition hover:-translate-y-0.5 hover:bg-yellow-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#100022]"
+          className="mt-9 w-fit rounded-full bg-cosmic-signal-300 px-6 py-3 font-bold text-cosmic-space transition hover:-translate-y-0.5 hover:bg-cosmic-signal-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-cosmic-space"
         >
           {content.hero.contactCta}
         </Link>
@@ -34,7 +34,7 @@ const Hero = () => {
             rel="noreferrer noopener"
             aria-label={content.social.linkedin}
           >
-            <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
+            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-cosmic-cyan-300">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -45,7 +45,7 @@ const Hero = () => {
             rel="noreferrer noopener"
             aria-label={content.social.github}
           >
-            <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
+            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-cosmic-cyan-300">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -54,7 +54,7 @@ const Hero = () => {
             href="mailto:maticarlosarias@gmail.com"
             aria-label={content.social.email}
           >
-            <div className="rounded-full border border-sky-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-sky-300">
+            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-cosmic-cyan-300">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>

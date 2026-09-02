@@ -37,7 +37,7 @@ const Projects = () => {
             return (
               <div
                 key={project.id}
-                className="panel overflow-hidden transition hover:-translate-y-1 hover:border-sky-300/40"
+                className="panel overflow-hidden transition hover:-translate-y-1 hover:border-cosmic-cyan-300/40"
               >
               <div className="relative h-[200px] w-full">
                 <Image
@@ -53,7 +53,7 @@ const Projects = () => {
 
               <div className="w-full flex flex-col p-6">
                 <div className="flex flex-col justify-center gap-4">
-                  <h4 className="text-xl font-bold text-yellow-300">
+                  <h4 className="text-xl font-bold text-cosmic-signal-300">
                     {localizedProject.title}
                   </h4>
 
@@ -77,7 +77,7 @@ const Projects = () => {
                       href={project.links.github.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 border border-violet-300/25 px-4 py-2 text-sm font-bold text-slate-100 transition hover:border-sky-300 hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+                      className="inline-flex items-center gap-2 border border-violet-300/25 px-4 py-2 text-sm font-bold text-slate-100 transition hover:border-cosmic-cyan-300 hover:bg-cosmic-cyan-300/10 hover:text-cosmic-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300"
                     >
                       <AiOutlineGithub className="text-lg" aria-hidden="true" />
                       {content.projects.githubLabel}
@@ -87,7 +87,7 @@ const Projects = () => {
                       href={project.links.deploy.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 border border-yellow-300 bg-yellow-300 px-4 py-2 text-sm font-bold text-[#100022] transition hover:-translate-y-0.5 hover:bg-yellow-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#16052d]"
+                      className="inline-flex items-center gap-2 border border-cosmic-signal-300 bg-cosmic-signal-300 px-4 py-2 text-sm font-bold text-cosmic-space transition hover:-translate-y-0.5 hover:bg-cosmic-signal-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-cosmic-surface"
                     >
                       <TbPlanet className="text-lg" aria-hidden="true" />
                       {content.projects.deployLabel}
