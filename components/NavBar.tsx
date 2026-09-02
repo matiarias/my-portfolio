@@ -137,7 +137,7 @@ const NavBar = () => {
             className="flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-y-auto border-r border-violet-300/20 bg-[#100022]/95 px-5 backdrop-blur-xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex h-20 items-center justify-between border-b border-violet-300/15">
+            <div className="relative flex h-20 items-center justify-between">
               <div className="h-14 w-14">
                 <OvniNavBar />
               </div>
@@ -150,6 +150,11 @@ const NavBar = () => {
               >
                 <AiOutlineClose size={24} />
               </button>
+
+              <span
+                aria-hidden="true"
+                className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-yellow-400 via-violet-500/60 to-transparent"
+              />
             </div>
 
             <ul className="mt-8 flex flex-col gap-2">
@@ -158,7 +163,7 @@ const NavBar = () => {
                   <Link
                     href={href}
                     onClick={handleNavigation}
-                    className="block rounded-lg px-4 py-3 text-lg uppercase tracking-[0.08em] text-slate-200 transition hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+                    className="block border-l-2 border-transparent rounded-r-lg px-4 py-3 text-lg uppercase tracking-[0.08em] text-slate-200 transition hover:border-sky-300 hover:bg-sky-300/10 hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
                   >
                     {label}
                   </Link>
@@ -166,7 +171,12 @@ const NavBar = () => {
               ))}
             </ul>
 
-            <div className="mt-auto flex items-center gap-3 border-t border-violet-300/15 py-8">
+            <div
+              aria-hidden="true"
+              className="mt-auto h-px w-full bg-gradient-to-r from-yellow-400 via-violet-500/60 to-transparent"
+            />
+
+            <div className="flex items-center gap-3 py-8">
               <a
                 href="https://www.linkedin.com/in/matiasarias27"
                 target="_blank"

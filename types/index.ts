@@ -45,13 +45,6 @@ export interface WorkExperience {
   skills: WorkSkill[];
 }
 
-export interface ContactFormInputs {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
 export interface TitleSectionsProps {
   title: string;
 }

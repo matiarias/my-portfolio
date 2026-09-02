@@ -10,14 +10,13 @@ Personal portfolio for a Frontend Engineer specializing in React, TypeScript, No
 - **About:** professional profile, engineering highlights and agentic-development tools.
 - **Experience:** verified roles, responsibilities and technology tags.
 - **Projects:** selected work with GitHub and deployment links.
-- **Contact:** direct email link and EmailJS form.
+- **Contact:** direct email CTA and LinkedIn link.
 
 ## Stack
 
 - Next.js 16 (Pages Router), React 19 and TypeScript 5
 - Tailwind CSS 3, Framer Motion and `react-intersection-observer`
-- `@tsparticles/react`, `lottie-react`, `react-icons` and `react-toastify`
-- EmailJS for the contact form
+- `@tsparticles/react`, `lottie-react` and `react-icons`
 - ESLint 9 with `eslint-config-next` 16
 
 ## Local development
@@ -33,18 +32,6 @@ npm run build
 ```
 
 The dev server runs on `http://localhost:3000`. `npm run build` requires access to Google Fonts when Lato is not already cached, because it is loaded through `next/font/google`.
-
-## Environment variables
-
-Copy `.env.local.example` to `.env.local` and configure EmailJS:
-
-```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxxxxxx
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxxxxxx
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxx
-```
-
-Never commit `.env.local`. Configure the corresponding allowed origins in EmailJS because these values are public browser configuration.
 
 ## Design and accessibility
 

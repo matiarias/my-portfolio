@@ -18,7 +18,7 @@ Portfolio personal de una sola página de **Matias Arias**, Frontend Engineer. U
 | Estilos | Tailwind CSS 3 |
 | Animación | Framer Motion, `react-intersection-observer` |
 | Partículas | `@tsparticles/react` |
-| Contacto | EmailJS y react-toastify |
+| Contacto | Email directo y LinkedIn |
 | Iconos / Lottie | react-icons y lottie-react |
 | Calidad | ESLint 9 + eslint-config-next 16 |
 
@@ -68,8 +68,6 @@ npm run build
 ```
 
 `npm run lint` usa la configuración flat en `eslint.config.mjs`; no usar `next lint`. La fuente Lato se carga con `next/font/google`, por lo que un build local necesita acceso a Google Fonts si la caché no está disponible.
-
-Las credenciales de EmailJS se leen de `.env.local`. Usar `.env.local.example` como plantilla y nunca versionar valores reales.
 
 ## Skill de UI
 

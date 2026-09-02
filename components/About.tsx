@@ -13,7 +13,6 @@ const About = () => {
       <TitleSections title="About Me" />
 
       <motion.div ref={ref} animate={controlsText} className="editorial-copy">
-        <p className="eyebrow">Profile / 2026</p>
         <p className="lede">
               Frontend Engineer with 3+ years at Santander Tecnología Argentina,
               building production-critical banking and investment features using
