@@ -11,24 +11,16 @@ import type { WorkExperience } from "@/types";
 const orderedWorkExperience: WorkExperience[] = workExperience;
 
 const Experience = () => {
-  const { ref: experienceRef, controls } = useScrollAnimation({
-    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.8 } },
-    hidden: { opacity: 0, filter: "blur(15px)" },
-  });
+  const { ref, controls, initial } = useScrollAnimation();
   const content = usePortfolioContent();
 
   return (
-    <section id="experience" className="section-shell">
+    <motion.section id="experience" ref={ref} initial={initial} animate={controls} className="section-shell">
       <TitleSections title={content.experience.title} />
 
       <div className="mt-10">
 
-        {/* Fix #5: ref en el contenedor, no en cada card individual */}
-        <motion.div
-          ref={experienceRef}
-          animate={controls}
-          className="grid grid-cols-1 gap-4 md:grid-cols-2"
-        >
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {orderedWorkExperience.map((work) => {
             const localizedWork = content.experience.items[work.id];
 
@@ -68,9 +60,9 @@ const Experience = () => {
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

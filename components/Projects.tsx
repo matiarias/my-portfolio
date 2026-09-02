@@ -14,23 +14,16 @@ import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 // Fix #1: Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
 // Fix #12: Imports estandarizados con alias @/
 const Projects = () => {
-  const { ref: projectsRef, controls } = useScrollAnimation({
-    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.8 } },
-    hidden: { opacity: 0, filter: "blur(15px)" },
-  });
+  const { ref, controls, initial } = useScrollAnimation();
   const content = usePortfolioContent();
 
   return (
-    <section id="projects" className="section-shell">
+    <motion.section id="projects" ref={ref} initial={initial} animate={controls} className="section-shell">
       <TitleSections title={content.projects.title} />
 
       <div className="mt-10">
 
-        <motion.div
-          ref={projectsRef}
-          animate={controls}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
-        >
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => {
             const localizedProject = content.projects.items[project.id];
 
@@ -98,9 +91,9 @@ const Projects = () => {
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
 import TitleSections from "@/subComponents/TitleSections";
 
-import { useScrollAnimation, SLIDE_FROM_LEFT } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 // Fix #1: Usa el hook centralizado en lugar de duplicar useInView + useAnimation + useEffect
 // Fix #12: Imports estandarizados con alias @/
 const About = () => {
-  const { ref, controls: controlsText } = useScrollAnimation(SLIDE_FROM_LEFT);
+  const { ref, controls, initial } = useScrollAnimation();
   const content = usePortfolioContent();
 
   return (
-    <section id="about" className="section-shell">
+    <motion.section id="about" ref={ref} initial={initial} animate={controls} className="section-shell">
       <TitleSections title={content.about.title} />
 
-      <motion.div ref={ref} animate={controlsText} className="editorial-copy">
+      <div className="editorial-copy">
         <div className="mt-5 space-y-5">
           {content.about.description.map((paragraph) => (
             <p key={paragraph} className="lede">{paragraph}</p>
@@ -28,8 +28,8 @@ const About = () => {
             </li>
           ))}
         </ul>
-      </motion.div>
-    </section>
+      </div>
+    </motion.section>
   );
 };
 

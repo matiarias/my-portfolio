@@ -1,13 +1,16 @@
+import { motion } from "framer-motion";
 import { BsEnvelope, BsLinkedin } from "react-icons/bs";
 
 import TitleSections from "@/subComponents/TitleSections";
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
   const content = usePortfolioContent();
+  const { ref, controls, initial } = useScrollAnimation();
 
   return (
-    <section id="contact" className="section-shell">
+    <motion.section id="contact" ref={ref} initial={initial} animate={controls} className="section-shell">
       <TitleSections title={content.contact.title} />
 
       <div className="panel mt-10 grid overflow-hidden md:grid-cols-2">
@@ -39,7 +42,7 @@ const Contact = () => {
           </span>
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
