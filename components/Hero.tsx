@@ -22,7 +22,7 @@ const Hero = () => {
           Get in touch
         </Link>
 
-        <div className="mt-8 flex items-center gap-5">
+        <div className="mt-8 flex flex-wrap items-center gap-4">
           <a
             href="https://www.linkedin.com/in/matiasarias27"
             target="_blank"
@@ -53,10 +53,10 @@ const Hero = () => {
               <AiOutlineMail className=" text-white" />
             </div>
           </a>
+
+          <MusicBar />
         </div>
       </div>
-
-      <MusicBar />
     </section>
   );
 };

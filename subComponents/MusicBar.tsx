@@ -27,17 +27,21 @@ const MusicBar = () => {
   };
 
   return (
-    <div className="absolute right-[30px] top-[100px]">
+    <div className="relative shrink-0">
       <button
         type="button"
         onClick={handleClick}
-        className="rounded-full p-2.5 shadow-lg shadow-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-sky-300/30 bg-violet-950/60 text-slate-100 transition hover:-translate-y-0.5 hover:border-sky-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
         aria-label={isPlaying ? "Pause background music" : "Play background music"}
         aria-pressed={isPlaying}
         aria-describedby={playbackError ? "music-status" : undefined}
         title={playbackError || undefined}
       >
-        <SvgAlien fill={isPlaying ? "#00af10" : "rgb(229,231,235)"} />
+        <SvgAlien
+          width={24}
+          height={24}
+          fill={isPlaying ? "#86efac" : "rgb(226,232,240)"}
+        />
 
         <audio
           ref={refMusic}
@@ -50,7 +54,7 @@ const MusicBar = () => {
         />
       </button>
 
-      <span id="music-status" role="status" aria-live="polite" className={playbackError ? "absolute right-0 top-full mt-2 w-max rounded bg-violet-950/95 px-3 py-2 text-xs text-slate-100" : "sr-only"}>
+      <span id="music-status" role="status" aria-live="polite" className={playbackError ? "absolute bottom-full left-0 mb-2 w-max rounded bg-violet-950/95 px-3 py-2 text-xs text-slate-100" : "sr-only"}>
         {playbackError}
       </span>
     </div>
