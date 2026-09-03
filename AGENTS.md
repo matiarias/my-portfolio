@@ -19,7 +19,7 @@ Portfolio personal de una sola página de **Matias Arias**, Frontend Engineer. U
 | Animación | Framer Motion, `react-intersection-observer` |
 | Partículas | `@tsparticles/react` |
 | Contacto | Email directo y LinkedIn |
-| Iconos / Lottie | react-icons y lottie-react |
+| Iconos | react-icons |
 | Calidad | ESLint 9 + eslint-config-next 16 |
 
 No migrar a App Router salvo pedido explícito. No incorporar librerías de UI nuevas sin necesidad.

@@ -5,7 +5,6 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 import LanguageSwitcher from "@/subComponents/LanguageSwitcher";
-import OvniNavBar from "@/subComponents/OvniNavBar";
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
@@ -91,11 +90,7 @@ const NavBar = () => {
       className={`fixed left-0 top-0 z-[100] h-16 w-full border-b transition ${blurNav ? "border-violet-300/20 bg-cosmic-space/85 backdrop-blur-xl" : "border-transparent"}`}
       aria-label={content.navigation.primaryLabel}
     >
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 md:px-10">
-        <div className="h-14 w-14">
-          <OvniNavBar />
-        </div>
-
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-end gap-6 px-5 md:px-10">
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
@@ -144,11 +139,7 @@ const NavBar = () => {
             className="flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-y-auto border-r border-violet-300/20 bg-cosmic-space/95 px-5 backdrop-blur-xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="relative flex h-20 items-center justify-between">
-              <div className="h-14 w-14">
-                <OvniNavBar />
-              </div>
-
+            <div className="relative flex h-20 items-center justify-end">
               <button
                 type="button"
                 onClick={closeNav}

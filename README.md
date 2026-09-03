@@ -16,7 +16,7 @@ Personal bilingual portfolio for a Frontend Engineer specializing in React, Type
 
 - Next.js 16 (Pages Router), React 19 and TypeScript 5
 - Tailwind CSS 3, Framer Motion and `react-intersection-observer`
-- `@tsparticles/react`, `lottie-react` and `react-icons`
+- `@tsparticles/react` and `react-icons`
 - ESLint 9 with `eslint-config-next` 16
 
 ## Local development
@@ -47,7 +47,7 @@ The dev server runs on `http://localhost:3000`. `npm run build` requires access 
 - Section spacing is intentionally compact (`py-10`, `md:py-14`) to avoid stacked whitespace.
 - The mobile navigation uses an Obsidian glass drawer. It locks document scrolling while open, keeps the drawer independently scrollable and supports Escape, overlay and close-button dismissal.
 - Focus-visible states and reduced-motion support are required for interactive UI.
-- There is no loading screen or About profile image. The remaining navbar Lottie is a small brand detail only.
+- There is no loading screen, About profile image or decorative navbar mark.
 
 ## Project structure
 

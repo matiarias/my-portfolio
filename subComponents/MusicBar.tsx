@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
+import { TbPlayerPause, TbPlayerPlay } from "react-icons/tb";
 
-import SvgAlien from "@/subComponents/SvgComponent";
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 // Fix #4: Un solo estado `isPlaying` en lugar de dos estados siempre sincronizados
@@ -33,17 +33,13 @@ const MusicBar = () => {
       <button
         type="button"
         onClick={handleClick}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 text-slate-100 transition hover:-translate-y-0.5 hover:border-cosmic-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300"
+        className={`inline-flex h-11 w-11 items-center justify-center rounded-full border bg-violet-950/60 transition-[color,transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 ${isPlaying ? "border-cosmic-cyan-300/70 text-cosmic-cyan-200 shadow-[0_0_18px_rgba(103,232,249,0.24)]" : "border-cosmic-cyan-300/30 text-slate-100 hover:border-cosmic-cyan-300"}`}
         aria-label={isPlaying ? content.music.pause : content.music.play}
         aria-pressed={isPlaying}
         aria-describedby={playbackError ? "music-status" : undefined}
         title={playbackError || undefined}
       >
-        <SvgAlien
-          width={24}
-          height={24}
-          fill={isPlaying ? "#86efac" : "rgb(226,232,240)"}
-        />
+        {isPlaying ? <TbPlayerPause size={24} aria-hidden="true" /> : <TbPlayerPlay size={24} aria-hidden="true" />}
 
         <audio
           ref={refMusic}

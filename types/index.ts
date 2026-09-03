@@ -1,5 +1,3 @@
-import type { SVGProps } from "react";
-
 export interface ProjectTechnology {
   id: number;
   title: string;
@@ -40,10 +38,6 @@ export interface WorkExperience {
 
 export interface TitleSectionsProps {
   title: string;
-}
-
-export interface SvgAlienProps extends SVGProps<SVGSVGElement> {
-  fill?: string;
 }
 
 export type PortfolioLocale = "en" | "es";
