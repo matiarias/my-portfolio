@@ -13,7 +13,7 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen w-full overflow-hidden"
     >
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-20 md:px-10">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-10 pt-20 md:px-10 md:py-14 md:pt-20">
         <p className="eyebrow">{content.hero.eyebrow}</p>
         <h1 className="mt-5 max-w-5xl text-5xl font-bold leading-[.95] tracking-tight text-slate-100 md:text-8xl">
           {content.hero.titlePrefix}<span className="text-cosmic-cyan-400">{content.hero.titleEmphasis}</span>{content.hero.titleSuffix}

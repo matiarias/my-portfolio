@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
  * Reveal sutil y único para las secciones al entrar en el viewport.
  */
 export function useScrollAnimation() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0 });
   const controls = useAnimation();
   const shouldReduceMotion = useReducedMotion();
 
