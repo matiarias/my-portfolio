@@ -22,7 +22,7 @@ const Hero = () => {
 
         <Link
           href="#contact"
-          className="mt-9 w-fit rounded-full bg-cosmic-signal-300 px-6 py-3 font-bold text-cosmic-space transition hover:-translate-y-0.5 hover:bg-cosmic-signal-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-cosmic-space"
+          className="mt-9 w-fit rounded-full bg-cosmic-signal-300 px-6 py-3 font-bold text-cosmic-space transition md:hover:-translate-y-0.5 md:hover:bg-cosmic-signal-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-cosmic-space"
         >
           {content.hero.contactCta}
         </Link>
@@ -34,7 +34,7 @@ const Hero = () => {
             rel="noreferrer noopener"
             aria-label={content.social.linkedin}
           >
-            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-cosmic-cyan-300">
+            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition md:hover:-translate-y-1 md:hover:border-cosmic-cyan-300">
               <BsLinkedin className=" text-white" />
             </div>
           </a>
@@ -45,7 +45,7 @@ const Hero = () => {
             rel="noreferrer noopener"
             aria-label={content.social.github}
           >
-            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-cosmic-cyan-300">
+            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition md:hover:-translate-y-1 md:hover:border-cosmic-cyan-300">
               <BsGithub className=" text-white" />
             </div>
           </a>
@@ -54,7 +54,7 @@ const Hero = () => {
             href="mailto:maticarlosarias@gmail.com"
             aria-label={content.social.email}
           >
-            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition hover:-translate-y-1 hover:border-cosmic-cyan-300">
+            <div className="rounded-full border border-cosmic-cyan-300/30 bg-violet-950/60 p-3 text-xl transition md:hover:-translate-y-1 md:hover:border-cosmic-cyan-300">
               <AiOutlineMail className=" text-white" />
             </div>
           </a>

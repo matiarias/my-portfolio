@@ -33,7 +33,7 @@ const MusicBar = () => {
       <button
         type="button"
         onClick={handleClick}
-        className={`inline-flex h-11 w-11 items-center justify-center rounded-full border bg-violet-950/60 transition-[color,transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 ${isPlaying ? "border-cosmic-cyan-300/70 text-cosmic-cyan-200 shadow-[0_0_18px_rgba(103,232,249,0.24)]" : "border-cosmic-cyan-300/30 text-slate-100 hover:border-cosmic-cyan-300"}`}
+        className={`inline-flex h-11 w-11 items-center justify-center rounded-full border bg-violet-950/60 transition-[color,transform,box-shadow,border-color] duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 md:hover:-translate-y-0.5 ${isPlaying ? "border-cosmic-cyan-300/70 text-cosmic-cyan-200 shadow-[0_0_18px_rgba(103,232,249,0.24)]" : "border-cosmic-cyan-300/30 text-slate-100 md:hover:border-cosmic-cyan-300"}`}
         aria-label={isPlaying ? content.music.pause : content.music.play}
         aria-pressed={isPlaying}
         aria-describedby={playbackError ? "music-status" : undefined}

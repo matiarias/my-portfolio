@@ -32,7 +32,7 @@ const LanguageSwitcher = () => {
             type="button"
             onClick={() => changeLanguage(locale)}
             aria-pressed={isActive}
-            className={`rounded-full px-3 py-1.5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 ${isActive ? "bg-cosmic-signal-300 text-cosmic-space" : "text-slate-300 hover:bg-cosmic-cyan-300/10 hover:text-cosmic-cyan-200"}`}
+            className={`rounded-full px-3 py-1.5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cosmic-cyan-300 ${isActive ? "bg-cosmic-signal-300 text-cosmic-space" : "text-slate-300 md:hover:bg-cosmic-cyan-300/10 md:hover:text-cosmic-cyan-200"}`}
           >
             {locale.toUpperCase()}
           </button>

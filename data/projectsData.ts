@@ -4,41 +4,6 @@ import type { Project } from "@/types";
 //         Formato: <projectId><techIndex> (ej: proyecto 1, tech 1 → id: 11)
 export const projects: Project[] = [
   {
-    id: 1,
-    image: "/assets/projects/ciudades-fascinantes.png",
-    technologies: [
-      {
-        id: 11,
-        title: "Next.js",
-      },
-
-      {
-        id: 12,
-        title: "React.js",
-      },
-
-      {
-        id: 13,
-        title: "Material UI",
-      },
-
-      {
-        id: 14,
-        title: "Firebase",
-      },
-    ],
-    links: {
-      github: {
-        url: "https://github.com/matiarias/ciudades-fascinantes-next-js-app",
-      },
-
-      deploy: {
-        url: "https://folcademy-next-app.vercel.app",
-      },
-    },
-  },
-
-  {
     id: 2,
     image: "/assets/projects/videoclub-app.png",
     technologies: [

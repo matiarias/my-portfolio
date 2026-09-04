@@ -89,7 +89,6 @@ export const portfolioContent: Record<PortfolioLocale, PortfolioContent> = {
       githubLabel: "GitHub",
       deployLabel: "View project",
       items: {
-        1: { title: "Ciudades Fascinantes App", description: "Ciudades fascinantes it's an app about information of countries and cities. It's my final project for an intensive course of Next.js and React.js." },
         2: { title: "Videoclub App", description: "Movies app with a Netflix vibes. For the data requests i used TMDB Api. Built with Vite, React.js, JavaScript, TailwindCSS and Firebase." },
         3: { title: "Search Images App", description: "A simple app to search different images and photos using the Pixabay API. I Built the app with React, JavaScript, Tailwind, react-router-dom-V6, react infinite scroll component, react toastify, lottie react and react icons." },
         4: { title: "The Weather App", description: "A weather app built with React, JavaScript, Tailwind, React-hooks, Luxon.js. I used three APIs for the data. for the backgrounds images I used the unsplash API and for the weather data I used two open weather map APIs." },
@@ -189,7 +188,6 @@ export const portfolioContent: Record<PortfolioLocale, PortfolioContent> = {
       githubLabel: "GitHub",
       deployLabel: "Ver proyecto",
       items: {
-        1: { title: "Ciudades Fascinantes App", description: "Aplicación con información sobre países y ciudades. Fue mi proyecto final de un curso intensivo de Next.js y React.js." },
         2: { title: "Videoclub App", description: "Aplicación de películas inspirada en Netflix. Consume la API de TMDB y fue construida con Vite, React.js, JavaScript, Tailwind CSS y Firebase." },
         3: { title: "Search Images App", description: "Aplicación para buscar imágenes y fotografías mediante la API de Pixabay. Construida con React, JavaScript y Tailwind." },
         4: { title: "The Weather App", description: "Aplicación del clima construida con React, JavaScript, Tailwind, React Hooks y Luxon.js. Usa APIs de OpenWeather para los datos y Unsplash para las imágenes de fondo." },
