@@ -90,7 +90,7 @@ const NavBar = () => {
       className={`fixed left-0 top-0 z-[100] h-16 w-full border-b transition ${blurNav ? "border-violet-300/20 bg-cosmic-space/85 backdrop-blur-xl" : "border-transparent"}`}
       aria-label={content.navigation.primaryLabel}
     >
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 md:px-10">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-end px-5 md:justify-between md:px-10">
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
