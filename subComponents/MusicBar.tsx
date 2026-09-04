@@ -45,7 +45,7 @@ const MusicBar = () => {
           ref={refMusic}
           loop
           preload="metadata"
-          src="/assets/audio/dreamkid-fugitive.mp3"
+          src="/assets/audio/retro-evenings.mp3"
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           onError={() => setPlaybackError(content.music.error)}
