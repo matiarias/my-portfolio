@@ -54,7 +54,6 @@ The dev server runs on `http://localhost:3000`. `npm run build` requires access 
 ```text
 pages/                 Next.js Pages Router entry points
 components/            Page sections
-subComponents/         Reusable UI components
 data/                  Typed static portfolio data
 hooks/                 Shared hooks, including localized content access
 types/                 Shared TypeScript interfaces

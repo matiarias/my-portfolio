@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import TitleSections from "@/subComponents/TitleSections";
+import TitleSections from "@/components/TitleSections";
 import { workExperience } from "@/data/experienceData";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";

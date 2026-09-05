@@ -2,7 +2,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import Link from "next/link";
 
-import MusicBar from "@/subComponents/MusicBar";
+import MusicBar from "@/components/MusicBar";
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 
 const Hero = () => {

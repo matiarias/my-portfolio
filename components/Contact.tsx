@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { BsEnvelope, BsLinkedin } from "react-icons/bs";
 
-import TitleSections from "@/subComponents/TitleSections";
+import TitleSections from "@/components/TitleSections";
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 

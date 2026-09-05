@@ -4,7 +4,7 @@ import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
-import LanguageSwitcher from "@/subComponents/LanguageSwitcher";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 

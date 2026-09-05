@@ -29,7 +29,6 @@ No migrar a App Router salvo pedido explícito. No incorporar librerías de UI n
 ```text
 pages/                 Rutas y metadatos SEO
 components/            Secciones principales
-subComponents/         Componentes reutilizables
 data/                  Datos estáticos tipados
 hooks/                 Hooks compartidos, incluido acceso al contenido localizado
 types/                 Interfaces compartidas
