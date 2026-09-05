@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 import { usePortfolioContent } from "@/hooks/usePortfolioContent";
 import LanguageSwitcher from "@/subComponents/LanguageSwitcher";
 
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
 const NavBar = () => {
   const [nav, setNav] = useState(false);
-  const [blurNav, setBlurNav] = useState(false);
   const restoreScrollPosition = useRef(true);
   const content = usePortfolioContent();
 
@@ -21,14 +22,6 @@ const NavBar = () => {
   const handleNavigation = useCallback(() => {
     restoreScrollPosition.current = false;
     setNav(false);
-  }, []);
-
-  useEffect(() => {
-    const scrollNav = () => setBlurNav(window.scrollY >= 80);
-
-    window.addEventListener("scroll", scrollNav);
-
-    return () => window.removeEventListener("scroll", scrollNav);
   }, []);
 
   useEffect(() => {
@@ -52,7 +45,7 @@ const NavBar = () => {
     return () => desktopViewport.removeEventListener("change", closeOnDesktop);
   }, [closeNav]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!nav) return;
 
     const scrollY = window.scrollY;
@@ -77,7 +70,13 @@ const NavBar = () => {
       document.body.style.top = previousBodyTop;
       document.body.style.width = previousBodyWidth;
 
-      if (restoreScrollPosition.current) window.scrollTo(0, scrollY);
+      if (restoreScrollPosition.current) {
+        const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+
+        document.documentElement.style.scrollBehavior = "auto";
+        window.scrollTo({ left: 0, top: scrollY, behavior: "auto" });
+        document.documentElement.style.scrollBehavior = previousScrollBehavior;
+      }
 
       restoreScrollPosition.current = true;
     };
@@ -87,7 +86,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-[100] h-16 w-full border-b transition ${blurNav ? "border-violet-300/20 bg-cosmic-space/85 backdrop-blur-xl" : "border-transparent"}`}
+      className="fixed left-0 top-0 z-[100] h-16 w-full border-b border-violet-300/20 bg-cosmic-space/95"
       aria-label={content.navigation.primaryLabel}
     >
       <div className="mx-auto flex h-full max-w-6xl items-center justify-end px-5 md:justify-between md:px-10">
@@ -128,7 +127,7 @@ const NavBar = () => {
 
       {nav && (
         <div
-          className="fixed inset-0 z-[110] bg-[#05010d]/70 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-[110] bg-cosmic-space/85 md:hidden"
           onClick={closeNav}
         >
           <div
@@ -136,7 +135,7 @@ const NavBar = () => {
             role="dialog"
             aria-modal="true"
             aria-label={content.navigation.mobileLabel}
-            className="flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-y-auto border-r border-violet-300/20 bg-cosmic-space/95 px-5 backdrop-blur-xl"
+            className="flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-y-auto border-r border-violet-300/20 bg-cosmic-space px-5"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="relative flex h-20 items-center justify-end">
