@@ -25,6 +25,8 @@ export default function Home() {
         <meta name="description" content={content.metadata.description} />
         <meta name="keywords" content={content.metadata.keywords} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#100022" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="canonical" href={canonicalUrl} />
         <link rel="alternate" hrefLang="en" href="https://matiasarias.vercel.app/" />
         <link rel="alternate" hrefLang="es" href="https://matiasarias.vercel.app/es" />
@@ -36,7 +38,7 @@ export default function Home() {
         <meta property="og:description" content={content.metadata.description} />
         <meta
           property="og:image"
-          content="/assets/screenshots/screenshot-home.png"
+          content="/assets/home-portfolio.png"
         />
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -45,10 +47,9 @@ export default function Home() {
         <meta property="twitter:description" content={content.metadata.description} />
         <meta
           property="twitter:image"
-          content="/assets/screenshots/screenshot-home.png"
+          content="/assets/home-portfolio.png"
         />
 
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <StarsParticles />
